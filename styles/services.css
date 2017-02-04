@@ -1,0 +1,67 @@
+/* Written by Nick Scheel - November 2016 */
+
+.itsservice {
+	background-color: #ffffff;
+	color: #1a7934;
+}
+.green * h3 {
+}
+.red * h3 {
+	color: #ffffff
+}
+.yellow * h3 {
+	color: #ffffff
+}
+.green * h3::after {
+	content: "\f00c";
+}
+.red * h3::after {
+	content: "\f00d";
+}
+.yellow * h3::after {
+	content: "\f071";
+}
+.itservice-box {
+	border: 2px solid;
+	border-color: #1a7934;
+}
+.itservice-date {
+	font-size:11px;
+}
+div.red div.itservice-box {
+	border-color: #ffffff;
+	background-color: #cc2329;
+	border-color: #cc2329;
+}
+div.yellow div.itservice-box {
+	border-color: #ffffff;
+	background-color: #f1c40f;
+	border-color: #f1c40f;
+}
+.itservice-box h3 {
+	padding-left: 1rem;
+	text-transform: uppercase;
+	font-family: truenoregular, Arial, sans-serif;
+	line-height:4px;
+	font-size:.85rem;
+	font-weight:normal;
+}
+.itservice-box h3::after {
+	/*content: "\f00c"; check mark*/
+		/*content:"\f00d"; times symbol - used for red background*/
+		/*content:"\f071"; exclamation-triangle - used for yellow background*/
+	font-family: FontAwesome;
+	font-weight: normal;
+	font-style: normal;
+	float: right;
+	margin: 0px 14px 0px 0px;
+	text-decoration: none;
+}
+p .space-p {
+	margin-top: 0px !important;
+}
+	.serviceMessage {margin-left: 1rem;color:#212121;padding-top: 8px;}	
+	.moreInfo  {margin-left: 1rem;padding-bottom: 22px; display:none;}
+.learn-more-font {
+	padding-top: 6px;
+}

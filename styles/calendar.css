@@ -1,0 +1,172 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+/*Code for old calendar __BEGIN__*/
+.td-button:active,
+.td-button:focus {
+  border-color: transparent;
+}
+.td-button {
+  font-size: 12px;
+}
+
+.table-bordered>tbody>tr>td,
+.table-bordered>tbody>tr>th,
+.table-bordered>tfoot>tr>td,
+.table-bordered>tfoot>tr>th,
+.table-bordered>thead>tr>td,
+.table-bordered>thead>tr>th {
+  min-width: 100px;
+}
+
+.fill, .fill_minus_nav {
+  margin: 0 auto;
+  width: 100%;
+  padding: 0;
+}
+.fill_minus_nav {
+  height: calc(100% - 53px);
+  min-height: calc(100% - 53px);
+}
+
+.fill {
+  height: 100%;
+  min-height: 100%;
+
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+iframe {
+  width: 100%;
+  height: 750px;
+  min-height: 100%;
+  display: block;
+  border-style: none;
+}
+
+#day-table {
+  width: 100%;
+}
+#day-table tr td {
+  min-height: 10px;
+}
+
+/*Code for old calendar __END__*/
+
+ul.days {
+  width: 100%;
+  text-align: center;
+}
+
+li.days {
+  width: 100px;
+}
+
+td {
+  height: 40px;
+  position: relative;
+}
+
+.table-bordered>tbody>tr:hover {
+  background-color: #EBEBEB;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.table-bordered>tbody>tr>td:hover::after,
+th:hover::after {
+  content: "";
+  position: absolute;
+  background-color: #EBEBEB;
+  left: 0;
+  top: -5000px;
+  height: 10000px;
+  width: 100%;
+  z-index: -1;
+}
+
+th {
+  width: 200px;
+  height: 40px;
+  text-align: center;
+  position: relative;
+}
+
+table {
+  margin-top: 6px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.table-bordered {
+  margin-left: 20px;
+}
+
+#menu-toggle {
+  position: fixed;
+  margin-left: -20px;
+  top: 50%;
+  background-color: #510c76;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  height: 50px;
+  width: 30px;
+  color: white;
+  line-height: 37px;
+  border-style: solid;
+  border-color: white;
+  padding-left: 6px;
+  z-index: 2;
+}
+
+footer {
+  z-index: 1;
+  border-top: 1px solid white;
+}
+
+button:active,
+button:focus {
+  border-style: none;
+}
+
+.tab-content {
+  overflow-x: scroll;
+}
+
+.time-container {
+  min-width: 50px;
+}
+/* Adjustments for the sidebar */
+#sidebar-wrapper {
+  background-color: #510c76;
+  border-color: white;
+  border-top-style: solid;
+  border-top-width: 1px;
+  z-index: 1;
+}
+.sidebar-nav {
+  padding-top: 10px;
+}
+.sidebar-nav li a {
+  color: white;
+}
+#page-content-wrapper {
+  padding: 20px;
+}
+
+/* Adjustmentts for the pills */
+.nav-pills>li.active>a,
+.nav-pills>li.active>a:focus,
+.nav-pills>li.active>a:hover {
+  background-color: #510C76;
+  color: white;
+}

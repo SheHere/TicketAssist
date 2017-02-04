@@ -1,0 +1,19 @@
+tr:hover {
+  background: url("https://140.209.47.120/styles/Cage.png") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+td:hover::after,
+th:hover::after {
+  content: "";
+  position: absolute;
+  background: url("https://140.209.47.120/styles/Cage.png") no-repeat center center fixed;
+  left: 0;
+  top: -5000px;
+  height: 10000px;
+  width: 100%;
+  z-index: -1;
+}

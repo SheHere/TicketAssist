@@ -1,0 +1,101 @@
+/*Color of links in top navbar*/
+.nav a:link, nav a:visited, nav a:active { color: black; }
+.nav a:hover { color: black; }
+.navbar-brand a { color: white; }
+
+input[type=text], .txtarea {
+	margin-bottom: 0px;
+}
+
+body {
+	margin-bottom: 35px;
+}
+
+body > .container {
+	padding: 60px 15px 0;
+}
+.container .text-muted {
+	margin: 20px 0;
+}
+
+/*The footer at the bottom of every page*/
+.footer > .container {
+	padding-right: 15px;
+	padding-left: 15px;
+	padding-top: 30px;
+}
+.footer {
+	padding-bottom: 30px;
+}
+footer {
+	background-color: #510c76;
+	color: white;
+	padding: 15px;
+	bottom: 0;
+	height: 50px;
+	position: fixed;
+	width: 100%;
+}
+
+/*Submit buttons for log form*/
+input#gatherbutton,
+input#sendbutton,
+input#resetbutton {
+	width: 100%;
+	margin-left: 0px;
+	margin-right: 0px;
+}
+input#gatherbutton {
+	margin-top: 25px;
+	margin-bottom: 0px;
+}
+input#sendbutton:hover {
+	color: white;
+	margin-bottom: 0px;
+}
+input#resetbutton {
+	margin-bottom: 25px;
+}
+
+#start-tour {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	color: white;
+	z-index: 2;
+}
+#start-tour:focus {
+	outline: none;
+}
+
+
+/* The following creates a custom bootstrap button. */
+/* See http://twitterbootstrap3buttons.w3masters.nl/?color=%238343ad to create another. */
+.btn-custom {
+	background-color: #8343ad;
+	border-color: #8343ad;
+	color: white;
+}
+.btn-custom:hover,
+.btn-custom:focus,
+.btn-custom:active,
+.btn-custom.active {
+	background-color: #753c9b;
+	border-color: #673588;
+	color: white;
+}
+.btn-custom.disabled:hover,
+.btn-custom.disabled:focus,
+.btn-custom.disabled:active,
+.btn-custom.disabled.active,
+.btn-custom[disabled]:hover,
+.btn-custom[disabled]:focus,
+.btn-custom[disabled]:active,
+.btn-custom[disabled].active,
+fieldset[disabled] .btn-custom:hover,
+fieldset[disabled] .btn-custom:focus,
+fieldset[disabled] .btn-custom:active,
+fieldset[disabled] .btn-custom.active {
+	background-color: #8343ad;
+	border-color: #8343ad;
+}

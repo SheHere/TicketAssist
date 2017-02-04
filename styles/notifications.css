@@ -1,0 +1,16 @@
+body {
+	padding-right: 5px;
+}
+h2 {
+	margin: 0px;
+	padding: 0px;
+}
+.media {
+	padding-top: 5px; 
+	padding-bottom: 5px;
+}
+.media-left, .media-body, .media-right {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	border-bottom: 1px solid black;
+}

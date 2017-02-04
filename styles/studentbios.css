@@ -1,0 +1,58 @@
+body {
+	font-family: arial;
+}
+
+.container {
+	width:auto;
+	position: relative;
+	margin-bottom: 30px;
+	margin-top: 10px;
+}
+
+.table {
+	width:240px;
+	height:450px;
+  position:relative;
+  display:inline-block;
+	border: 1px solid #f0f0f0;
+  overflow-x: hidden;
+	overflow-y: hidden;
+  margin: 5px;
+}
+
+.image {
+	width:240px;
+	height:240px;
+}
+
+.name {
+	width:100%;
+  font-size:15px;
+  font-weight:bold;
+	text-align: center;
+  text-transform:uppercase;
+	background-color: #660088;
+	color:#FFFFFF;
+}
+
+.about {
+	padding:4px;
+	margin:1px;
+  text-align: justify;
+  font-size:10px;
+	overflow-y: auto;
+	height: 150px;
+}
+
+.badges {
+	background-color: white;
+	position: absolute;
+	margin: 0px auto 0px 0px;
+	bottom: -5px;
+	width: 100%;
+	overflow: visible;
+	white-space: nowrap;
+}
+.badges:hover {
+	white-space: normal;
+}

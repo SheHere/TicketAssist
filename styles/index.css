@@ -1,0 +1,209 @@
+html {
+	font-size: 12pt;
+}
+
+body img {
+	height: 900px;
+	width: 900px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	display: block;
+	position: absolute;
+	margin: 0;
+}
+
+.form ul:not(.login_failed) {
+	opacity: 0;
+
+	-webkit-animation: fade-in 2s 1s forwards; /* Safari 4+ */
+	-moz-animation:    fade-in 2s 1s forwards; /* Fx 5+ */
+	-o-animation:      fade-in 2s 1s forwards; /* Opera 12+ */
+	animation:         fade-in 2s 1s forwards; /* IE 10+, Fx 29+ */
+}
+
+.form a.request_access, .form a.request_access:visited {
+	text-align: center;
+	color: white;
+	opacity: 0.8;
+	text-decoration: none;
+}
+.form a.request_access:hover {
+	text-shadow: 2px 2px 5px black;
+	color: white;
+	opacity: 0.8;
+	text-decoration: none;
+}
+
+.form ul {
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	opacity: 0.8;
+}
+
+.form li {
+	padding-top: 10px;
+}
+
+.form input[type=submit] {
+	border: none;
+	border-radius: 4px;
+	width: 100%;
+	text-decoration: none;
+	background-color: black;
+	color: white;
+	position: center fixed;
+	cursor: pointer;
+	opacity: 0.8;
+}
+
+.form input:not([type=submit]) {
+	padding: 5px;
+	border: 1px solid rgba(0, 0, 0, 0.3);
+	border-radius: 4px;
+	background-color: black;
+	color: white;
+	opacity: 0.8;
+}
+
+.form[name=login_failed] input:not([type=submit]) {
+	padding: 5px;
+	border: 1px solid red;
+	border-radius: 4px;
+	background-color: black;
+	color: white;
+	opacity: 0.8;
+}
+
+#start-tour {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	color: black;
+}
+#start-tour:focus {
+	outline: none;
+}
+
+#main-header,
+#main-header-failed {
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	display: block;
+	position: absolute;
+	margin: 0;
+	font-size: 75px;
+	color: #252628;
+
+}
+#main-header {
+	opacity: 0;
+
+	-webkit-animation: fade-in-up 1.5s forwards; /* Safari 4+ */
+	-moz-animation:    fade-in-up 1.5s forwards; /* Fx 5+ */
+	-o-animation:      fade-in-up 1.5s forwards; /* Opera 12+ */
+	animation:         fade-in-up 1.5s forwards; /* IE 10+, Fx 29+ */
+}
+#main-header-failed {
+	top: 35%;
+}
+
+#request_access_container {
+	text-align: center;
+}
+
+@-webkit-keyframes fade-in-up {
+	0%   {
+		opacity: 0;
+		top: 50%;
+	}
+  50% {
+		opacity: 0.8;
+		top: 50%;
+	}
+	100% {
+		opacity: 0.8;
+		top: 35%;
+	}
+}
+@-moz-keyframes fade-in-up {
+	0%   {
+		opacity: 0;
+		top: 50%;
+	}
+  50% {
+		opacity: 0.8;
+		top: 50%;
+	}
+	100% {
+		opacity: 0.8;
+		top: 35%;
+	}
+}
+@-o-keyframes fade-in-up {
+	0%   {
+		opacity: 0;
+		top: 50%;
+	}
+  50% {
+		opacity: 0.8;
+		top: 50%;
+	}
+	100% {
+		opacity: 0.8;
+		top: 35%;
+	}
+}
+@keyframes fade-in-up {
+	0%   {
+		opacity: 0;
+		top: 50%;
+	}
+  50% {
+		opacity: 0.8;
+		top: 50%;
+	}
+	100% {
+		opacity: 0.8;
+		top: 35%;
+	}
+}
+
+@-webkit-keyframes fade-in {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 0.8;
+	}
+}
+@-moz-keyframes fade-in {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 0.8;
+	}
+}
+@-o-keyframes fade-in {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 0.8;
+	}
+}
+@keyframes fade-in {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 0.8;
+	}
+}

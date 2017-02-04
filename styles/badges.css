@@ -1,0 +1,31 @@
+/* Force the "Badge Index" h1 left */
+.header_text {
+	padding-left: 0px;
+}
+
+.table {
+	margin-bottom: 30px;
+}
+
+/* Align all contents of the table in the center of each row */
+.table > tbody > tr > td {
+	vertical-align: middle;
+}
+
+.creator_link {
+	text-align: right;
+}
+
+.scrollable-menu {
+    height: auto;
+    max-height: 500px;
+    overflow-x: hidden;
+}
+
+/* Pushes the search bar for tables all the way to the right */
+.dataTables_filter {
+	float: right;
+}
+.pagination {
+	float: right;
+}
