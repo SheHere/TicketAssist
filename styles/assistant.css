@@ -17,6 +17,10 @@ body > .container {
 .container .text-muted {
 	margin: 20px 0;
 }
+hr {
+	margin-top: 3px;
+	margin-bottom: 3px;
+}
 
 /*The footer at the bottom of every page*/
 .footer > .container {
@@ -67,7 +71,16 @@ input#resetbutton {
 #start-tour:focus {
 	outline: none;
 }
-
+#changelog-link {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	color: white;
+	z-index: 2;
+}
+#changelog-link:focus {
+	outline: none;
+}
 
 /* The following creates a custom bootstrap button. */
 /* See http://twitterbootstrap3buttons.w3masters.nl/?color=%238343ad to create another. */

@@ -48,7 +48,9 @@
 				function(){
 				  swal("Deleted!", "This badge has been deleted.", "success");
 				  document.getElementById("form" + id).submit();
-				  location.reload(true);
+				  setTimeout(function(){
+				    window.location.reload();
+				  },100)
 				});
 		}
 	</script>
@@ -101,7 +103,7 @@
 			';
 		}
 		?>
-					<iframe src="#" class="form_target" id="form_target" name="form_target" style="display: none;"></iframe>
+					<iframe class="form_target" id="form_target" name="form_target" style="display: none;"></iframe>
 	</div>
 	<div class="footer">
 	<?php

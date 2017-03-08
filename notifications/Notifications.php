@@ -15,6 +15,7 @@
 	reducedHeader();
 ?>
   <link rel="stylesheet" href="../styles/notifications.css">
+  <base target="_parent">
 </head>
 
 <body>
@@ -77,9 +78,9 @@
 		}
 		echo $printConcat . '
 		<br>
-		<p style="text-align: center"><a href="https://140.209.47.120/notifications/Notifications.php?get=more">Show More Notifications</a></p>';
+		<p style="text-align: center"><a target="_self" href="https://140.209.47.120/notifications/Notifications.php?get=more">Show All Notifications</a></p>';
 	} else {
-		echo '<div class="well" style="text-align: center; margin-top: 20px;"><h4>No notifications!</h4></div>';
+		echo '<div class="well" style="text-align: center; margin-top: 20px;"><h4>No notifications!</h4></div><p style="text-align: center"><a target="_self" href="https://140.209.47.120/notifications/Notifications.php?get=more">Show All Notifications</a></p>';
 	}
 
 ?>

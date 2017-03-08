@@ -1,4 +1,4 @@
-<?php include $_SERVER['DOCUMENT_ROOT'] . "/loginutils/AdminAuth.php"; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . "/loginutils/Auth.php"; ?>
 
 <!-- 
 <--- Created by Nick Scheel and Chase Ingebritson 2016

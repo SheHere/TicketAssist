@@ -1,9 +1,9 @@
-<?php 
-	include($_SERVER['DOCUMENT_ROOT'] . "/loginutils/auth.php"); 
+<?php
+	include($_SERVER['DOCUMENT_ROOT'] . "/loginutils/auth.php");
 	include($_SERVER['DOCUMENT_ROOT'] . "/loginutils/AdminAuth.php");
 ?>
 
-<!-- 
+<!--
 <--- Created by Nick Scheel and Chase Ingebritson 2016
 <---
 <--- University of St. Thomas ITS Tech Desk
@@ -12,81 +12,90 @@
 <html lang="en">
 <head>
   <title>User Roster</title>
-	<?php 
+	<?php
 	include ($_SERVER['DOCUMENT_ROOT'] . '/includes/createHeader.php');
 	datatablesHeader();
 	?>
   <style>
-    
+
     .footer{
     	padding-top: 30px;
 	}
   </style>
-  
-  
+
 	<!-- Configures the datatable so that it targets the table, order by descending, sets it to a frame so that we can see the buttons at the bottom without scrolling to them. -->
-	<script> 
+	<script>
 		$(document).ready(function() {
-			$('#userTable').DataTable({
+			var userTable = $('#userTable').DataTable({
 				scrollY: '55vh',
 				scrollCollapge: true,
 				columnDefs: [{width: '5%', targets: 0}],
 				bPaginate: false
 			});
 			$('[data-toggle="tooltip"]').tooltip();
+
+			$("#userForm").submit(function(e) {
+				e.preventDefault();
+				userTable
+					.search('')
+					.columns().search('')
+					.draw();
+				document.getElementById("userForm").submit();
+			});
 		});
 	</script>
   <script>
 
 	</script>
-  
+
 </head>
 <body>
 
 <?php
 	include ($_SERVER['DOCUMENT_ROOT'] . '/includes/navbar.php');
 ?>
-  
-<div class="container-fluid text-center">    
+
+<div class="container-fluid text-center">
   <div class="row content">
-     <div class="col-md-1 text-left"> 
+     <div class="col-md-1 text-left">
 		<!-- White space on left 1/12th -->
 	 </div>
 	<!--
 	---- Begin main section, which will call the HTML from the input file
 	--->
-    <div class="col-md-10 text-left"> 
-      
+    <div class="col-md-10 text-left">
+
 		<h1>User Roster</h1>
-		
-		<!-- 
+
+		<!--
 		---- The classe "sortable" calls .js file that allows the table to be sorted, the class "table" is a Bootstrap
 		---- class that formats it nicely, and "table-striped" is a Bootstrap class that makes every-other entry
 		---- a gray color so each entry stands out better.
 		-->
-		<form id="userForm" action="updateUserStatus.php" method="post" target="iFrame">		
-			<table id="userTable" class="display table table-striped"> 
+		<form id="userForm" action="updateUserStatus.php" method="post" target="iFrame" onsubmit="return clearTableSearch();">
+			<table id="userTable" class="display table table-striped">
 				<thead>
 					<tr>
 						<th>Username</th>
 						<th>Last Name</th>
 						<th>First Name</th>
+						<th>Phone Number</th>
 						<th>Role</th>
 						<th>Admin Status</th>
 						<th>Icon</th>
 						<th>User Settings</th>
-						<th>Test</th>
+						<th>Badges</th>
 					</tr>
 				</thead>
 				<tbody>
-				<?php 
+				<?php
 				/*
 					The following PHP send a request to the database looking for each user.
-					It displays them in descending order by username. 
+					It displays them in descending order by username.
 					It will not show users entries with a visibility of -1, which are test accounts.
 				*/
 					require($_SERVER['DOCUMENT_ROOT'] . '/loginutils/connectdb.php');
-					
+
 					$output = "";
 					$numRows = 0;
 					$sql = "SELECT * FROM users INNER JOIN login USING(username)";
@@ -104,14 +113,16 @@
 									$cur_username = $row['username'];
 									$fname = $row['fname'];
 									$lname = $row['lname'];
+									$phonenum = $row['phone_number'];
 									$role = $row['role'];
 									$admin_status = $row['admin_status'];
 									$path = $row['img_path'];
-									
+
 									//Shows "None Provided" if the name doesn't show up
 									if(strcmp('', $fname)==0){$fname = "---";}
 									if(strcmp('', $lname)==0){$lname = "---";}
-									
+									if(strcmp('', $phonenum)==0){$phonenum = "---";}
+
 									//Sets which role dropdown option is selected initially
 									$inactiveRoleSelected = "";
 									$studentRoleSelected = "";
@@ -123,7 +134,7 @@
 									} else if($role == 2) {
 										$employeeRoleSelected = "selected";
 									}
-									
+
 									//Sets which admin status dropdown option is selected initially
 									$userStatusSelected = "";
 									$superuserStatusSelected = "";
@@ -135,10 +146,10 @@
 									} else if($admin_status == 3) {
 										$adminStatusSelected = "selected";
 									}
-									
+
 									//Second query that grabs the badges that the user has
 									$badges = '<p style="text-align: left;">---</p>';
-									$sql2 = "SELECT * 
+									$sql2 = "SELECT *
 											 FROM badges_held JOIN badges USING(id)
 											 WHERE username LIKE '$cur_username'
 											 ;";
@@ -151,7 +162,7 @@
 											$fixedBadge = str_replace('-5x', '-1x', $badgeIcon);
 											$badges .= '
 											<span data-toggle="tooltip" title="'.$badgeName.'">
-												<i class="'.$fixedBadge.'" aria-hidden="true"> </i> 
+												<i class="'.$fixedBadge.'" aria-hidden="true"> </i>
 											</span>';
 										}
 										$badges .= "</p>";
@@ -162,6 +173,7 @@
 										<th>' . $cur_username . '</th>
 										<th>' . $lname . '</th>
 										<th>' . $fname . '</th>
+										<th>' . $phonenum . '</th>
 										<th>
 											<div class="form group">
 												<select class="form-control" name="'.$cur_username.'RoleSelection">
@@ -202,23 +214,24 @@
 							}
 						}
 						echo '<input type="hidden" name="numRows" value="'.$numRows.'">';
-						
+
 					}
 				?>
 				</tbody>
 			</table>
-		<button type="submit" class="btn btn-custom" value="submit" onclick="myFunction();">Submit Changes</button>
+		<button type="submit" class="btn btn-custom" value="submit">Submit Changes</button>
 		</form>
+		<!-- The below div is a target for form actions -->
 		<div class="iFrame" id="iFrameDiv" style="display: none; padding-top: 5px;">
 			<iframe align="left" name="iFrame" width="100%" height="100px" frameBorder="0" marginwidth="0" ></iframe>
 		</div>
 		</div>
 	</div> <!--End div for main section-->
-	
-	<div class="col-md-1 text-left"> 
+
+	<div class="col-md-1 text-left">
 		<!-- White space on right 1/12th -->
-	</div>	
-  	
+	</div>
+
   </div> <!-- End div for Row Content -->
 </div><!--End div for Bootstrap container rules-->
 
@@ -227,17 +240,5 @@
 	include ($_SERVER['DOCUMENT_ROOT'] . '/includes/footer.php');
 ?>
 </div>
-  <script>
-		function myFunction() {
-		document.getElementById("iFrameDiv").style.display = 'block';
-	}
-  </script>
 </body>
 </html>
-
-
-
-
-
-
-

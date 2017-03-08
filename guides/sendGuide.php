@@ -36,16 +36,17 @@
 	$overview = htmlentities($_POST['overview'], ENT_QUOTES, 'UTF-8');
 
 	//$body = addslashes($_POST['body']);
-	$body = htmlentities($_POST['body'], ENT_QUOTES, 'UTF-8');
+	$body_orig = htmlentities($_POST['body'], ENT_QUOTES, 'UTF-8');
+	$body_fixed = str_replace("panel-collapse collapse in", "panel-collapse collapse", $body_orig);
 	
 	$filename = str_replace(' ', '', $guide_name);
 
 	$sql = "SELECT * FROM guides WHERE guide_name LIKE '$guide_name'";
 	$testResult = mysqli_query($con,$sql);
 	if (mysqli_num_rows($testResult) > 0) {
-		$query = "UPDATE `guides` SET `topic` = '$topic', `guide_name` = '$guide_name', `filename` = '$filename', `overview` = '$overview',  `body` = '$body' WHERE `guide_name` = '$guide_name';";
+		$query = "UPDATE `guides` SET `topic` = '$topic', `guide_name` = '$guide_name', `filename` = '$filename', `overview` = '$overview',  `body` = '$body_fixed' WHERE `guide_name` = '$guide_name';";
 	}else{
-		$query = "INSERT INTO `guides` (`topic`, `guide_name`, `filename`, `overview`, `body`) VALUES ('$topic', '$guide_name', '$filename', '$overview', '$body');";
+		$query = "INSERT INTO `guides` (`topic`, `guide_name`, `filename`, `overview`, `body`) VALUES ('$topic', '$guide_name', '$filename', '$overview', '$body_fixed');";
 	}
 	$result = mysqli_query($con,$query);
 	if(!$result) {

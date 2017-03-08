@@ -47,14 +47,10 @@
 				</div>";
 			}else{
 				$multiquery = "
-					INSERT INTO `users` (`username`, `fname`, `lname`, `bio`, `img_path`) VALUES ('$username', '', '', '', 'StudentRosterImages/PlaceholderImg.png');
+					INSERT INTO `users` (`username`, `fname`, `lname`, `bio`, `img_path`, `color`, `notes`, `phone_number`) VALUES ('$username', '', '', '', 'StudentRosterImages/PlaceholderImg.png', '', '', '');
 
 					INSERT into `megalink` (username, link1, link2, link3, link4, link5)
 					VALUES ('$username', 'https://whd.stthomas.edu', 'http://www.stthomas.edu/its/', 'https://www.random.org/passwords/', '', '');
-					
-					INSERT INTO `genericResponse` (`id`, `username`, `title`, `msg_body`) VALUES (NULL, '$username', 'General Resolved', '<p>Thank you for contacting the Tech Desk. I’m glad I was able to help you today!</p></p>If you have any further questions or concerns, feel free to email us at techdesk@stthomas.edu or give us a call at the number above</p><p>Have a nice day!</p>');
-					
-					INSERT INTO `genericResponse` (`id`, `username`, `title`, `msg_body`) VALUES (NULL, '$username', 'General Unresolved', '<p>Thank you for contacting the Tech Desk. We have submitted a ticket regarding your issue and will have someone in contact with you shortly.</p></p>If you have any further questions or concerns, feel free to reply directly to this email.</p><p>Have a nice day!</p>');
 					";
 				$notification_message1 = 'User: <strong>'.$username.'</strong> has requested access. Please visit the <a target="_top" href="https://140.209.47.120/settings/admin/UserRoster.php">User Roster</a> to set them as active.';
 				$notification_message2 = htmlentities($notification_message1, ENT_QUOTES, 'UTF-8');
@@ -79,10 +75,8 @@
 								</li>
 							 </ul>
 						</div>";
-					$query2 = 'INSERT INTO `notifications` (id, date_created, viewed, username, title, message, all_admin) VALUES(NULL, NULL, 1, "all admin", "Access Request", "User: '.$username.' has requested access. Please visit the <a href="https://140.209.47.120/settings/admin/UserRoster.php">User Roster</a> to set them as active.", 3);';
 				}
 			}
-
 		} else {
 			echo "<img src='https://i.imgur.com/MPdUNpN.png' style='z-index: -1;'/>
 				<div class='form' name='login_failed'>

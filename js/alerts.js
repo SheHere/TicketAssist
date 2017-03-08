@@ -6,16 +6,9 @@ function successAlert(text, dest) {
 		html: true
 		},
 		function() {
-			window.location.href = dest;
-		}
-	);
-}
-function successAlert(text) {
-	swal({
-		title: "Success!",
-		text: text,
-		type: "success",
-		html: true
+			if(dest !== undefined){
+				window.location.href = dest;
+			}
 		}
 	);
 }
@@ -27,16 +20,9 @@ function errorAlert(text, dest) {
 		html: true
 		},
 		function() {
-			window.location.href = dest;
-		}
-	);
-}
-function errorAlert(text) {
-	swal({
-		title: "Oops!",
-		text: text,
-		type: "error",
-		html: true
+			if(dest !== undefined){
+				window.location.href = dest;
+			}
 		}
 	);
 }
@@ -48,29 +34,19 @@ function warningAlert (text, dest) {
 		html: true
 		},
 		function() {
+			if(dest !== undefined){
 				window.location.href = dest;
+			}
 		}
 	);
 }
-function warningAlert (text) {
-	swal({
-		title: "Oops!",
-		text: text,
-		type: "warning",
-		html: true
-		}
-	);
-}
-function infoAlert (text, dest) {
+function infoAlert (text) {
 	swal({
 		title: "Hey!",
 		text: text,
 		type: "info",
 		html: true
-		},
-		function() {
-				window.location.href = dest;
-			}
+		}
 	);
 }
 function passwordAlert (text) {

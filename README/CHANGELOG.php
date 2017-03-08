@@ -1,8 +1,8 @@
 <?php
 	include($_SERVER['DOCUMENT_ROOT'] . "/loginutils/auth.php");
 	include($_SERVER['DOCUMENT_ROOT'] . "/loginutils/AdminAuth.php");
-?>
 
+?>
 TICKET ASSIST CHANGELOG
 
 2016
@@ -24,8 +24,8 @@ _____December_____
 	- Began the tour for GuideIndex.php
 12/5:
 	- Began implimentation of notifications in Test Assistant.
-		- Created relation 'notifications' in the database
-		- Created directory 'notification', which contains asociated files
+		- Created relation `notifications` in the database
+		- Created directory `notification`, which contains asociated files
 		- Added notifications.css in /styles
 	- Added query in RequestAccess.php which creates notification for admins
 	- Fixed automated SQL entries (was sending request every minute between 8:00pm and 9:00pm)
@@ -49,6 +49,26 @@ _____December_____
 	- Finished the ModifyPositions and ModifyShifts sections for the calendar
 12/12
 	- Readded the tour to assistant.php and updated it to include the Notifications tab
+
+2017
+======================================================
+
+_____January_____
+1/1 - 1/30
+	- Created the entirety of the dynamic calendar in the calendar folder
+	- Added the favorite color button under user settings to be used by the dynamic calendar
+
 1/23
 	- Changed all pages to generate the head section from CreateHeader.php, and included file
 	- Updated READMEs
+
+_____Febuary_____
+2/9
+	- Readded the tour to assistant.php (for the fourth time...) and updated it to include the Generic Responses tab
+	- Updated user settings to where the favorite color button will pull the initial color from the server and update without a second button
+	- Added a note in the first time setup page to state that a tutorial can be found on the home page
+2/13
+	- Edited the tutorial on the assistant.php to have the twitter section be on the left and to fix a typo
+2/15
+	- Fixed the delete badge button not working in Firefox on the badges page
+	

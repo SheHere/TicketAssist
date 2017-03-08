@@ -55,26 +55,17 @@ $ret .= '
 		<li class="dropdown">
 			<a class="dropdown-toggle" data-toggle="dropdown" href="#">
 				<span class="glyphicon glyphicon-option-vertical"></span>
-				&nbspKnowledge Base
-				<span class="caret"></span>
-			</a>
-			<ul class="dropdown-menu ">
-				<li><a href="' . $_SERVER["SERVER_ROOT"] . '/guides/GuideIndex.php" ><span class="glyphicon glyphicon-road"></span>&nbsp&nbspGuides</a></li>
-				<li><a href="' . $_SERVER["SERVER_ROOT"] . '/guides/Mindmap.php" ><span class="glyphicon glyphicon-sort-by-attributes-alt"></span>&nbsp&nbspMind Map</a></li>
-
-			</ul>
-		</li>
-		<li class="dropdown">
-			<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-				<span class="glyphicon glyphicon-option-vertical"></span>
 				&nbspInternal Links
 				<span class="caret"></span>
 			</a>
 			<ul class="dropdown-menu ">
 				<li><a href="' . $_SERVER["SERVER_ROOT"] . '/logs/logIndex.php" ><span class="glyphicon glyphicon-folder-open"></span>&nbsp&nbspLogs</a></li>
+				<li><a href="' . $_SERVER["SERVER_ROOT"] . '/guides/GuideIndex.php" ><span class="glyphicon glyphicon-road"></span>&nbsp&nbspGuides</a></li>
+				<hr>
 				<li><a href="' . $_SERVER["SERVER_ROOT"] . '/StudentRoster/studentbios.php" ><span class="glyphicon glyphicon-list"></span>&nbsp&nbspStudent Roster</a></li>
-				<li><a href="' . $_SERVER["SERVER_ROOT"] . '/dev/SubmitBug.php" ><i class="fa fa-bug" aria-hidden="true"></i>&nbsp&nbspSubmit Feedback</a></li>
 				<li><a href="' . $_SERVER["SERVER_ROOT"] . '/badges/badge_index.php" ><span class="glyphicon glyphicon-certificate"></span>&nbsp&nbspBadges</a></li>
+				<hr>
+				<li><a href="' . $_SERVER["SERVER_ROOT"] . '/dev/SubmitBug.php" ><i class="fa fa-bug" aria-hidden="true"></i>&nbsp&nbspSubmit Feedback</a></li>
 				<li><a href="' . $_SERVER["SERVER_ROOT"] . '/calendar/ViewCalendar.php" ><span class="glyphicon glyphicon-calendar"></span>&nbsp&nbspCalendar</a></li>
 
 
@@ -90,12 +81,14 @@ $ret .= '
 				<!-- Glyphcons found on http://getbootstrap.com/components/. They are provided for free from http://glyphicons.com/-->
 				<!-- The code "&nbsp" is a forced space, which adds white space inbetween the glyphcon and the words following them.-->
 				<li><a href="' . WHD_LINK . '" target="_blank"><span class="glyphicon glyphicon-pencil"></span>&nbsp&nbspWeb Help Desk</a></li>
+				<li><a href="https://techdesk.ladesk.com/agent/" target="_blank"><i class="fa fa-terminal" aria-hidden="true"></i>&nbsp&nbspChat Login</a></li>
 				<li><a href="' . SHAREPOINT_LINK . '" target="_blank"><span class="glyphicon glyphicon-globe"></span>&nbsp&nbspSharepoint Site</a></li>
 				<li><a href="' . FIM_LINK . '" target="_blank"><span class="glyphicon glyphicon-list-alt"></span>&nbsp&nbspForefront Identity Manager</a></li>
 				<li><a href="' . CHECKOUT_LINK . '" target="_blank"><span class="glyphicon glyphicon-barcode"></span>&nbsp&nbspCheckout System</a></li>
-				<li><a href="' . WORKER_SCHEDULE_LINK . '" target="_blank"><span class="glyphicon glyphicon-calendar"></span>&nbsp&nbspStudent Schedule</a></li>
 				<li><a href="' . ITS_HOME_LINK . '" target="_blank"><span class="glyphicon glyphicon-education"></span>&nbsp&nbspITS Homepage</a></li>
+				<li><a href="http://personal.stthomas.edu/ebinfa/schedules/spring17.xlsx" target="_blank"><span class="glyphicon glyphicon-calendar"></span>&nbsp&nbspCalendar</a></li>
 				<li><a href="' . PAYROLL_LINK . '" target="_blank"><span class="glyphicon glyphicon-time"></span>&nbsp&nbspTime Keeping</a></li>
+				
 			</ul>
 		</li>'
 		;
@@ -119,6 +112,7 @@ $ret .= '
 		/*Below are links seen by Admins only */
 		if($usrstatus == 3){
 			$ret .= '
+					<hr>
 					<li><a href="' . $_SERVER["SERVER_ROOT"] . '/announcements/Announcements.php" ><span class="glyphicon glyphicon-bullhorn"></span>&nbsp&nbspAnnouncements</a></li>
 					<li><a href="' . $_SERVER["SERVER_ROOT"] . '/settings/admin/UserRoster.php" ><span class="glyphicon glyphicon-list"></span>&nbsp&nbspUser Roster</a></li>
 					<li><a href="' . $_SERVER["SERVER_ROOT"] . '/settings/admin/AddOrRemoveUser.php" ><span class="glyphicon glyphicon-user"></span>&nbsp&nbspAdd or Remove User</a></li>';
@@ -140,6 +134,8 @@ $ret .= '
 					<!-- The code "&nbsp" is a forced space, which adds white space inbetween the glyphcon and the words following them.-->
 					<li><a href="' . $_SERVER["SERVER_ROOT"] . '/dev/ViewBugs.php" ><span class="glyphicon glyphicon-thumbs-down"></span>&nbsp&nbspView Bugs</a></li>
 					<li><a href="' . $_SERVER["SERVER_ROOT"] . '/TestAssistant.php" ><span class="glyphicon glyphicon-warning-sign"></span>&nbsp&nbspTest Assistant</a></li>
+					<li><a href="' . $_SERVER["SERVER_ROOT"] . '/changelog/changelog.php" ><i class="fa fa-code-fork fa-1x" aria-hidden="true"></i>&nbsp&nbspEdit Changelog</a></li>
+					<hr>
 					<li><a href="' . $_SERVER["SERVER_ROOT"] . '/guides/encyclopedia/Encyclopedia.php" ><span class="glyphicon glyphicon-book"></span>&nbsp&nbspEncyclopedia</a></li>
 					<li><a href="' . $_SERVER["SERVER_ROOT"] . '/guides/encyclopedia/EntryApproval.php" ><span class="glyphicon glyphicon-ok"></span>&nbsp&nbspApprove Encyclopedia Entry</a></li>
 				</ul>

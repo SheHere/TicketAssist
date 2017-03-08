@@ -35,6 +35,7 @@ if(isset($_FILES['uploadedfile'])) {
 	$target_path .= $username . "." . $uploaded_file_info['extension'];
 	$errormsg = '<div class="alert alert-warning" role="alert"><strong>Oops! </strong>';
 	$successmsg = '';
+	$uploadSuccessful = true;
 
 	if (strcasecmp($uploaded_file_info['extension'], "jpeg") || strcasecmp($uploaded_file_info['extension'], "jpg")) {
 		//Checks if the file exists
@@ -43,7 +44,8 @@ if(isset($_FILES['uploadedfile'])) {
 			if(move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target_path)) {
 			    $successmsg .= "File uploaded." . "<br>";
 			} else{
-			    echo $errormsg . "File upload failed.</div>";
+			    echo $errormsg . "File upload failed.<br>Target path:".$target_path."</div>";
+				$uploadSuccessful = false;
 			}
 		} else {
 			//Attempts to delete the file and re-add it
@@ -53,13 +55,16 @@ if(isset($_FILES['uploadedfile'])) {
 					echo $successmsg . "File readded." . "<br>";
 				} else {
 					echo $errormsg . "File readdition failed. (" . $target_path . ")</div>";
+					$uploadSuccessful = false;
 				}
 			} else {
 				echo $errormsg . "File removal failed. (" . $target_path . ")</div>";
+				$uploadSuccessful = false;
 			}
 		}
 	} else {
 		$errormsg .= "Incorrect file type.<br>";
+		$uploadSuccessful = false;
 	}
 
 	//BEGIN ADDITION OF PATH TO DATABASE ==============================
@@ -68,7 +73,7 @@ if(isset($_FILES['uploadedfile'])) {
 
 	$result = mysqli_query($con,$query);
 
-	if(!$result) {
+	if(!$result || !$uploadSuccessful) {
 		echo $errormsg . 'SQL error: ';
 		echo mysqli_error($con);
 		echo '</div>';

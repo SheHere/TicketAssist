@@ -101,9 +101,7 @@
 								$resolvedSelected = "";
 								if($current_status == 1) {
 									$openSelected = "selected";
-								} else if($current_status == 2) {
-									$flaggedSelected = "selected";
-								} else if($current_status == 3) {
+								}else if($current_status == 3 || $current_status == 2) /*Temporary; resolved as value 3 should be phased out soon, becoming value 2 */{
 									$resolvedSelected = "selected";
 								}
 								if($current_status != 0) {
@@ -121,9 +119,7 @@
 											<div class="form group">
 												<select class="form-control" name="select'.$id.'" onchange="submitFunction(); ">
 													<option value="1"'. $openSelected .'>Open</option>
-													<option value="2"'. $flaggedSelected .'>Flagged</option>
-													<option value="3"'. $resolvedSelected .'>Resolved</option>
-													<option value="0">Canceled</option>
+													<option value="2"'. $resolvedSelected .'>Resolved</option>
 												</select>
 											</div>
 										</th>

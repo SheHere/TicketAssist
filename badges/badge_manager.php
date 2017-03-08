@@ -1,15 +1,15 @@
-<?php 
+<?php
 	include($_SERVER['DOCUMENT_ROOT'] . "/loginutils/auth.php");
 	include($_SERVER['DOCUMENT_ROOT'] . "/loginutils/AdminAuth.php");
 	include 'badge_functions.php';
-	
+
 	$inCreator = true;
 	if (isset($_GET['badge'])) {
 		$inCreator = false;
 	}
 ?>
 
-<!-- 
+<!--
 <--- Created by Nick Scheel and Chase Ingebritson 2016
 <---
 <--- University of St. Thomas ITS Tech Desk
@@ -18,7 +18,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<?php 
+<?php
 	if ($inCreator) {
 		echo '<title>Badge Creator</title>';
 	} else {
@@ -34,62 +34,51 @@
 	<script>
 		//Configures the datatable so that it targets the table, order by descending, sets it to a frame so that we can see the buttons at the bottom without scrolling to them.
 		$(document).ready(function() {
-				$('#iconTable').DataTable({
-					scrollY: '65vh',
-					scrollCollapge: true,
-					columnDefs: [{width: '5%', targets: 0}],
-					paging: false
-				});
+			$('#iconTable').DataTable({
+				scrollY: '65vh',
+				scrollCollapge: true,
+				columnDefs: [{width: '5%', targets: 0}],
+				paging: false
+			});
 
-				$('#userTable').DataTable({
-					scrollY: '43vh',
-					scrollCollapge: true,
-					columnDefs: [{width: '5%', targets: 0}],
-					paging: false
-				});
-			} );
+			var userTable = $('#userTable').DataTable({
+				scrollY: '43vh',
+				scrollCollapge: true,
+				columnDefs: [{width: '5%', targets: 0}],
+				paging: false
+			});
 
-		function createAlert() {
-			swal({
-				title: "Success!", 
-				text: "Badge created!", 
-				type: "success"
-				},
-				function() {
-					window.location.href = "http://140.209.47.120/badges/badge_index.php";
-				});
-		}
-		
-		function updateAlert() {
-			swal({
-				title: "Success!", 
-				text: "Badge updated!", 
-				type: "success"
-				},
-				function() {
-					window.location.href = "http://140.209.47.120/badges/badge_index.php";
-				});
-		}
-	</script>
+			$("#userForm").submit(function(e) {
+				e.preventDefault();
+				userTable
+					.search('')
+					.columns().search('')
+					.draw();
+
+				successAlert("Badge updated!", "http://140.209.47.120/badges/badge_index.php");
+				document.getElementById("userForm").submit();
+			});
+		});
+</script>
 </head>
 <body>
 
 <?php
-	include($_SERVER['DOCUMENT_ROOT'] . "/includes/navbar.php"); 
+	include($_SERVER['DOCUMENT_ROOT'] . "/includes/navbar.php");
 ?>
 	<div class="container-fluid">
 		<div class="col-md-12 col-sm-12">
 			<?php
 			if ($inCreator) {
-				echo '<form onsubmit="createAlert()" action="badge_form_handler.php" method="post" target="form_target">';
+				echo '<form id="userForm" action="badge_form_handler.php" method="post" target="form_target">';
 			} else {
-				echo '<form onsubmit="updateAlert()" action="badge_form_handler.php?badge=' . $_GET['badge'] . '" method="post" target="form_target">';
+				echo '<form id="userForm" action="badge_form_handler.php?badge=' . $_GET['badge'] . '" method="post" target="form_target">';
 			}
 			?>
 				<div class="col-md-6">
 					<div class="row">
 						<h1>1. Select the icon</h1>
-						<table id="iconTable" class="display table table-striped" width="100%"> 
+						<table id="iconTable" class="display table table-striped" width="100%">
 							<thead>
 								<tr>
 									<th>Select</th>
@@ -97,7 +86,7 @@
 								</tr>
 							</thead>
 							<tbody>
-								<?php 
+								<?php
 								if ($inCreator) {
 									populateIconTableCreator();
 								} else {
@@ -105,7 +94,7 @@
 								}
 								?>
 							</tbody>
-						</table>				
+						</table>
 					</div>
 				</div>
 				<div class="col-md-1"></div>
@@ -134,7 +123,7 @@
 					</div>
 					<div class="row">
 						<h1>4. Select recipients</h1>
-						<table id="userTable" class="display table table-striped" width="100%"> 
+						<table id="userTable" class="display table table-striped" width="100%">
 							<thead>
 								<tr>
 									<th>Select</th>
@@ -142,7 +131,7 @@
 								</tr>
 							</thead>
 							<tbody>
-								<?php 
+								<?php
 								if ($inCreator) {
 									populateUserTableCreator();
 								} else {
@@ -155,13 +144,13 @@
 				</div>
 				<div class="col-md-12 col-sm-12">
 					<button type="submit" class="btn btn-block btn-custom">
-					<?php 
+					<?php
 					if ($inCreator) {
 						echo 'Create badge';
 					} else {
 						echo 'Update badge';
 					}
-					?>	
+					?>
 					</button>
 				</div>
 			</form>
@@ -170,7 +159,7 @@
 	</div>
 	<div class="footer">
 	<?php
-		include($_SERVER['DOCUMENT_ROOT'] . "/includes/footer.php"); 
+		include($_SERVER['DOCUMENT_ROOT'] . "/includes/footer.php");
 	?>
 	</div>
 </body>

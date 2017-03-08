@@ -25,40 +25,8 @@
 		}
 	</style>
 </head>
-<body>
-<?php
-require($_SERVER['DOCUMENT_ROOT'] . '/loginutils/connectdb.php');
-	$cur_user = $_SESSION['username'];
-	$sql = "SELECT * FROM genericResponse WHERE username LIKE '$cur_user';";
-	$result = mysqli_query($con, $sql);
-	$printConcat = '';
-	if (mysqli_num_rows($result) > 0) {
-		$printConcat ='<div class="well well-sm" style="text-align: center;">You can create and delete your generic responses <a style="margin-top: 5px;" href="https://140.209.47.120/genericresponses/EditResponses.php" target="_parent">here</a>.</div>
-	<div class="panel-group" id="accordion">';
-		while($row = mysqli_fetch_assoc($result)) {
-			$id = $row['id'];
-			$title = html_entity_decode($row['title']);
-			$msg_body = html_entity_decode($row['msg_body']);
-			$printConcat =  $printConcat . '
-	<div class="panel panel-default">
-		<div class="panel-heading">
-			<h4 class="panel-title">
-			<a data-toggle="collapse" data-parent="#accordion" href="#'.$id.'">
-			'.$title.'</a>
-			</h4>
-		</div>
-		<div id="'.$id.'" class="panel-collapse collapse">
-			<div class="panel-body">'.$msg_body.'
-			</div>
-		</div>
-	</div>';
-		}
-	} else {
-		$printConcat = '<br><div class="well" style="text-align: center;"> <p>You don\'t have any generic responses! You can create a generic email template <a style="margin-top: 5px;" href="https://140.209.47.120/genericresponses/EditResponses.php" target="_parent">here</a>.</p></div>';
-	}
-	echo $printConcat . '</div>';
-?>
-
-
+<body style="text-align: center;">
+<h2 style="margin-top: 15px;">Under Construction!</h2>
+<img src="../dev/binfa.jpg" style="width:304px;height:450px;">
 </body>
 </html>

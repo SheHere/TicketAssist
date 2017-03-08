@@ -24,6 +24,7 @@
 			padding: 0px;
 		}
 	</style>
+	<base target="_parent">
 </head>
 <body>
 <?php

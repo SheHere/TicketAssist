@@ -27,13 +27,16 @@
 				$('#logTable').DataTable({
 					"order": [[ 0, "desc" ]],
 					scrollY: '60vh',
-					scrollX: '99%',
+					scrollX: 'false',
+					paging: false,
+					searching: false,
+					
 					scrollCollapge: true,
 					columnDefs: [{width: '5%', targets: 0}]
 				});
 			} );
   </script>
-  
+  <base target="_parent">
   
 </head>
 <body>
@@ -44,9 +47,10 @@
 	<!--
 	---- Begin main section, which will call the HTML from the input file
 	--->
-    <div class="col-md-12 text-left"> 
+    <div class="col-lg-12 text-left"> 
       
 		<h1>Unresolved Logs <input type="button" class="btn btn-default" value="Refresh Table" onClick="window.location.reload(true)"></h1>
+		<p><a href="https://140.209.47.120/logs/logIndex.php">See all logs here.</a><p>
 		
 		<!-- 
 		---- The classe "sortable" calls .js file that allows the table to be sorted, the class "table" is a Bootstrap
@@ -98,7 +102,7 @@
 											<div class="form group">
 												<select class="form-control" name="select'.$id.'" onchange="submitFunction(); ">
 													<option value="1"'. $selectedOpen .'>In Progress</option>
-													<option value="3">Ticket Created</option>
+													<option value="2">Ticket Created</option>
 												</select>
 											</div>
 										</th>
@@ -113,7 +117,7 @@
 			</form>
 			<iframe style="padding-top: 3px;" name="iFrame" width="100%" height="1" style="display: none;" frameBorder="0"></iframe>
 
-		</div>
+
 	</div> <!--End div for main section-->	
   	
   </div> <!-- End div for Row Content -->

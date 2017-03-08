@@ -1,6 +1,6 @@
-<?php 
+<?php
 /*
-<!-- 
+<!--
 <--- Created by Nick Scheel and Chase Ingebritson 2016
 <---
 <--- University of St. Thomas ITS Tech Desk
@@ -10,17 +10,19 @@ function buildBioPage() {
 	require($_SERVER['DOCUMENT_ROOT'] . '/loginutils/connectdb.php');
 	$output = "";
 
-	
-	$sql = "SELECT username, fname, lname, bio, img_path, role FROM users INNER JOIN login USING(username)";
+
+	$sql = "SELECT username, fname, lname, bio, img_path, role
+					FROM users INNER JOIN login USING(username)
+					ORDER BY lname ASC";
 	$result = mysqli_query($con, $sql);
-	
+
 	if(!$result) {
 		//Insert something that would happen if the information was not placed in
 		//the database correctly.
 		echo 'ERROR';
 		echo mysqli_error($con);
 	}
-	
+
 	if (mysqli_num_rows($result) > 0) {
 		// output data of each row
 		while($row = mysqli_fetch_assoc($result)) {
@@ -28,7 +30,7 @@ function buildBioPage() {
 			if ($row['role'] == 1) {
 				$badges = "<!-- No Badges -->";
 				//Second query that grabs the badges that the user has
-				$sql2 = "SELECT * 
+				$sql2 = "SELECT *
 						 FROM badges_held JOIN badges USING(id)
 						 WHERE username LIKE '$cur_user'
 						 ;";
@@ -41,13 +43,13 @@ function buildBioPage() {
 						$fixedBadge = str_replace('-5x', '-2x', $badgeIcon);
 						$badges .= '
 						<span data-toggle="tooltip" title="'.$badgeName.'">
-							<i class="'.$fixedBadge.'" aria-hidden="true"> </i> 
+							<i class="'.$fixedBadge.'" aria-hidden="true"> </i>
 						</span>';
 					}
 					$badges .= "</p>";
 				}
-				
-				$output .= 
+
+				$output .=
 						'<tr>'
 							. '<div class="table">'
 								. '<img src="' . $row['img_path'] . '" class="image">'
@@ -62,10 +64,10 @@ function buildBioPage() {
 				}else{
 					$toPrint = html_entity_decode($row['bio']);
 				}
-				$output .=				
+				$output .=
 									'</div>'
 								. '<div class="about">'
-									. $toPrint 
+									. $toPrint
 								. '</div>'
 								. '<div class="badges">'
 									. $badges

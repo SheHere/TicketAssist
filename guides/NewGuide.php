@@ -24,7 +24,8 @@
 			$editTopic = $row['topic'];
 			$editGuideName = $row['guide_name'];
 			$editOverview = $row['overview'];
-			$editBody = $row['body'];
+			$body_orig = $row['body'];
+            $editBody = str_replace("panel-collapse collapse", "panel-collapse collapse in", $body_orig);
 		}
 	}else{
 		$editTopic = "";
@@ -63,10 +64,23 @@
 ?>
   <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
   <script>
+      //See http://archive.tinymce.com/wiki.php/Controls for toolbar options
+      //See https://www.tinymce.com/docs/demo/custom-toolbar-button/ for custom button options used to make inserttoggle
 		tinymce.init({
 			browser_spellcheck : true,
 			selector:'textarea',
+            content_css: 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css',
+			toolbar: 'undo redo | formatselect | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | inserttoggle',
 			plugins: 'link image code autolink lists',
+			setup: function(editor){
+				editor.addButton('inserttoggle', {
+					text: 'Insert Toggle',
+					icon: false,
+					onclick: function() {
+						editor.insertContent('<div class=\"panel-group\"> <div class=\"panel panel-default"> <div class="panel-heading"> <h4 class="panel-title"><a href="#collapse1" data-toggle="collapse">Click to Toggle Information</a></h4> </div> <div id="collapse1" class="panel-collapse collapse in"> <div class="panel-body"> [Replace this with your content] </div></div></div></div>');
+					}
+				});
+			}
 		});
   </script>
 </head>

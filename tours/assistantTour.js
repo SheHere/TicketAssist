@@ -22,7 +22,7 @@ var tour = new Tour({
   },
   {
     element: "#clientInfoForm",
-    title: "Clint Information Form",
+    title: "Client Information Form",
     content: "When you're on a phone call and need a convienent place to store user information, use this form."
   },
   {
@@ -75,6 +75,12 @@ var tour = new Tour({
     onShow: function(tour) { $("#trbshoot-tab").tab('show'); }
   },
   {
+    element: "#genresp-tab",
+    title: "Generic Responses",
+    content: "If you ever want a template for a response in later tickets, the responses can be created here. The responses will be stored under your account for later use.",
+    onShow: function(tour) { $("#genresp-tab").tab('show'); }
+  },
+  {
     element: "#service-status-tab",
     title: "Service Status",
     content: "Our next set of tabs begins with the Service Status section. Here you can find information on the functionality of UST systems and services as well as updates on outages.",
@@ -84,6 +90,7 @@ var tour = new Tour({
     element: "#twitter-tab",
     title: "Twitter",
     content: "Here is where you can find Tweets from the official ITS Twitter account. It can be useful for keeping up to date on any changes with ITS.",
+    placement: "left",
     onShow: function(tour) { $("#twitter-tab").tab('show'); }
   },
   {

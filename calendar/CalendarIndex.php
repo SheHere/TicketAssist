@@ -42,6 +42,10 @@
         </div>
         <div class="col-md-6 text-right">
           <?php
+            
+          ?>
+
+          <?php
             $sql = "SELECT `color`
                     FROM `users`
                     WHERE `username` LIKE '$username';";

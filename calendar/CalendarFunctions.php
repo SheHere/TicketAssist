@@ -206,7 +206,7 @@
     	echo '<script> parent.errorAlert("'. mysqli_error($con) .'", "http://140.209.47.120/calendar/ModifyPositions.php");</script>';
     }else{
     	//If the position is created, give a success alert.
-    	echo '<script> parent.successAlert("Position successfully created!", "http://140.209.47.120/calendar/ModifyPositions.php");</script>';
+    	echo '<script> parent.successAlert("Position successfully created!", "http://140.209.47.120/calendar/CalendarIndexEdit.php");</script>';
     }
   }
 

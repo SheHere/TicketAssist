@@ -34,12 +34,12 @@
 			<form id="clientInfoForm" action="sendBug.php" method="post" target="iFrame">
 			
 				<div class="form-group">
-						<label for ="url">URL:</label>
+						<label for ="url">URL related to feedback:</label>
 						<input type="url" class="form-control" name="url" autofocus>
 				</div>
 				
 				<div class="form-group">
-					<label for="note">Description</label>
+					<label for="note">Description of error/feedback:</label>
 					<textarea class="form-control" name="note" rows="10" placeholder="Specify what you were doing when the bug occured."></textarea>
 				</div>
 				

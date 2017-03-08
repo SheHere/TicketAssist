@@ -10,7 +10,7 @@ Nick and Chase TODO:
 	[X] Student Roster
 [ ] Make sure README is up to date
 [ ] Fix cron script (snitch.php)
-
+[ ] Generic Responses
 
 
 Binfa TODO:

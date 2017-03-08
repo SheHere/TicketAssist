@@ -6,7 +6,6 @@ define("WHD_LINK", "https://whd.stthomas.edu");
 define("SHAREPOINT_LINK", "https://teams.stthomas.edu/sites/00073/techdeskOps/SitePages/Home.aspx");
 define("FIM_LINK", "https://fimportal.stthomas.edu/IdentityManagement");
 define("CHECKOUT_LINK", "https://140.209.38.69:8080");
-define("WORKER_SCHEDULE_LINK", "http://personal.stthomas.edu/ebinfa/schedules/Fall16.xlsx");
 define("ITS_HOME_LINK", "http://www.stthomas.edu/its/");
 define("PAYROLL_LINK", "http://www.stthomas.edu/payroll/timeentry/");
 define("BOOTSTRAP_LINK", "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css");
