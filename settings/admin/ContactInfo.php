@@ -1,6 +1,6 @@
 <?php 
 	include($_SERVER['DOCUMENT_ROOT'] . "/loginutils/auth.php"); 
-	include($_SERVER['DOCUMENT_ROOT'] . "/loginutils/AdminAuth.php");
+	include($_SERVER['DOCUMENT_ROOT'] . "/loginutils/SuperuserAuth.php");
 ?>
 
 <!-- 

@@ -66,7 +66,13 @@
     <div class="col-md-10 text-left">
 
 		<h1>User Roster</h1>
-
+		<?php
+		if($_GET['show'] == "inactive"){
+			echo '<p><a href="https://140.209.47.120/settings/admin/UserRoster.php">Hide Inactive Users</a></p>';
+		}else{
+			echo '<p><a href="https://140.209.47.120/settings/admin/UserRoster.php?show=inactive">Show Inactive Users</a></p>';
+		}
+		?>
 		<!--
 		---- The classe "sortable" calls .js file that allows the table to be sorted, the class "table" is a Bootstrap
 		---- class that formats it nicely, and "table-striped" is a Bootstrap class that makes every-other entry
@@ -108,7 +114,13 @@
 						if (mysqli_num_rows($result) > 0) {
 							// output data of each row
 							while($row = mysqli_fetch_assoc($result)) {
-								if($row['role'] > -1){
+								$whoToShow = 0; //Default does not show test accounts or inactive users
+								if($_GET['show'] == "inactive"){
+									$whoToShow = -1;
+								}else if($_GET['show'] == "testusers"){
+									$whoToShow = -2;
+								}
+								if($row['role'] > $whoToShow){
 									$numRows += 1;
 									$cur_username = $row['username'];
 									$fname = $row['fname'];

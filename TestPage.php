@@ -1,4 +1,4 @@
-<?php include $_SERVER['DOCUMENT_ROOT'] . "/loginutils/Auth.php"; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . "/loginutils/auth.php"; ?>
 
 <!-- 
 <--- Created by Nick Scheel and Chase Ingebritson 2016
@@ -31,7 +31,10 @@
 		
 			<h1>Testing!</h1>
 			<p>This is a test page for developers.</p>
+            <hr>
+			<!-- Write test code below -->
 			
+
 		</div> <!--End div for main section-->
 		  
 		<div class="col-md-1 text-left"> 

@@ -43,7 +43,5 @@
 	$all_tier = 0;
 
 	newNotification($recipient, $title, $message, $all_tier);
-	$recipient = 'ebinfa';
-	newNotification($recipient, $title, $message, $all_tier);
 	
 ?>

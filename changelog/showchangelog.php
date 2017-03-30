@@ -24,6 +24,7 @@ include($_SERVER['DOCUMENT_ROOT'] . "/loginutils/AdminAuth.php");
             $('#changelogTable').DataTable({
                 scrollY: '55vh',
                 scrollCollapge: true,
+				order: [[ 0, 'desc' ]],
                 columnDefs: [{width: '15%', targets: 0}]
             });
         });
@@ -78,7 +79,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/includes/navbar.php');
                 require($_SERVER['DOCUMENT_ROOT'] . '/loginutils/connectdb.php');
 
                 $output = "";
-                $sql = "SELECT * FROM changelog";
+                $sql = "SELECT * FROM changelog ORDER BY id DESC;";
                 $result = mysqli_query($con, $sql);
                 if (!$result) {
                     echo '<div class="alert alert-danger" role="alert"><strong>Error. </strong>';

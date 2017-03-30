@@ -77,7 +77,20 @@
 					text: 'Insert Toggle',
 					icon: false,
 					onclick: function() {
-						editor.insertContent('<div class=\"panel-group\"> <div class=\"panel panel-default"> <div class="panel-heading"> <h4 class="panel-title"><a href="#collapse1" data-toggle="collapse">Click to Toggle Information</a></h4> </div> <div id="collapse1" class="panel-collapse collapse in"> <div class="panel-body"> [Replace this with your content] </div></div></div></div>');
+					    //To ensure that each toggle has a unique ID, it is given a random 4 character string
+                        var length = 5,
+						charset = "abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ012345678901234567890123456789",
+						retVal = '';
+						for (var i = 0, n = charset.length; i < length; ++i) {
+							retVal += charset.charAt(Math.floor(Math.random() * n));
+						}
+						var strBuilder1 = '<div class=\"panel-group\"> <div class=\"panel panel-default"> <div class="panel-heading"> <h4 class="panel-title"><a href="#collapse_';
+						//Add retVal
+						var strBuilder2 = '\" data-toggle="collapse">Click to Toggle Information</a></h4> </div> <div id="collapse_';
+						//Add retVal
+						var strBuilder3 = '\" class="panel-collapse collapse in"> <div class="panel-body"> [Replace this with your content] </div></div></div></div><p></p>';
+						var toPrint = strBuilder1.concat(retVal, strBuilder2, retVal, strBuilder3);
+						editor.insertContent(toPrint);
 					}
 				});
 			}
