@@ -1,5 +1,5 @@
 <?php
-include($_SERVER['DOCUMENT_ROOT'] . "/loginutils/auth.php");
+include($_SERVER['DOCUMENT_ROOT'] . "/loginutils/SuperuserAuth.php");
 
 $toEdit = $_GET['id'];
 require($_SERVER['DOCUMENT_ROOT'] . "/loginutils/connectdb.php");
@@ -10,9 +10,28 @@ if (mysqli_num_rows($toEditResult) > 0) {
     $toEditID = $entry['id'];
     $toEditTitle = html_entity_decode($entry['title']);
     $toEditMsg_body = html_entity_decode($entry['msg_body']);
+    $toEditGrouping = $entry['grouping'];
 }
 
-
+$groupsSQL = "SELECT *
+FROM genericResponseGroups
+ORDER BY ordering, group_name ASC;";
+$groupResult = mysqli_query($con, $groupsSQL);
+$options = "<option value=\"\">----</option>";
+if (mysqli_num_rows($groupResult) > 0) {
+    // If rows exist, create toggles for them. Then populate those toggles with entries from contactFTE and user (for students).
+    while ($g_row = mysqli_fetch_assoc($groupResult)) {
+        //Looping through all contact_groups
+        $group_name = $g_row['group_name'];
+        $group_id = $g_row['id'];
+        $selected = '';
+        if($toEditGrouping == $group_id){
+        	$selected = ' selected ';
+		}
+        $options .= '
+        <option value="'.$group_id.'" '.$selected.'>'.$group_name.'</option>';
+    }
+}
 ?>
 
 <!--
@@ -27,7 +46,7 @@ if (mysqli_num_rows($toEditResult) > 0) {
     <title> Edit Responses </title>
     <?php
     include($_SERVER['DOCUMENT_ROOT'] . '/includes/createHeader.php');
-    fullHeader();
+    datatablesHeader();
     ?>
 
     <!-- TinyMCE is a 3rd party WYSIWYG. The following scripts initialize it for this page. -->
@@ -73,16 +92,22 @@ include($_SERVER['DOCUMENT_ROOT'] . '/includes/navbar.php');
                     <div id="new" class="tab-pane fade <?php if (strcmp('remove', $_GET['tab']) != 0) {
                         echo 'in active';
                     } ?>">
-                        <h1>Create New Response</h1>
-                        <p>This form will allow you to create a new generic reponse that can be accessed on the home
-                            page.</p>
+                        <?php if(isset($_GET['id'])){echo "<h1>Edit Response</h1>";}else{echo "<h1>Create New Response</h1><p>This form will allow you to create a new generic reponse that can be accessed on the home
+                            page.</p>";} ?>
+
                         <form id="newForm" action="sendResponse.php" method="post" target="sendiFrame">
                             <div class="form-group">
                                 <label for="title">Title:</label>
-                                <input class="form-control" name="title"
+                                <input class="form-control" name="title" required
                                        placeholder="Response Title" <?php if (isset($toEditTitle)) {
                                     echo 'value="' . $toEditTitle . '"';
                                 } ?> required>
+                            </div>
+                            <div class="form-group">
+                                <label for="sel1">Grouping:</label>
+                                <select class="form-control" name="group" required>
+                                    <?php echo $options; ?>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="message">Body:</label>
@@ -90,6 +115,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/includes/navbar.php');
                                           rows="5"><?php if (isset($toEditMsg_body)) {
                                         echo $toEditMsg_body;
                                     } ?></textarea>
+								<p><b>NOTE: sign all responses with [YOUR NAME] to have the user's name show up when they view it!</b></p>
                             </div>
                             <input type="hidden" value="<?php if (isset($toEditID)) {
                                 echo $toEditID;
@@ -107,13 +133,11 @@ include($_SERVER['DOCUMENT_ROOT'] . '/includes/navbar.php');
                         echo 'in active';
                     } ?>">
                         <h1>Remove Response</h1>
-                        <p>This form will allow you to remove a response so that it no longer shows on the front
-                            page.</p>
-                        <form id="removeForm" action="deleteResponse.php" method="post" target="removeiFrame">
+                        <p>This table will allow you to delete a response so that it no longer shows in the Generic Reponses tab on the home page. <br><b>WARNING: ONCE THEY ARE DELETED, THEY ARE NOT RECOVERABLE.</b></p>
                             <table class="sortable table table-striped">
                                 <thead>
                                 <tr>
-                                    <th>Select</th>
+									<th>Delete</th>
                                     <th>Title</th>
                                     <th>Creation Date</th>
                                     <th>Author</th>
@@ -136,13 +160,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/includes/navbar.php');
                                         $creation_date = $row['creation_date'];
                                         $output =
                                             '<tr>
-											<th>
-												<div class="checkbox">
-													<label class="checkbox-inline">
-														<input type="checkbox" name="toRemove[]" value="' . $id . '">
-													</label>
-												</div>
-											</th>
+											<th><a class="btn btn-danger" onclick="parent.confirmDelete(\'https://140.209.47.120/genericresponses/EditResponses.php?tab=remove\', \'https://140.209.47.120/genericresponses/deleteResponse.php\', ' . $id . ');"><span class="glyphicon glyphicon-remove"></span></a></th>
 											<th>' . $title . '</th>
 											<th>' . $creation_date . '</th>
 											<th>' . $creator . '</th>
@@ -154,9 +172,6 @@ include($_SERVER['DOCUMENT_ROOT'] . '/includes/navbar.php');
                                 ?>
                                 </tbody>
                             </table>
-
-                            <button type="submit" class="btn btn-danger" value="submit">Remove Selected</button>
-                        </form>
                         <br>
                         <iframe style="display: none;" align="left" name="removeiFrame" width="1px" height="1px"
                                 frameBorder="0" marginwidth="0"></iframe>

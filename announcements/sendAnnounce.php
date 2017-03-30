@@ -36,7 +36,7 @@
 			//the database correctly.
 			echo '<script> parent.errorAlert('. mysqli_error($con) .', "http://140.209.47.120/announcements/Announcements.php");</script>';
 		} else {
-			echo '<script> parent.successAlert("Your announcement has been sent.", "http://140.209.47.120/assistant.php"); </script>';
+			echo '<script> parent.successAlert("Your announcement has been sent.", "http://140.209.47.120/assistant/assistant.php"); </script>';
 		}
 	}
 ?>

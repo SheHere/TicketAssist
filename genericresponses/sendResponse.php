@@ -23,7 +23,8 @@ include($_SERVER['DOCUMENT_ROOT'] . "/loginutils/auth.php");
 require($_SERVER['DOCUMENT_ROOT'] . '/loginutils/connectdb.php');
 
 $title = htmlentities($_POST['title'], ENT_QUOTES, 'UTF-8');
-$message = nl2br(htmlentities($_POST['message'], ENT_QUOTES, 'UTF-8'));
+$message = htmlentities($_POST['message'], ENT_QUOTES, 'UTF-8');
+$group = $_POST['group'];
 $cur_user = $_SESSION['username'];
 $update = $_POST['update'];
 
@@ -33,13 +34,13 @@ if (strcmp('', $message) == 0 || strcmp('', $title) == 0) {
     if ($_POST['update'] > 0) {
         $query = "
 			UPDATE `genericResponse` 
-			SET title = '$title', msg_body = '$message' 
+			SET title = '$title', msg_body = '$message', grouping = $group
 			WHERE id = $update;";
 
     } else {
         $query = "
-			INSERT INTO `genericResponse` (`id`, `created_by`, `creation_date`, `title`, `msg_body`) 
-			VALUES (NULL, '$cur_user', CURRENT_TIMESTAMP, '$title', '$message');";
+			INSERT INTO `genericResponse` (`id`, `created_by`, `creation_date`, `title`, `msg_body`, `grouping`) 
+			VALUES (NULL, '$cur_user', CURRENT_TIMESTAMP, '$title', '$message', $group);";
     }
     $result = mysqli_query($con, $query);
     if (!$result) {

@@ -11,6 +11,8 @@ define("PAYROLL_LINK", "http://www.stthomas.edu/payroll/timeentry/");
 define("BOOTSTRAP_LINK", "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css");
 define("JQUERY_LINK", "https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js");
 define("ANNOUNCEMENTS_LINK", "http://140.209.47.120/announcements/NewAnnouncement.php");
+define("CHAT_LINK", "https://techdesk.ladesk.com/agent/");
+define("CALENDAR_LINK", "http://personal.stthomas.edu/ebinfa/schedules/spring17.xlsx");
 
 
 ?>

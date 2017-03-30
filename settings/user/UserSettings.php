@@ -113,7 +113,7 @@
 				?>
 				<h3>Favorite Color</h3>
 				<form id="colorForm" action="updateColor.php" method="post" target="iFrame3">
-					<input name="color" type="hidden" id="color_value" value="<?php echo $color; ?>" autocomplete="off" onchange="this.form.submit(); location.reload();">
+					<input name="color" type="hidden" id="color_value" value="<?php echo $color; ?>" autocomplete="off" onchange="this.form.submit(); setTimeout(function() {location.reload();}, 0);">
 					<button class="btn btn-custom jscolor {valueElement:'color_value'}" style="border: solid 1px; margin-bottom: 5px;">Click to change</button>
 				</form>
 				<p>Your favorite color will appear in the calendar.</p>

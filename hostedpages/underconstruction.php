@@ -1,6 +1,5 @@
 <?php 
-	include($_SERVER['DOCUMENT_ROOT'] . "/loginutils/auth.php"); 
-	include($_SERVER['DOCUMENT_ROOT'] . "/loginutils/AdminAuth.php"); 
+	include($_SERVER['DOCUMENT_ROOT'] . "/loginutils/auth.php");
 ?>
 
 <!-- 
@@ -24,7 +23,7 @@
 	?>
 <h1>Under Construction</h1>
 <p>There isn't anything here yet!</p>
-<p><a href="https://140.209.47.120/assistant.php">Return home.</a></p>
+<p><a href="https://140.209.47.120/assistant/assistant.php">Return home.</a></p>
 <img src="../dev/binfa.jpg" alt="Mountain View" style="width:304px;height:450px;">
 <?php 
 	include ($_SERVER['DOCUMENT_ROOT'] . '/includes/footer.php');

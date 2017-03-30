@@ -6,12 +6,29 @@
 	require($_SERVER['DOCUMENT_ROOT'] . '/loginutils/auth.php');
 	require($_SERVER['DOCUMENT_ROOT'] . '/loginutils/connectdb.php');
 	
-	//to_print is going to be printed at the end. 
-	$to_print = '
-	<div class="container">
+	//to_print is going to be printed at the end.
+    $to_print = '';
+
+    //If they are Superuser, show edit buttons
+        $to_print .= '
+        <div class="row grouprow" style="margin-bottom: 15px;">
+            <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                <div class="btn-group" role="group">
+                    <a href="https://140.209.47.120/contacts/EmployeeContacts.php" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> - Edit Contacts</a> 
+                </div>
+                <div class="btn-group" role="group">
+                    <a target="_self" href="https://140.209.47.120/contacts/EditContactGroups.php" class="btn btn-default"><i style="color:black;" class="fa fa-arrows-v fa-1x aria-hidden="true"></i> - Edit Groups</a>
+                </div>
+            </div>
+        </div>
+        ';
+
+	$to_print .= '
 		<div class="panel-group" id="accordion">';
 	
-	$contact_groupsSQL = "SELECT * from contact_groups ORDER BY ordering ASC";
+	$contact_groupsSQL = "SELECT *
+FROM contact_groups
+ORDER BY ordering, group_name ASC";
 	$cg_result = mysqli_query($con, $contact_groupsSQL);
 
 	
@@ -43,7 +60,7 @@
 				$contactSQL = "SELECT fname, lname, phone_number FROM users WHERE phone_number != '' ORDER BY lname ASC;";
 				$contact_result = mysqli_query($con, $contactSQL);
 				if (mysqli_num_rows($contact_result) > 0) {
-					$to_print .='
+					$to_print .= '
 					<thead>
 						<tr>
 							<th>Name</th>
@@ -51,41 +68,44 @@
 						<tr>
 					</thead>
 					<tbody>';
-					while($stu_row = mysqli_fetch_assoc($contact_result)) {
+					while ($stu_row = mysqli_fetch_assoc($contact_result)) {
 						//Looping through all students contact info
 						$fname = $stu_row['fname'];
 						$lname = $stu_row['lname'];
 						$phone_num = $stu_row['phone_number'];
 						$to_print .= '
 						<tr>
-							<th>'.$fname.' '.$lname.'</th>
-							<th>'.$phone_num.'</th>
+							<th>' . $lname . ', ' . $fname . '</th>
+							<th>' . $phone_num . '</th>
 						</tr>
 						';
 					}
+				}else{
+					$to_print .= "<p>No Contacts!</p>";
+				}
 					$to_print .= '
 								</tbody>
 							</table>
 						</div>
 					</div>
 				</div>';
-				}
+
 			}else{
 				$contactFTESQL = "SELECT * FROM contactFTE WHERE grouping = $group_id;";
 				$contactFTE_result = mysqli_query($con, $contactFTESQL);
 				if (mysqli_num_rows($contactFTE_result) > 0) {
-					$to_print .='
+					$to_print .= '
 					<thead>
 						<tr>
 							<th>Name</th>
-							<th>Position</th>
 							<th>Location</th>
+							<th>Position</th>
 							<th>Desk Number</th>
 							<th>Cell Number</th>
 						<tr>
 					</thead>
 					<tbody>';
-					while($row = mysqli_fetch_assoc($contactFTE_result)) {
+					while ($row = mysqli_fetch_assoc($contactFTE_result)) {
 						//Looping through all contactFTE
 						$id = $row['id'];
 						$grouping = $row['grouping'];
@@ -94,7 +114,7 @@
 						$position = $row['position'];
 						$desk_number = $row['desk_number'];
 						$cell_number = $row['cell_number'];
-						if(strcmp($cell_number,'') == 0){
+						if (strcmp($cell_number, '') == 0) {
 							$cell_number = '----';
 						}
 						$to_print .= '
@@ -107,17 +127,19 @@
 						</tr>
 						';
 					}
+				}else{
+					$to_print .= "<h3 style='margin-top: 5px; margin-bottom: 5px;' class='text-center'>No Contacts!</h3>";
+				}
 					$to_print .= '
 								</tbody>
 							</table>
 						</div>
 					</div>
 				</div>';
-				}
+
 			}
 		}
-		$to_print .= '</div>
-		</div>';
+		$to_print .= '</div>';
 	}else{
 		echo "ERROR: no contact groups found!";
 	}
@@ -125,24 +147,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <?php
+    include ($_SERVER['DOCUMENT_ROOT'] . '/includes/createHeader.php');
+    reducedHeader();
+    ?>
 	<style>
+        body {
+            font-size: 13px;
+        }
 		th {
 			font-weight: normal;
+            word-wrap: break-word;
 		}
 		thead > tr > th {
 			font-weight: bold;
+            word-wrap: break-word;
 		}
-		.container {
-			padding-left: 0px;
-			padding-right: 0px;
-		}
+        .container {
+            padding-left: 3px;
+            padding-right: 3px;
+        }
+        .grouprow {
+            margin-top: 10px;
+            margin-right: 0px;
+            margin-left: 0px;
+        }
 	</style>
+    <base target="_parent">
 </head>
 <body>
+<div class="container">
 	<?php echo $to_print; ?>
+</div>
 </body>
 </html>

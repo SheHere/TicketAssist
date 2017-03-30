@@ -7,7 +7,7 @@ TICKET ASSIST README
 
 Written by Nick Scheel 9-28-2016
 
-This document will be a guide on the purpose, fucntion, and design of the Tech Desk Ticket Assist webpage. It can be found at http://140.209.47.120/Assistant.php (IP liable to change).
+This document will be a guide on the purpose, fucntion, and design of the Tech Desk Ticket Assist webpage. It can be found at http://140.209.47.120/assistant/assistant.php (IP liable to change).
 
 SOURCES
 This file was made using HTML, PHP, CSS, and Javascript as the base languages. In addition to this, the following are being imported:
@@ -16,7 +16,7 @@ JQuery - enhances Javascript, allows for increased interactivity and creates eas
 
 
 OVERVIEW
-Assistant.php is the home page for the Ticket Assist project. Its purpose is to present a number of services for ease of access for Tech Desk student workers. These services are broken up into sections with Bootstrap, and will be discussed below.
+assistant/assistant.php is the home page for the Ticket Assist project. Its purpose is to present a number of services for ease of access for Tech Desk student workers. These services are broken up into sections with Bootstrap, and will be discussed below.
 
 Service 1 - Navbar
 The first service is the Navbar, found at the top of the page. It contains links to internal sites, and also a list of Tech Desk resources that are external. There is also a Home button, and a Logout button.
@@ -48,4 +48,4 @@ The page is broken into 12 collumns by Bootstrap. The allocation of this collumn
  
 
 MODIFYING 
-Before making changes to Assistant.php, first make changes in TestAssistant.php and make sure that there are no unintended bugs. When you are content, copy>paste the contents of the test page into the main page.
+Before making changes to assistant/assistant.php, first make changes in assistant/TestAssistant.php and make sure that there are no unintended bugs. When you are content, copy>paste the contents of the test page into the main page.

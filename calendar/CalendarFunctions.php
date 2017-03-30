@@ -177,9 +177,9 @@
                 <td>
                   <form target="sidebar-iframe" action="ModifyAssignments.php" method="post">
                     <button style="background-color: transparent;" type="submit" class="btn td-button">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
-                    <input type="hidden" name="position_id" value="'.$positions_row['position_id'].'"></input>
-                    <input type="hidden" name="time_start" value="'.$i.'"></input>
-                    <input type="hidden" name="day" value="'.$day.'"></input>
+                    <input type="hidden" name="position_id" value="'.$positions_row['position_id'].'">
+                    <input type="hidden" name="time_start" value="'.$i.'">
+                    <input type="hidden" name="day" value="'.$day.'">
                   </form>
                 </td>
             ';
@@ -251,10 +251,10 @@
   	$create_assig_result = mysqli_query($con,$create_assig_query);
   	if(!$create_assig_result){
   		//If the query was not executed, give an error alert with the mysql error as the message
-  		echo '<script> parent.parent.errorAlert("'. mysqli_error($con) .'", "http://140.209.47.120/calendar/CalendarIndex.php");</script>';
+  		echo '<script> parent.parent.errorAlert("'. mysqli_error($con) .'", "http://140.209.47.120/calendar/CalendarIndexEdit.php");</script>';
   	}else{
   		//If the position is created, give a success alert.
-  		echo '<script> parent.parent.successAlert("Assignment successfully created!", "http://140.209.47.120/calendar/CalendarIndex.php");</script>';
+  		echo '<script> parent.parent.successAlert("Assignment successfully created!", "http://140.209.47.120/calendar/CalendarIndexEdit.php");</script>';
   	}
   }
 
@@ -266,10 +266,10 @@
     $result = mysqli_query($con,$query);
     if(!$result){
       //If the query was not executed, give an error alert with the mysql error as the message
-      echo '<script> parent.parent.errorAlert("'. mysqli_error($con) .'", "http://140.209.47.120/calendar/CalendarIndex.php");</script>';
+      echo '<script> parent.parent.errorAlert("'. mysqli_error($con) .'", "http://140.209.47.120/calendar/CalendarIndexEdit.php");</script>';
     }else{
       //If the position is created, give a success alert.
-      echo '<script> parent.parent.successAlert("Assignment successfully updated!", "http://140.209.47.120/calendar/CalendarIndex.php");</script>';
+      echo '<script> parent.parent.successAlert("Assignment successfully updated!", "http://140.209.47.120/calendar/CalendarIndexEdit.php");</script>';
     }
   }
 
@@ -283,10 +283,10 @@
   	$remove_assign_result = mysqli_query($con,$remove_assign_query);
   	if(!$remove_assign_result){
   		//If the query was not executed, give an error alert with the mysql error as the message
-  		echo '<script> parent.parent.errorAlert("'. mysqli_error($con) .'", "http://140.209.47.120/calendar/CalendarIndex.php");</script>';
+  		echo '<script> parent.parent.errorAlert("'. mysqli_error($con) .'", "http://140.209.47.120/calendar/CalendarIndexEdit.php");</script>';
   	}else{
   		//If the position is created, give a success alert.
-  		echo '<script> parent.parent.successAlert("Assignment successfully deleted!", "http://140.209.47.120/calendar/CalendarIndex.php");</script>';
+  		echo '<script> parent.parent.successAlert("Assignment successfully deleted!", "http://140.209.47.120/calendar/CalendarIndexEdit.php");</script>';
   	}
   }
 
