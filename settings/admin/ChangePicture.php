@@ -29,9 +29,9 @@
 	$query = "UPDATE `users` SET `img_path` = 'StudentRosterImages/RemovedByAdmin.png' WHERE username LIKE '$user'";
 	$result = mysqli_query($con,$query);
 	if(!$result){
-		echo '<script> parent.errorAlert("'.mysqli_error($con).'","https://140.209.47.120/settings/admin/UserRoster.php");</script>';
+		echo '<script> parent.errorAlert("'.mysqli_error($con).'","https://tdta.stthomas.edu/settings/admin/UserRoster.php");</script>';
 	}else{
-		echo '<script> parent.successAlert("Image was removed.","https://140.209.47.120/settings/admin/UserRoster.php");</script>';
+		echo '<script> parent.successAlert("Image was removed.","https://tdta.stthomas.edu/settings/admin/UserRoster.php");</script>';
 		$recipient = $user;
 		$title = 'Account Modified by Administator';
 		$message = 'Your account picture has been removed by an Admin.';

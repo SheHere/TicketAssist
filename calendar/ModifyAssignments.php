@@ -38,6 +38,7 @@
 	$assignment = $_POST['assignment_id'];
 	$position_id = $_POST['position_id'];
 	$time_start = $_POST['time_start'];
+	$semester = $_POST['semester_id'];
 
 	$day = -1;
 	if (isset($_POST['day'])) {
@@ -90,7 +91,7 @@
 					?>
 				</option>
 				<!-- Calls the function that will populate the rest of the list of possible students -->
-				<?php allStudents(); ?>
+				<?php printStudents(); ?>
 			</select>
 		</div>
 
@@ -103,7 +104,7 @@
 					<?php	echo $row['position_name']; ?>
 				</option>
 				<!-- Calls the function that will populate the list of possible positions -->
-				<?php allPositions(); ?>
+				<?php printPositions(); ?>
 			</select>
 		</div>
 
@@ -216,7 +217,8 @@
 
 		<!-- The assignment_id hidden input acts as a way to pass the assignment_id to the next page along with the rest of the information
 		<--  This is only used if an assignment_id was provided to begin with -->
-		<input type="hidden" name="assignment_id" value="<?php echo $assignment; ?>"></input>
+		<input type="hidden" name="assignment_id" value="<?php echo $assignment; ?>" />
+        <input type="hidden" name="semester_id" value="<?php echo $semester; ?>" />
 		<hr>
 		<button type="submit" class="btn btn-primary btn-block" value="confirm" name="confirm_button">Confirm Changes</button>
 		<button type="submit" class="btn btn-danger btn-block" value="delete" name="delete_button">Delete Assignment</button>

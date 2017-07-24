@@ -28,7 +28,7 @@
 	$newPass1 = $_POST['newPass1'];
 	$user_to_change = $_POST['user_to_change'];
 	if(strlen($newPass1) < 8){
-		echo '<script> parent.errorAlert("Password is too short. Please make sure that the new password is at least 8 characters.","https://140.209.47.120/settings/admin/ChangePassword.php?user='.$user_to_change.'"); </script>';
+		echo '<script> parent.errorAlert("Password is too short. Please make sure that the new password is at least 8 characters.","https://tdta.stthomas.edu/settings/admin/ChangePassword.php?user='.$user_to_change.'"); </script>';
 	}else{
 		$newPass1 = stripslashes($_POST['newPass1']);
 		$newPass1 = mysqli_real_escape_string($con,$newPass1);
@@ -48,14 +48,14 @@
 						if(!$result2) {
 							//Insert something that would happen if the information was not placed in
 							//the database correctly.
-							echo '<script> parent.errorAlert("'.mysqli_error($con).'","https://140.209.47.120/settings/admin/ChangePassword.php?user='.$user_to_change.'"); </script>';
+							echo '<script> parent.errorAlert("'.mysqli_error($con).'","https://tdta.stthomas.edu/settings/admin/ChangePassword.php?user='.$user_to_change.'"); </script>';
 						} else {
-							echo '<script> parent.successAlert("Password has been changed.","https://140.209.47.120/settings/admin/UserRoster.php"); </script>';
+							echo '<script> parent.successAlert("Password has been changed.","https://tdta.stthomas.edu/settings/admin/UserRoster.php"); </script>';
 						}
 					}else { 
-						echo '<script> parent.errorAlert("Your two new passwords do not match. Please try again.","https://140.209.47.120/settings/admin/ChangePassword.php?user='.$user_to_change.'"); </script>';}
+						echo '<script> parent.errorAlert("Your two new passwords do not match. Please try again.","https://tdta.stthomas.edu/settings/admin/ChangePassword.php?user='.$user_to_change.'"); </script>';}
 			} else {
-				echo '<script> parent.errorAlert("Username does not exist. Please try again.","https://140.209.47.120/settings/admin/ChangePassword.php?user='.$user_to_change.'"); </script>';}
+				echo '<script> parent.errorAlert("Username does not exist. Please try again.","https://tdta.stthomas.edu/settings/admin/ChangePassword.php?user='.$user_to_change.'"); </script>';}
 	}
 ?>
 

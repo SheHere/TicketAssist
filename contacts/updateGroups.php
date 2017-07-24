@@ -32,10 +32,10 @@ if($update_result){
 //Call alert for success or failure message
 if($success > 0){
     echo '<!DOCTYPE html>
-<script> parent.parent.successAlert("' . $success_message . '", "https://140.209.47.120/assistant/assistant.php") </script>
+<script> parent.parent.successAlert("' . $success_message . '", "https://tdta.stthomas.edu/assistant/assistant.php") </script>
 ';
 }else{
     echo '<!DOCTYPE html>
-<script>parent.parent.errorAlert("' . $failure_message . '", "https://140.209.47.120/assistant/assistant.php")</script>
+<script>parent.parent.errorAlert("' . $failure_message . '", "https://tdta.stthomas.edu/assistant/assistant.php")</script>
 ';
 }

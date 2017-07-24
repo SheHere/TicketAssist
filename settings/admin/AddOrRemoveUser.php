@@ -42,15 +42,31 @@
 					<div id="new" class="tab-pane fade <?php if(strcmp('remove',$_GET['tab']) != 0){echo 'in active';} ?>">
 						<h1>Register New User</h1>
 						<p>This form will allow you to give new users access to this site.</p>
-						<p>This page should only be accessible by admin users.<p>
+						<p><i><span style="color: red;">*</span> denotes required field</i><p>
 						<form id="newUserForm" action="newUser.php" method="post" target="newUserFrame" maxlength="20">
 							<div class="form-group">
-								<label for="usernname">Username:</label>
-								<input type="text" class="form-control" name="username">
+								<label for="fname">First Name:</label>
+								<input type="text" class="form-control" name="fname">
 							</div>
 							<div class="form-group">
-								<label for="password">Password:</label>
-								<input type="password" class="form-control" name="password">
+								<label for="lname">Last Name:</label>
+								<input type="text" class="form-control" name="lname">
+							</div>
+							<div class="form-group">
+								<label for="usernname"><span style="color: red;">*</span>Username:</label>
+								<input type="text" class="form-control" name="username" required>
+							</div>
+							<div class="form-group">
+								<label for="ust_id"><span style="color: red;">*</span>St. Thomas ID:</label>
+								<input type="text" class="form-control" name="ust_id" required>
+							</div>
+							<div class="form-group">
+								<label for="password1"><span style="color: red;">*</span>Password:</label>
+								<input type="password" class="form-control" name="password1" required>
+							</div>
+							<div class="form-group">
+								<label for="password2"><span style="color: red;">*</span>Repeat Password:</label>
+								<input type="password" class="form-control" name="password2" required>
 							</div>
 							<div class="form-group">
 								<label for="admin_status">Admin Status:</label>
@@ -58,6 +74,15 @@
 								<option value="1">Standard access</option>
 								<option value="2">Super user</option>
 								<option value="3">Admin</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="role"><span style="color: red;">*</span>Role:</label>
+								<select class="form-control" name="role" required>
+									<option value="">-----</option>
+									<option value="0">Inactive</option>
+									<option value="1">Student</option>
+									<option value="2">Employee</option>
 								</select>
 							</div>
 							<button type="submit" class="btn btn-custom">Submit</button>

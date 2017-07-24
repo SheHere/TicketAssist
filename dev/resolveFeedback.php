@@ -49,16 +49,16 @@
 		}
 		$result2 = mysqli_multi_query($con,$query);
 		if(!$result2) {
-			echo '<script> parent.errorAlert("'. mysqli_error($con) .'","https://140.209.47.120/dev/ViewFeedback.php");</script>';
+			echo '<script> parent.errorAlert("'. mysqli_error($con) .'","https://tdta.stthomas.edu/dev/ViewFeedback.php");</script>';
 		} else {
 			if ($numChanged == 0) {
-				echo '<script> parent.warningAlert("No changes detected.","https://140.209.47.120/dev/ViewFeedback.php");</script>';
+				echo '<script> parent.warningAlert("No changes detected.","https://tdta.stthomas.edu/dev/ViewFeedback.php");</script>';
 			} else {
-				echo '<script> parent.successAlert("Status has been updated for ' . $numChanged . ' bugs.","https://140.209.47.120/dev/ViewFeedback.php"); </script>';
+				echo '<script> parent.successAlert("Status has been updated for ' . $numChanged . ' bugs.","https://tdta.stthomas.edu/dev/ViewFeedback.php"); </script>';
 			}
 		}
 	}else{
-		echo '<script> parent.errorAlert("No rows found.", "https://140.209.47.120/dev/ViewFeedback.php");</script>';
+		echo '<script> parent.errorAlert("No rows found.", "https://tdta.stthomas.edu/dev/ViewFeedback.php");</script>';
 	}
 ?>
 

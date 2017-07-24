@@ -49,7 +49,7 @@
 			?>
 			</p>
 			<p>If you think this is a mistake, contact an administrator.</p>
-			</h3><a href="http://140.209.47.120/assistant/assistant.php">Return home.</a></h3>
+			</h3><a href="http://tdta.stthomas.edu/assistant/assistant.php">Return home.</a></h3>
 			
 		</div> <!--End div for main section-->
 		  

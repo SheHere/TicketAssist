@@ -308,5 +308,47 @@ function save() {
     myDiagram.isModified = false;
 }
 function load() {
-    myDiagram.model = go.Model.fromJson(document.getElementById("mySavedModel").value);
+    //myDiagram.model = go.Model.fromJson(document.getElementById("mySavedModel").value);
+    //create XMLHttpRequest Object in modern browsers, or ActiveXObject in IE5 and IE6
+    var xhttp;
+    if (window.XMLHttpRequest) {
+        xhttp = new XMLHttpRequest();
+    } else {
+        // code for IE6, IE5
+        xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    //Create event for when a response is received
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            if(this.responseText == 1){
+                //do on error
+                warningAlert ("Unable to load the tree. Please alert an administrator!", "#")
+            }else{
+                //do on success
+                myDiagram.model = go.Model.fromJson(this.responseText);
+            }
+        }
+    };
+    //Create request and send it
+    xhttp.open("POST", "getTree.php", true);
+    xhttp.send();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

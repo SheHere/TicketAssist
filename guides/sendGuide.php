@@ -1,62 +1,80 @@
 <?php
-	include($_SERVER['DOCUMENT_ROOT'] . "/loginutils/auth.php");
-	include($_SERVER['DOCUMENT_ROOT'] . "/loginutils/SuperuserAuth.php");
-?>
-
-<!--
-<--- Created by Nick Scheel and Chase Ingebritson 2016
-<---
-<--- University of St. Thomas ITS Tech Desk
---->
-<!DOCTYPE html>
-<html>
-<head>
-<?php 
-	include ($_SERVER['DOCUMENT_ROOT'] . '/includes/createHeader.php'); 
-	reducedHeader();
-?>
-<base target="_blank" />
-</head>
-
-<body>
-
-<?php
-
+/*
+ * sendGuide.php
+ * --------------------
+ * Author: Nick Scheel
+ * Purpose: receives AJAX POST requests from NewGuide.php and EditGuide.php
+ * NewGuide Input:
+ * 		title, topic, id (set to -1)
+ * EditGuide Input:
+ * 		title, topic, id, body, overview
+ *
+ * 1. Receive data and set variables
+ * 2. Check id.
+ * 		2a. If -1, guide is new and query must be INSERT INTO
+ * 		2b. If greater than 0, guide is already created and query must be UPDATE
+ * 3. Run queries
+ * 4. If successful
+ * 		4a. For NewGuide, return redirect to editor
+ * 		4b. For EditGuide, return redirect to Guide to view it
+ *
+ */
+function alertSuperusersAndAdmins($req_title, $filepath){
 	require($_SERVER['DOCUMENT_ROOT'] . '/loginutils/connectdb.php');
-
-	$username = $_SESSION['username'];
-
-	//$guide_name = $_POST['title'];
-	$guide_name = htmlentities($_POST['title'], ENT_QUOTES, 'UTF-8');
-
-	//$topic = $_POST['topicselect'];
-	$topic = htmlentities($_POST['topicselect'], ENT_QUOTES, 'UTF-8');
-
-	//$overview = addslashes($_POST['overview']);
-	$overview = htmlentities($_POST['overview'], ENT_QUOTES, 'UTF-8');
-
-	//$body = addslashes($_POST['body']);
-	$body_orig = htmlentities($_POST['body'], ENT_QUOTES, 'UTF-8');
-	$body_fixed = str_replace("panel-collapse collapse in", "panel-collapse collapse", $body_orig);
-	
-	$filename = str_replace(' ', '', $guide_name);
-
-	$sql = "SELECT * FROM guides WHERE guide_name LIKE '$guide_name'";
-	$testResult = mysqli_query($con,$sql);
-	if (mysqli_num_rows($testResult) > 0) {
-		$query = "UPDATE `guides` SET `topic` = '$topic', `guide_name` = '$guide_name', `filename` = '$filename', `overview` = '$overview',  `body` = '$body_fixed' WHERE `guide_name` = '$guide_name';";
-	}else{
-		$query = "INSERT INTO `guides` (`topic`, `guide_name`, `filename`, `overview`, `body`) VALUES ('$topic', '$guide_name', '$filename', '$overview', '$body_fixed');";
+	//Set title and message
+	$title_fixed = str_replace("REQUESTED: ","",$req_title);
+	$title = "Guide Requested: {$title_fixed}";
+	$message = "A user has requested that a guide be created with the topic: <b>{$title_fixed}</b>.<br><br>";
+	$message .= "The Guide Editor page for this guide can be found <a href=\"https://tdta.stthomas.edu/guides/Guide.php?guide={$filepath}\">here</a>.";
+	//Query selects all users who are Superuser and above
+	$sql = "SELECT username FROM login WHERE admin_status > 1;";
+	$result = mysqli_query($con, $sql);
+	$multiquery = "";
+	if($result){
+		while($row = mysqli_fetch_assoc($result)){
+			$cur_user = $row['username'];
+			$multiquery .= "INSERT INTO `notifications` (id, date_created, viewed, dismissed, username, title, message, all_admin) 
+							  VALUES(NULL, NULL, 1, 1, '$cur_user', '$title', '$message', 0); ";
+		}
+		mysqli_multi_query($con, $multiquery);
 	}
-	$result = mysqli_query($con,$query);
-	if(!$result) {
-		//Insert something that would happen if the information was not placed in
-		//the database correctly.
-		echo '<script>parent.errorAlert("'.mysqli_error($con).'","https://140.209.47.120/guides/NewGuide.php")</script>';
+}
+//Do not continue if guide_id is not set
+if(isset($_REQUEST['guide_id'])){
+	require($_SERVER['DOCUMENT_ROOT'] . '/loginutils/connectdb.php');
+// For both cases, guide name and topic will be needed
+	$guide_name = htmlentities($_REQUEST['title'], ENT_QUOTES, 'UTF-8');
+	$topic = htmlentities($_REQUEST['topicselect'], ENT_QUOTES, 'UTF-8');
+	$filepath = preg_replace("/[^A-Za-z0-9]/", "", $guide_name);
+	$id = $_REQUEST['guide_id'];
+// Guide is new, and needs to be inserted into the DB
+	if ( $id == -1 ) {
+		// Create insert query
+		$query = "INSERT INTO `guides` (`id`, `topic`, `guide_name`, `filename`, `overview`, `body`) VALUES (NULL, '$topic', '$guide_name', '$filepath', '$overview', '');";
+		$return = "EditGuide.php?toEdit=" . $filepath;
+	}
+// Guide is being requested, and needs to be inserted into the DB with a modified name
+	if ( $id == -2 ) {
+		// Add "REQESTED" to guide name
+		$guide_name = "REQUESTED: " . $guide_name;
+		// Create insert query
+		$query = "INSERT INTO `guides` (`id`, `topic`, `guide_name`, `filename`, `overview`, `body`) VALUES (NULL, '$topic', '$guide_name', '$filepath', '$overview', '');";
+		$return = "GuideIndex.php";
+		alertSuperusersAndAdmins($guide_name, $filepath);
+	}	
+// Guide already exists, and needs to be updated
+	else {
+		$overview = htmlentities($_REQUEST['overview'], ENT_QUOTES, 'UTF-8');
+		$body_orig = htmlentities($_REQUEST['body_helper'], ENT_QUOTES, 'UTF-8');
+		$body_fixed = str_replace("panel-collapse collapse in", "panel-collapse collapse", $body_orig);
+		// Create update query
+		$query = "UPDATE `guides` SET `topic` = '$topic', `guide_name` = '$guide_name', `filename` = '$filepath', `overview` = '$overview',  `body` = '$body_fixed' WHERE `guides`.`id` = $id;";
+		$return = "Guide.php?guide=" . $filepath;
+	}
+	$result = mysqli_query($con, $query);
+	if ($result) {
+		echo $return;
 	} else {
-		echo '<script>parent.successAlert("The guide has been sent.","https://140.209.47.120/guides/Guide.php?guide=' .$filename. '")</script>';
+		echo "error";
 	}
-?>
-
-</body>
-</html>
+}

@@ -68,9 +68,9 @@
 		<h1>User Roster</h1>
 		<?php
 		if($_GET['show'] == "inactive"){
-			echo '<p><a href="https://140.209.47.120/settings/admin/UserRoster.php">Hide Inactive Users</a></p>';
+			echo '<p><a href="https://tdta.stthomas.edu/settings/admin/UserRoster.php">Hide Inactive Users</a></p>';
 		}else{
-			echo '<p><a href="https://140.209.47.120/settings/admin/UserRoster.php?show=inactive">Show Inactive Users</a></p>';
+			echo '<p><a href="https://tdta.stthomas.edu/settings/admin/UserRoster.php?show=inactive">Show Inactive Users</a></p>';
 		}
 		?>
 		<!--
@@ -86,11 +86,13 @@
 						<th>Last Name</th>
 						<th>First Name</th>
 						<th>Phone Number</th>
-						<th>Role</th>
-						<th>Admin Status</th>
+						<th>Role <a id="infobutton" class=" btn-link" type="button" style="margin-bottom: -5px;" onclick="infoAlert('Please see <a href=\'https://tdta.stthomas.edu/documentation/Documentation.php?page=Accounts\'>Account Documentation</a> for more information.');"><i style="color:black;" class="fa fa-question-circle fa-1x" aria-hidden="true"></i></a>
+                        </th>
+						<th>Admin Status <a id="infobutton" class=" btn-link" type="button" style="margin-bottom: -5px;" onclick="infoAlert('Please see <a href=\'https://tdta.stthomas.edu/documentation/Documentation.php?page=Accounts\'>Account Documentation</a> for more information.');"><i style="color:black;" class="fa fa-question-circle fa-1x" aria-hidden="true"></i></a></th>
 						<th>Icon</th>
 						<th>User Settings</th>
-						<th>Badges</th>
+						<th>Badges <a id="infobutton" class=" btn-link" type="button" style="margin-bottom: -5px;" onclick="infoAlert('Please see <a href=\'https://tdta.stthomas.edu/documentation/Documentation.php?page=Badges\'>Badge Documentation</a> for more information.');"><i style="color:black;" class="fa fa-question-circle fa-1x" aria-hidden="true"></i></a></th>
+						<th>Logs Created</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -104,7 +106,16 @@
 
 					$output = "";
 					$numRows = 0;
-					$sql = "SELECT * FROM users INNER JOIN login USING(username)";
+					$sql = "
+					SELECT `users`.`username`, fname, lname, img_path, phone_number, role, admin_status, numLog 
+					FROM users INNER JOIN login USING(username) 
+					LEFT JOIN (SELECT username, count(id)as numLog 
+								FROM logs 
+								WHERE TIMESTAMPDIFF(MONTH, NOW(), date) < 2
+								GROUP BY username 
+								ORDER BY numLog) 
+					as S ON S.username = users.username ";
+
 					$result = mysqli_query($con, $sql);
 					if(!$result){
 						echo '<div class="alert alert-danger" role="alert"><strong>Error. </strong>';
@@ -116,11 +127,12 @@
 							while($row = mysqli_fetch_assoc($result)) {
 								$whoToShow = 0; //Default does not show test accounts or inactive users
 								if($_GET['show'] == "inactive"){
-									$whoToShow = -1;
-								}else if($_GET['show'] == "testusers"){
-									$whoToShow = -2;
+									$whoToShow = 0;
 								}
-								if($row['role'] > $whoToShow){
+								else{
+								    $whoToShow = 5;
+                                }
+								if($row['role'] <= $whoToShow && $row['role'] != -1){
 									$numRows += 1;
 									$cur_username = $row['username'];
 									$fname = $row['fname'];
@@ -129,6 +141,11 @@
 									$role = $row['role'];
 									$admin_status = $row['admin_status'];
 									$path = $row['img_path'];
+									if(isset($row['numLog'])){
+										$numLogs = $row['numLog'];
+									}else{
+										$numLogs = 0;
+									}
 
 									//Shows "None Provided" if the name doesn't show up
 									if(strcmp('', $fname)==0){$fname = "---";}
@@ -139,13 +156,16 @@
 									$inactiveRoleSelected = "";
 									$studentRoleSelected = "";
 									$employeeRoleSelected = "";
+									$alumniRoleSelected = "";
 									if($role == 0) {
 										$inactiveRoleSelected = "selected";
 									} else if($role == 1) {
 										$studentRoleSelected = "selected";
 									} else if($role == 2) {
 										$employeeRoleSelected = "selected";
-									}
+									}else if($role == 3) {
+									    $alumniRoleSelected = "selected";
+                                    }
 
 									//Sets which admin status dropdown option is selected initially
 									$userStatusSelected = "";
@@ -192,6 +212,7 @@
 													<option value="0"'. $inactiveRoleSelected .'>Inactive</option>
 													<option value="1"'. $studentRoleSelected .'>Student</option>
 													<option value="2"'. $employeeRoleSelected .'>Employee</option>
+													<option value="3"'. $alumniRoleSelected .'>Alumni</option>
 												</select>
 											</div>
 										</th>
@@ -205,22 +226,23 @@
 											</div>
 										</th>
 										<th>
-											<img src="https://140.209.47.120/StudentRoster/'.$path.'" height="30px" width="30px">
+											<img src="https://tdta.stthomas.edu/StudentRoster/'.$path.'" height="30px" width="30px">
 										</th>
 										<th>
 											<div class="dropdown">
 												<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Settings Options
 												<span class="caret"></span></button>
 												<ul class="dropdown-menu">
-													<li><a href="https://140.209.47.120/settings/admin/ChangePicture.php?user='.$cur_username.'" target="iFrame"> Remove Picture</a></li>
-													<li><a href="https://140.209.47.120/settings/admin/ChangeBio.php?user='.$cur_username.'" target="iFrame">Set Bio to Default</a></li>
-													<li><a href="https://140.209.47.120/settings/admin/ChangePassword.php?user='.$cur_username.'">Change Password</a></li>
+													<li><a href="https://tdta.stthomas.edu/settings/admin/ChangePicture.php?user='.$cur_username.'" target="iFrame"> Remove Picture</a></li>
+													<li><a href="https://tdta.stthomas.edu/settings/admin/ChangeBio.php?user='.$cur_username.'" target="iFrame">Set Bio to Default</a></li>
+													<li><a href="https://tdta.stthomas.edu/settings/admin/ChangePassword.php?user='.$cur_username.'">Change Password</a></li>
 												</ul>
 											</div>
 										</th>
 										<th>
 											<p>'.$badges.'</p>
 										</th>
+										<th>'.$numLogs.'</th>
 									</tr>';
 								}
 							}

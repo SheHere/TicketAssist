@@ -36,12 +36,12 @@
 	if(!$result) {
 		//Insert something that would happen if the information was not placed in
 		//the database correctly.
-		echo '<script> parent.errorAlert("'. mysqli_error($con) .'","https://140.209.47.120/dev/SubmitFeedback.php");</script>';
+		echo '<script> parent.errorAlert("'. mysqli_error($con) .'","https://tdta.stthomas.edu/dev/SubmitFeedback.php");</script>';
 	} else {
-		echo '<script> parent.successAlert("Feedback for:'.$url.' has been received.","http://140.209.47.120/assistant/assistant.php"); </script>';
+		echo '<script> parent.successAlert("Feedback for:'.$url.' has been received.","http://tdta.stthomas.edu/assistant/assistant.php"); </script>';
 		$recipient = "sche0210";
 		$title = 'New Feedback Submitted';
-		$message = 'Feedback has been submitted by: <strong>'.$submittedBy.'</strong>. View it <a href="https://140.209.47.120/dev/ViewFeedback.php">here</a>.';
+		$message = 'Feedback has been submitted by: <strong>'.$submittedBy.'</strong>. View it <a href="https://tdta.stthomas.edu/dev/ViewFeedback.php">here</a>.';
 		$all_tier = 0;
 		newNotification($recipient, $title, $message, $all_tier);
 	}

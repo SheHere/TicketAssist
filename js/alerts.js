@@ -1,7 +1,10 @@
-//Set of SweetAlert functions, see README for more details
-//Each is given text and dest. Text is what will be displayed
-// in the alert popup, and desk is a URL that the user will
-// be redirected to after clicking OK
+/*
+ * Set of SweetAlert functions, see https://tdta.stthomas.edu/sweetalert-master/
+ * for more details.
+ * Each is given text and destination (dest). Text is what will be displayed
+ * in the alert popup, and dest is a URL that the user will be redirected
+ * to after clicking OK
+*/
 function successAlert(text, dest) {
 	swal({
 		title: "Success!",
@@ -63,7 +66,7 @@ function passwordAlert (text) {
 		}
 	);
 }
-// text and dest are as above; formhandler is a .php
+// text and dest are as above, formhandler is a .php
 // file that will handle the deletion, id is the unique
 // identifier for what is being deleted
 function confirmDelete (dest, formhandler, delete_id){

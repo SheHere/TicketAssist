@@ -114,7 +114,7 @@
 	if(!$result) {
 		//Insert something that would happen if the information was not placed in
 		//the database correctly.
-		echo '<script> parent.errorAlert("Log could not be sent. Please see an administrator.","https://140.209.47.120/assistant/assistant.php");</script>';
+		echo '<script> parent.errorAlert("Log could not be sent. Please see an administrator.","https://tdta.stthomas.edu/assistant/assistant.php");</script>';
 		echo mysqli_error($con);
 	}else{
 		'<html>

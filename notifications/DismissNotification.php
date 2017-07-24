@@ -4,7 +4,7 @@
 	UPDATE `notifications` SET `viewed` = 0 WHERE `notifications`.`id` = $toDismiss;";
 	$result = mysqli_multi_query($con, $sql);
 	if(!$result){
-		echo '<script>parent.parent.warningAlert("Unable to dismiss notification. Please contact an administrator.","https://140.209.47.120/assistant/assistant.php"); </script>';
+		echo '<script>parent.parent.warningAlert("Unable to dismiss notification. Please contact an administrator.","https://tdta.stthomas.edu/assistant/assistant.php"); </script>';
 	}
 	else{
 		

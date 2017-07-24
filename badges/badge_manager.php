@@ -55,7 +55,7 @@
 					.columns().search('')
 					.draw();
 
-				successAlert("Badge updated!", "http://140.209.47.120/badges/badge_index.php");
+				successAlert("Badge updated!", "http://tdta.stthomas.edu/badges/badge_index.php");
 				document.getElementById("userForm").submit();
 			});
 		});

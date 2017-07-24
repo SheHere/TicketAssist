@@ -28,7 +28,7 @@
 	$title = $_POST['title'];
 	$message = $_POST['message'];
 	if(strcmp('',$message)==0){
-		echo '<script> parent.warningAlert("Message is empty.", "http://140.209.47.120/announcements/Announcements.php");</script>';
+		echo '<script> parent.warningAlert("Message is empty.", "http://tdta.stthomas.edu/announcements/Announcements.php");</script>';
 	}else{
 		$query = "
 		SELECT username
@@ -41,9 +41,9 @@
 				$recipient = $row['username'];
 				newNotification($recipient, $title, $message, $all_tier);
 			}
-			echo '<script> parent.successAlert("Your notification has been sent.", "http://140.209.47.120/assistant/assistant.php"); </script>';
+			echo '<script> parent.successAlert("Your notification has been sent.", "http://tdta.stthomas.edu/assistant/assistant.php"); </script>';
 		}else{
-			echo '<script> parent.errorAlert("Error: No users found. Contact an Administrator.", "https://140.209.47.120/notifications/NotifyAll.php");</script>';
+			echo '<script> parent.errorAlert("Error: No users found. Contact an Administrator.", "https://tdta.stthomas.edu/notifications/NotifyAll.php");</script>';
 			}
 	}
 ?>

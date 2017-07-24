@@ -56,11 +56,11 @@
 			}
 			
 			//Update the role if it's different than what's in the table
-			if(isset($_POST[$cur_username . "StatusSelection"])){
+			if(isset($_POST[$cur_username . "RoleSelection"])){
 				$newRole = $_POST[$cur_username . "RoleSelection"];
 				if($row['role'] != $newRole) {
 					$numChanged += 1;
-					$query .= "UPDATE `login` SET `role` = $newRole WHERE username = '$cur_username'; ";
+					$query .= "UPDATE `login` SET `role` = $newRole WHERE username LIKE '$cur_username'; ";
 				}
 			}
 		}
@@ -68,15 +68,15 @@
 		//Runs the status query and checks the result
 		$statusResult = mysqli_multi_query($con,$query);
 		if(!$statusResult) {
-			echo '<script>parent.errorAlert("Error: '.mysqli_error($con).'\nQuery:'.$query.'","https://140.209.47.120/settings/admin/UserRoster.php"); </script>';
+			echo '<script>parent.errorAlert("Error: '.mysqli_error($con).'\nQuery:'.$query.'","https://tdta.stthomas.edu/settings/admin/UserRoster.php"); </script>';
 		} else {
 			if($numChanged == 0){
-				echo '<script>parent.warningAlert("No entries were changed.","https://140.209.47.120/settings/admin/UserRoster.php");</script>';
+				echo '<script>parent.warningAlert("No entries were changed.","https://tdta.stthomas.edu/settings/admin/UserRoster.php");</script>';
 			}else{
-				echo '<script>parent.successAlert("User status has been updated for '.$numChanged.' users.","https://140.209.47.120/settings/admin/UserRoster.php")</script>';}
+				echo '<script>parent.successAlert("User status has been updated for '.$numChanged.' users.","https://tdta.stthomas.edu/settings/admin/UserRoster.php")</script>';}
 		}
 		
-	}else{echo '<script>parent.warningAlert("No rows found.","https://140.209.47.120/settings/admin/UserRoster.php");</script>';}
+	}else{echo '<script>parent.warningAlert("No rows found.","https://tdta.stthomas.edu/settings/admin/UserRoster.php");</script>';}
 ?>
 
 </body>

@@ -16,7 +16,7 @@
 	include ($_SERVER['DOCUMENT_ROOT'] . '/includes/createHeader.php'); 
 	fullHeader();
 ?>
-  <script src="../js/selection.js"></script>
+  <script src="../js/AssistantScripts.js"></script>
   <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
   <script>
 		tinymce.init({

@@ -62,6 +62,7 @@ $ret .= '
 			<ul class="dropdown-menu ">
 				<li><a href="' . $_SERVER["SERVER_ROOT"] . '/logs/logIndex.php" ><span class="glyphicon glyphicon-folder-open"></span>&nbsp&nbspLogs</a></li>
 				<li><a href="' . $_SERVER["SERVER_ROOT"] . '/guides/GuideIndex.php" ><span class="glyphicon glyphicon-road"></span>&nbsp&nbspGuides</a></li>
+				<li><a href="' . $_SERVER["SERVER_ROOT"] . '/training/TrainingHome.php" ><i class="glyphicon glyphicon-apple" aria-hidden="true"></i>&nbsp&nbsp Training</a></li>
 				<hr>
 				<li><a href="' . $_SERVER["SERVER_ROOT"] . '/StudentRoster/studentbios.php" ><span class="glyphicon glyphicon-list"></span>&nbsp&nbspStudent Roster</a></li>
 				<li><a href="' . $_SERVER["SERVER_ROOT"] . '/badges/badge_index.php" ><span class="glyphicon glyphicon-certificate"></span>&nbsp&nbspBadges</a></li>
@@ -98,22 +99,24 @@ $ret .= '
 		$ret .=  '
 			<li class="dropdown">
 				<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-					<span class="glyphicon glyphicon-lock"></span>
+					<span class="glyphicon glyphicon-king"></span>
 					&nbspAdmin Links
 					<span class="caret"></span>
 				</a>
 				<ul class="dropdown-menu ">
 					<!-- Glyphcons found on http://getbootstrap.com/components/. They are provided for free from http://glyphicons.com/-->
 					<!-- The code "&nbsp" is a forced space, which adds white space inbetween the glyphcon and the words following them.-->
-					<li><a href="' . $_SERVER["SERVER_ROOT"] . '/guides/NewGuide.php" ><span class="glyphicon glyphicon-book"></span>&nbsp&nbspNew Guide</a></li>
+					<li><a href="' . $_SERVER["SERVER_ROOT"] . '/guides/NewGuide.php" ><span class=" glyphicon glyphicon-open-file"></span>&nbsp&nbspNew Guide</a></li>
 					<li><a href="' . $_SERVER["SERVER_ROOT"] . '/contacts/ContactInfoFullView.php" ><span class="glyphicon glyphicon-phone"></span>&nbsp&nbspEmployee Contacts</a></li>
-					<li><a href="' . $_SERVER["SERVER_ROOT"] . '/calendar/CalendarIndex.php"><span class="glyphicon glyphicon-calendar"></span>&nbsp&nbspCalendar BETA</a></li>';
+					<li><a href="' . $_SERVER["SERVER_ROOT"] . '/documentation/Documentation.php"><span class="glyphicon glyphicon-book"></span>&nbsp&nbspSite Documentation</a></li>
+					';
 
 		/*Below are links seen by Admins only */
 		if($usrstatus == 3){
 			$ret .= '
 					<hr>
 					<li><a href="' . $_SERVER["SERVER_ROOT"] . '/announcements/Announcements.php" ><span class="glyphicon glyphicon-bullhorn"></span>&nbsp&nbspAnnouncements</a></li>
+					<li><a href="' . $_SERVER["SERVER_ROOT"] . '/AccountAccess/ViewPermissions.php" ><span class="glyphicon glyphicon-lock"></span>&nbsp&nbspUser Permissions</a></li>
 					<li><a href="' . $_SERVER["SERVER_ROOT"] . '/settings/admin/UserRoster.php" ><span class="glyphicon glyphicon-list"></span>&nbsp&nbspUser Roster</a></li>
 					<li><a href="' . $_SERVER["SERVER_ROOT"] . '/settings/admin/AddOrRemoveUser.php" ><span class="glyphicon glyphicon-user"></span>&nbsp&nbspAdd or Remove User</a></li>';
 		}
@@ -136,6 +139,7 @@ $ret .= '
 					<li><a href="' . $_SERVER["SERVER_ROOT"] . '/assistant/TestAssistant.php" ><span class="glyphicon glyphicon-warning-sign"></span>&nbsp&nbspTest Assistant</a></li>
 					<li><a href="' . $_SERVER["SERVER_ROOT"] . '/changelog/changelog.php" ><i class="fa fa-code-fork fa-1x" aria-hidden="true"></i>&nbsp&nbspEdit Changelog</a></li>
 					<hr>
+					<li><a href="' . $_SERVER["SERVER_ROOT"] . '/calendar/CalendarIndex.php"><span class="glyphicon glyphicon-calendar"></span>&nbsp&nbspCalendar BETA</a></li>
 					<li><a href="' . $_SERVER["SERVER_ROOT"] . '/guides/encyclopedia/Encyclopedia.php" ><span class="glyphicon glyphicon-book"></span>&nbsp&nbspEncyclopedia</a></li>
 					<li><a href="' . $_SERVER["SERVER_ROOT"] . '/guides/encyclopedia/EntryApproval.php" ><span class="glyphicon glyphicon-ok"></span>&nbsp&nbspApprove Encyclopedia Entry</a></li>
 				</ul>

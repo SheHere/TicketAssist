@@ -29,7 +29,7 @@ $cur_user = $_SESSION['username'];
 $update = $_POST['update'];
 
 if (strcmp('', $message) == 0 || strcmp('', $title) == 0) {
-    echo '<script> parent.warningAlert("Missing title or message!", "https://140.209.47.120/genericresponses/EditResponses.php");</script>';
+    echo '<script> parent.warningAlert("Missing title or message!", "https://tdta.stthomas.edu/genericresponses/EditResponses.php");</script>';
 } else {
     if ($_POST['update'] > 0) {
         $query = "
@@ -46,9 +46,9 @@ if (strcmp('', $message) == 0 || strcmp('', $title) == 0) {
     if (!$result) {
         //Insert something that would happen if the information was not placed in
         //the database correctly.
-        echo '<script> parent.errorAlert("' . mysqli_error($con) . '", "https://140.209.47.120/genericresponses/EditResponses.php");</script>';
+        echo '<script> parent.errorAlert("' . mysqli_error($con) . '", "https://tdta.stthomas.edu/genericresponses/EditResponses.php");</script>';
     } else {
-        echo '<script> parent.successAlert("The reponse has been added.", "http://140.209.47.120/assistant.php"); </script>';
+        echo '<script> parent.successAlert("The reponse has been added.", "http://tdta.stthomas.edu/assistant.php"); </script>';
     }
 }
 ?>

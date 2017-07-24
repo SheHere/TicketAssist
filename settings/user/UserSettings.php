@@ -84,7 +84,7 @@
 				<form id="img-upload-form" name="uploadform" enctype="multipart/form-data" action="uploader.php" method="POST" target="iFrame3">
 					<input type="hidden" name="MAX_FILE_SIZE" value="1000000" />
 					<div class="fileinput fileinput-new" data-provides="fileinput">
-						<div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"><img src="https://140.209.47.120/StudentRoster/<?php echo $imgpath; ?>"></img></div>
+						<div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"><img src="https://tdta.stthomas.edu/StudentRoster/<?php echo $imgpath; ?>"></img></div>
 						<div>
 							<span class="btn btn-secondary btn-file" style="border: solid 1px; margin-bottom: 5px;">
 								<span class="fileinput-new">Select bio image</span>
@@ -124,19 +124,19 @@
 		<div class="col-md-9 col-sm-9">
 			<div class="row">
 				<h1>Personal Information</h1>
-				<p>Make changes to your personal information with the form below. This information will be shown on the Student Roster, found <a href="http://140.209.47.120/StudentRoster/studentbios.php">here</a>. To change your password, please go to the password reset page found <a href="http://140.209.47.120/settings/user/PasswordUpdate.php">here</a>.</p>
+				<p>Make changes to your personal information with the form below. This information will be shown on the Student Roster, found <a href="http://tdta.stthomas.edu/StudentRoster/studentbios.php">here</a>. To change your password, please go to the password reset page found <a href="http://tdta.stthomas.edu/settings/user/PasswordUpdate.php">here</a>.</p>
 				<form id="newUserForm" action="updateUsers.php" method="post" target="iFrame1">
 					<div class="form-inline">
 						<div class="form-group">
-							<label for="author">First Name:</label>
-							<input class="form-control" name="fname"value="<?php echo $firstname; ?> ">
+							<label for="fname">First Name:</label>
+							<input class="form-control" name="fname"value="<?php echo $firstname; ?>">
 						</div>
 						<div class="form-group">
-							<label for="title">Last Name:</label>
+							<label for="lname">Last Name:</label>
 							<input class="form-control" name="lname"value="<?php echo $lastname; ?>">
 						</div>
 						<div class="form-group">
-							<label for="title">Phone Number:</label>
+							<label for="phonenum">Phone Number:</label>
 							<input class="form-control" id="phone" name="phonenum"value="<?php echo $phonenum; ?>">
 						</div>
 					</div>

@@ -10,7 +10,7 @@ $to_print = '
         <div class="row grouprow" style="margin-bottom: 15px;">
             <div class="btn-group btn-group-justified" role="group" aria-label="...">
                 <div class="btn-group" role="group">
-                    <a target="_self" href="https://140.209.47.120/contacts/contactinfo.php" class="btn btn-default"><span style="color: black;" class="glyphicon glyphicon-remove"></span> - Cancel</a> 
+                    <a target="_self" href="https://tdta.stthomas.edu/contacts/contactinfo.php" class="btn btn-default"><span style="color: black;" class="glyphicon glyphicon-remove"></span> - Cancel</a> 
                 </div>
                 <div class="btn-group" role="group">
                     <button class="btn btn-default" type="submit" form="groupForm"><span style="color: black;" class="glyphicon glyphicon-ok"></span> - Submit Changes</button>
@@ -47,7 +47,7 @@ if (mysqli_num_rows($cg_result) > 0) {
 						<h4 class="panel-title">
 						    <label class="sr-only" for="inlineFormInputGroup">New Group</label>
                             <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                                <div class="input-group-addon removeBtn"><a ' . $btnQualifier . 'class="btn btn-link sidebtn" onclick="parent.confirmDelete(\'https://140.209.47.120/assistant/assistant.php\', \'https://140.209.47.120/contacts/deleteRespGroup.php\', ' . $group_id . ');"><span class="glyphicon glyphicon-remove"></span></a></div>
+                                <div class="input-group-addon removeBtn"><a ' . $btnQualifier . 'class="btn btn-link sidebtn" onclick="parent.confirmDelete(\'https://tdta.stthomas.edu/assistant/assistant.php\', \'https://tdta.stthomas.edu/contacts/deleteRespGroup.php\', ' . $group_id . ');"><span class="glyphicon glyphicon-remove"></span></a></div>
                                 <input class="form-control" type="text" name="group' . $group_id . '" value="' . $group_name . '" ' . $inputQualifier . '>
                             </div>
 						</h4>
@@ -67,9 +67,9 @@ if (mysqli_num_rows($cg_result) > 0) {
 	include($_SERVER['DOCUMENT_ROOT'] . '/includes/createHeader.php');
 	reducedHeader();
 	?>
-	<link rel="stylesheet" type="text/css" href="https://140.209.47.120/sweetalert-master/dist/sweetalert.css">
-	<script src="https://140.209.47.120/sweetalert-master/dist/sweetalert.min.js"></script>
-	<script src="https://140.209.47.120/js/alerts.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://tdta.stthomas.edu/sweetalert-master/dist/sweetalert.css">
+	<script src="https://tdta.stthomas.edu/sweetalert-master/dist/sweetalert.min.js"></script>
+	<script src="https://tdta.stthomas.edu/js/alerts.js"></script>
 	<style>
 		body {
 			font-size: 13px;

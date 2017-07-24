@@ -14,10 +14,10 @@
         <div class="row grouprow" style="margin-bottom: 15px;">
             <div class="btn-group btn-group-justified" role="group" aria-label="...">
                 <div class="btn-group" role="group">
-                    <a href="https://140.209.47.120/contacts/EmployeeContacts.php" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> - Edit Contacts</a> 
+                    <a href="https://tdta.stthomas.edu/contacts/ContactInfoFullView.php" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> - Edit Contacts</a> 
                 </div>
                 <div class="btn-group" role="group">
-                    <a target="_self" href="https://140.209.47.120/contacts/EditContactGroups.php" class="btn btn-default"><i style="color:black;" class="fa fa-arrows-v fa-1x aria-hidden="true"></i> - Edit Groups</a>
+                    <a target="_self" href="https://tdta.stthomas.edu/contacts/EditContactGroups.php" class="btn btn-default"><i style="color:black;" class="fa fa-arrows-v fa-1x aria-hidden="true"></i> - Edit Groups</a>
                 </div>
             </div>
         </div>

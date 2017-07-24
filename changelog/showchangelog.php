@@ -56,7 +56,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/includes/navbar.php');
         <div class="col-md-10 text-left">
 
             <h1>Changelog</h1>
-            <p>Updates to the site will be documented here.<?php if($_SESSION['admin_status'] > 2){echo ' Admin users can add to the changelog <a href="https://140.209.47.120/changelog/changelog.php">here.</a>';}?></p>
+            <p>Updates to the site will be documented here.<?php if($_SESSION['admin_status'] > 2){echo ' Admin users can add to the changelog <a href="https://tdta.stthomas.edu/changelog/changelog.php">here.</a>';}?></p>
             <!--
             ---- The classe "sortable" calls .js file that allows the table to be sorted, the class "table" is a Bootstrap
             ---- class that formats it nicely, and "table-striped" is a Bootstrap class that makes every-other entry

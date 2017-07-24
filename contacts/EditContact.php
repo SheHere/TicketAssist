@@ -17,7 +17,7 @@ include($_SERVER['DOCUMENT_ROOT'] . "/loginutils/SuperuserAuth.php");
     include ($_SERVER['DOCUMENT_ROOT'] . '/includes/createHeader.php');
     fullHeader();
     ?>
-	<script src="//140.209.47.120/third-party-packages/MaskedInput.js" type="text/javascript"></script>
+	<script src="//tdta.stthomas.edu/third-party-packages/MaskedInput.js" type="text/javascript"></script>
 	<script>
         jQuery(function($){
             $("#deskphone").mask("9-9999");

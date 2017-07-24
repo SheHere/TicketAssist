@@ -47,7 +47,8 @@
     <div class="col-md-10 text-left">
 
 		<h1 id="guide-header">Guide Index</h1>
-		<p>Below is a list of all available guides. Click on the column headers to sort alphabetically. New guides can be added by Superusers and Admins through the <a href="http://140.209.47.120/guides/NewGuide.php">Guide Submission page</a>.<p><br>
+		<p>Below is a list of all available guides. Click on the column headers to sort alphabetically. New guides can be added by Superusers and Admins through the <a href="https://tdta.stthomas.edu/guides/NewGuide.php">Guide Submission page</a>.<p>
+		<p>Don't see a guide you're looking for? <a href="RequestGuide.php">Request a Guide</a>!</p>
 		<!--
 		---- The classe "sortable" calls .js file that allows the table to be sorted, the class "table" is a Bootstrap
 		---- class that formats it nicely, and "table-striped" is a Bootstrap class that makes every-other entry
@@ -80,18 +81,19 @@
 				if (mysqli_num_rows($result) > 0) {
 					// output data of each row
 					while($row = mysqli_fetch_assoc($result)) {
+						$id = $row['id'];
 						$topic = html_entity_decode($row['topic']);
 						$guidename = html_entity_decode($row['guide_name']);
 						$filename = html_entity_decode($row['filename']);
 						$overview = html_entity_decode($row['overview']);
 						$adminColumn = "";
 						if( $userstatus == 2 || $userstatus == 3){
-							$adminColumn = '<th><a href="NewGuide.php?toEdit='. $filename . '">Edit this guide</a>';
+							$adminColumn = '<th><a href="EditGuide.php?id='. $id . '">Edit this guide</a>';
 						}
 						$output = $output . '
 						<tr>
 							<th>' . $topic . '</th>
-							<th><a href="Guide.php?guide='.$filename.'">'.$guidename.'</a></th>
+							<th><a href="Guide.php?id='.$id.'">'.$guidename.'</a></th>
 							<th><span style="font-weight:normal;">' . $overview . '</span></th>
 							' . $adminColumn . '
 						</tr>';

@@ -4,6 +4,10 @@ html, body {
     height: 100%;
 }
 
+#semester-name-title {
+    margin-top: 10px;
+}
+
 .td-button:active,
 .td-button:focus {
     border-color: transparent;
@@ -12,6 +16,8 @@ html, body {
 .td-button {
     font-size: 12px;
     padding: 0px 12px;
+    width: 100%;
+    height: 100%;
 }
 
 .table-bordered > tbody > tr > td,
@@ -21,6 +27,11 @@ html, body {
 .table-bordered > thead > tr > td,
 .table-bordered > thead > tr > th {
     min-width: 100px;
+}
+
+#color-selector-button {
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
 }
 
 #day-table {
@@ -43,6 +54,10 @@ li.days {
 td {
     height: 40px;
     position: relative;
+}
+
+td > form {
+    height: 100%;
 }
 
 .table-bordered > tbody > tr:hover {
@@ -76,10 +91,6 @@ table {
     margin-top: 6px;
     text-align: center;
     overflow: hidden;
-}
-
-.table-bordered {
-    margin-left: 20px;
 }
 
 #menu-toggle {
@@ -127,7 +138,7 @@ iframe {
 #sidebar-wrapper {
     background-color: #510c76;
     border-color: white;
-    border-top: 1px solid;
+    border-top: 1px solid white;
     z-index: 1;
 }
 

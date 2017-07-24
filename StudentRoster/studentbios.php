@@ -17,7 +17,7 @@
 		include ($_SERVER['DOCUMENT_ROOT'] . '/includes/createHeader.php');
 		fullHeader();
 	?>
-<link rel="stylesheet" href="https://140.209.47.120/styles/studentbios.css">
+<link rel="stylesheet" href="https://tdta.stthomas.edu/styles/studentbios.css">
 	<style>
 		.badges {
 			overflow: visible;

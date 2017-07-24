@@ -61,7 +61,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/includes/navbar.php');
 
 		<div class="col-md-10 text-left">
 			<h1>Full-Time Employee Contacts</h1>
-			<p>To create a new entry, click <a href="https://140.209.47.120/contacts/EditContact.php">here</a>.</p>
+			<p>To create a new entry, click <a href="https://tdta.stthomas.edu/contacts/EditContact.php">here</a>.</p>
 			<table id="contactTable" class="display table table-striped">
 				<thead>
 				<tr>
@@ -114,7 +114,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/includes/navbar.php');
 												<th>' . $position . '</th>
 												<th>' . $desk_number . '</span></th>
 												<th>' . $cell_number . '</span></th>
-												<th><a href="https://140.209.47.120/contacts/EditContact.php?id=' . $id . '">Edit this entry</a></th>
+												<th><a href="https://tdta.stthomas.edu/contacts/EditContact.php?id=' . $id . '">Edit this entry</a></th>
 											</tr>';
 					}
 					echo $output;

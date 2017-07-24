@@ -41,9 +41,9 @@ $result = mysqli_query($con,$query);
 if(!$result) {
     //Insert something that would happen if the information was not placed in
     //the database correctly.
-    echo '<script>parent.errorAlert("'.mysqli_error($con).'","https://140.209.47.120/contacts/ContactInfoFullView.php");</script>';
+    echo '<script>parent.errorAlert("'.mysqli_error($con).'","https://tdta.stthomas.edu/contacts/ContactInfoFullView.php");</script>';
     echo mysqli_error($con);
-} else {echo '<script>parent.successAlert("Contact successfully updated!","https://140.209.47.120/contacts/ContactInfoFullView.php");</script>';}
+} else {echo '<script>parent.successAlert("Contact successfully updated!","https://tdta.stthomas.edu/contacts/ContactInfoFullView.php");</script>';}
 ?>
 
 </body>

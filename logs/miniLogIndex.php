@@ -15,42 +15,27 @@
 	datatablesHeader();
 	?>
 	<style>
-		.dataTables_scrollBody {
-			overflow-x:hidden !important;
-			overflow-y:auto !important;
-		}
 		.btn-block {
 			width: 90%;
 		}
 		.tablerow {
 			margin-bottom: 5px;
 		}
+		#x td {
+			display: inline-block;
+		}
 	</style>
 	<!-- The following allows for the buttons that copy to clipboard -->
-	<script src="//140.209.47.120/third-party-packages/clipboard.js-master/dist/clipboard.min.js"></script>
-	<script>
-        $(document).ready(function () {
-            //Instantiate DataTable
-            $('#logTable').DataTable({
-                "bScrollAutoCss": false,
-                "order": [[0, "desc"]],
-                "scrollY": '60vh',
-				"scrollX": '70vh',
-                "paging": false,
-                "searching": false,
-                "scrollCollapge": true,
-                "columnDefs": [{width: '5%', targets: 0}]
-            });
-            //Instantiate Clipboard
-            var clipboard = new Clipboard('.copybtn');
-            clipboard.on('success', function (e) {
-                console.log(e);
-            });
-            clipboard.on('error', function (e) {
-                console.log(e);
+	<script src="//tdta.stthomas.edu/third-party-packages/clipboard.js-master/dist/clipboard.min.js"></script>
+    <script>
+        $( document ).ready(function(){
+            new Clipboard('.copybtn', {
+                text: function(trigger) {
+                    return trigger.getAttribute('aria-label');
+                }
             });
         });
-	</script>
+    </script>
 	<base target="_parent">
 
 </head>
@@ -66,7 +51,7 @@
 
 			<h1>Unresolved Logs <input type="button" class="btn btn-default" value="Refresh Table"
 									   onClick="window.location.reload(true)"></h1>
-			<p><a href="https://140.209.47.120/logs/logIndex.php">See all logs here.</a>
+			<p><a href="https://tdta.stthomas.edu/logs/logIndex.php">See all logs here.</a>
 			<p>
 
 				<!--
@@ -77,6 +62,11 @@
 
 			<form id="minilogForm" action="updateLog.php" method="post" target="iFrame">
 				<table id="x" class="display table table-striped">
+					<colgroup>
+						<col span="1" style="width:10%;">
+						<col span="1" style="width:60%;">
+						<col span="1" style="width:30%%;">
+					</colgroup>
 					<thead>
 					<tr>
 						<th>Date Created</th>
