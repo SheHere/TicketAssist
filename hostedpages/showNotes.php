@@ -56,10 +56,10 @@
 						<p style="margin-top: 10px;"><b>Notes:</b><p>
 				</div>
 				<div class="col-xs-6 text-right">
-					<button id="infobutton" class="btn btn-link" type="button" onclick="parent.infoAlert('Write whatever you want here, and it will automatically save after you are done typing!');"><i style="color:black;" class="fa fa-question-circle fa-2x" aria-hidden="true"></i></button>
+					<button id="infobutton" class="btn btn-link" type="button" onclick="parent.infoAlert('Write whatever you want here, and it will automatically save after you are done typing! Character limit: 10,000');"><i style="color:black;" class="fa fa-question-circle fa-2x" aria-hidden="true"></i></button>
 				</div>
 			</div>	
-			<textarea id="myInput" class="form-control" name="notes_text" rows="25" maxlength="500" ><?php echo $cur_notes; ?></textarea>
+			<textarea id="myInput" class="form-control" name="notes_text" rows="25" maxlength="1000" ><?php echo $cur_notes; ?></textarea>
 		</div>
 	</form>
 	<iframe style="padding-top: 3px;" name="iFrame" width="100%" height="50px" frameBorder="0" ></iframe>

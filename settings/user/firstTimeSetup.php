@@ -7,6 +7,11 @@
 	if(!$result){
 		echo "Error.";
 	}
+	$query2 = "SELECT fname, lname FROM `users` WHERE `username` LIKE '$username';";
+	$result2 = mysqli_query($con, $query2);
+	$row = mysqli_fetch_assoc($result2);
+	$fname = $row['fname'];
+	$lname = $row['lname'];
 ?>
 
 <!--
@@ -68,11 +73,11 @@
 			<form id="newUserForm" action="updateUsers.php" method="post" target="iFrame">
 				<div class="form-group">
 					<label for="author">First Name:</label>
-					<input class="form-control" name="fname" placeholder="John">
+					<input class="form-control" name="fname" placeholder="John" value="<?php echo $fname; ?>">
 				</div>
 				<div class="form-group">
 					<label for="title">Last Name:</label>
-					<input class="form-control" name="lname" placeholder="Smith">
+					<input class="form-control" name="lname" placeholder="Smith" value="<?php echo $lname; ?>">
 				</div>
 				<div class="form-group">
 					<label for="message">Bio:</label>

@@ -24,7 +24,7 @@ require($_SERVER['DOCUMENT_ROOT'] . "/loginutils/connectdb.php");
 
 $toRemove = $_POST['toRemove'];
 if (empty($toRemove)) {
-    echo '<script> parent.warningAlert("You did not select any entries.", "http://140.209.47.120/changelog/changelog.php?tab=remove");</script>';
+    echo '<script> parent.warningAlert("You did not select any entries.", "http://tdta.stthomas.edu/changelog/changelog.php?tab=remove");</script>';
 } else {
     $num = count($toRemove);
     $multiquery = '';
@@ -35,9 +35,9 @@ if (empty($toRemove)) {
     if (!$result) {
         //Insert something that would happen if the information was not placed in
         //the database correctly.
-        echo '<script> parent.errorAlert("' . mysqli_error($con) . '", "http://140.209.47.120/changelog/changelog.php?tab=remove");</script>';
+        echo '<script> parent.errorAlert("' . mysqli_error($con) . '", "http://tdta.stthomas.edu/changelog/changelog.php?tab=remove");</script>';
     } else {
-        echo '<script> parent.successAlert("The selected entries have been removed.", "http://140.209.47.120/changelog/changelog.php?tab=remove"); </script>';
+        echo '<script> parent.successAlert("The selected entries have been removed.", "http://tdta.stthomas.edu/changelog/changelog.php?tab=remove"); </script>';
     }
 
 }

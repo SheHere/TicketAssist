@@ -42,7 +42,7 @@
 <div class="container-fluid text-center">
 	<div class="row content">
 		<div class="col-md-1 text-left">
-		    <a role="button" class="btn btn-custom" id="return-button" href="https://140.209.47.120/calendar/CalendarIndex.php"><span class="glyphicon glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Return</a>
+		    <a role="button" class="btn btn-custom" id="return-button" href="https://tdta.stthomas.edu/calendar/CalendarIndexEdit.php"><span class="glyphicon glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Return</a>
 		</div>
 
 		<div class="col-md-10 text-left">
@@ -50,35 +50,107 @@
 			<p>Add or remove a position that will be reflected in the calendar. <i>Note: positions can only be removed if there is no one assigned to it.</i></p>
 			<br>
 			<div class="row content">
-				<div class="col-md-6 text-left">
-					<form id="AddForm" method="post" action="addPosition.php" target="iFrame">
+				<div class="col-md-4 text-left">
+					<form id="AddForm" method="post" action="modifyPosition.php" target="iFrame">
 						<legend>Add Position</legend>
 						<div class="form-group">
-							<label for ="newPosition">New Position:</label>
-							<input type="text" class="form-control" name="newPosition" autofocus required>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label for="input-name">Enter name:</label>
+                                    <input type="text" class="form-control" name="input-name" autofocus required>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="select-semester">Select semester:</label>
+                                    <select class="form-control" name="select-semester" required>
+                                        <?php
+                                        $semesters_array = getSemesters();
+
+                                        foreach ($semesters_array as $semesters_row) {
+                                            echo '<option value="' .$semesters_row['semester_id']. '">' .$semesters_row['semester_name']. '</option>';
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
 						</div>
-						<input id="submitbutton" style="margin-bottom: 20px;" type="submit" class="btn btn-custom btn-block" value="Create">
+						<input id="submitbutton" style="margin-bottom: 20px;" type="submit" class="btn btn-custom btn-block" value="Create" name="create">
 					</form>
 				</div>
 
-				<div class="col-md-6 text-left">
-					<form id="removeForm" method="post" action="deletePosition.php" target="iFrame">
+                <!-- Modify Positions -->
+                <div class="col-md-4 text-left">
+                    <form id="modifyForm" method="post" action="modifySemester.php" target="iFrame">
+                        <legend>Modify Semester</legend>
+                        <div class="form-group">
+                            <!-- Dropdown choose semester -->
+                            <label for="modify-semesters">Select semester:</label>
+                            <select id="modify-semesters" class="form-control" name="semester-id" required>
+                                <?php
+                                foreach ($semesters as $semester) {
+                                    $selected = "";
+                                    if ($semester['active_status'] == 1) {
+                                        $selected = "selected";
+                                    }
+
+                                    echo '<option value="'.$semester['semester_id'].'" '.$selected.'>'.$semester['semester_name'].'</option>';
+                                }
+                                ?>
+                            </select>
+                            <!-- Input name -->
+                            <div class="add-top-margin">
+                                <label for="modify-name">Edit name:</label>
+                                <input id="modify-name" type="text" class="form-control" name="semester-name" required />
+                            </div>
+                            <!-- Input dates -->
+                            <div class="row add-top-margin">
+                                <!-- Start date -->
+                                <div class="col-sm-6">
+                                    <label for="modify-start-date">Start date:</label>
+                                    <div class="input-group date" id="modify-start-date" name="start-date">
+                                        <input name="start-date" type="text" class="form-control" />
+                                        <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </span>
+                                    </div>
+                                </div>
+                                <!-- End date -->
+                                <div class="col-sm-6">
+                                    <label for="modify-start-date">Start date:</label>
+                                    <div class="input-group date" id="modify-end-date" name="end-date">
+                                        <input name="end-date" type="text" class="form-control" />
+                                        <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <input id="modify-semester-id" name="semester-id" type="hidden" />
+                        <input id="submitbutton" type="submit" class="btn btn-custom btn-block" value="Modify" name="modify">
+                    </form>
+                </div>
+				<div class="col-md-4 text-left">
+					<form id="removeForm" method="post" action="modifyPosition.php" target="iFrame">
 						<legend>Remove Position</legend>
 						<div class="form-group">
-							<label for ="delPosition">Eligible Positions:</label>
-							<select class="form-control" name="delPosition" required>
+							<label for ="position-dropdown">Eligible Positions:</label>
+							<select class="form-control" name="position-dropdown" required>
 								<option value="">----</option>
-								<?php removablePositions(); ?>
+								<?php
+                                $positions_array = getPositions();
+                                
+                                foreach ($positions_array as $positions_row) {
+                                    echo '<option value="' . $positions_row['position_id'] . '">' . $positions_row['position_name'] . '</option>';
+                                }
+                                ?>
 							</select>
 						</div>
-						<input id="submitbutton" type="submit" class="btn btn-danger btn-block" value="Remove">
+						<input id="submitbutton" type="submit" class="btn btn-danger btn-block" value="Remove" name="delete">
 					</form>
 				</div>
-
-
-
 			</div>
-			<iframe name="iFrame" width="100%" height="257px" frameBorder="0" marginwidth="0px" style="display: block;"></iframe>
+
+			<iframe name="iFrame" style="display: none;"></iframe>
 		</div> <!--End div for main section-->
 
 		<div class="col-md-1 text-left">

@@ -38,9 +38,9 @@ h2 {
 	$query = "UPDATE `users` SET `bio` = '&lt;p&gt;This user&#039;s bio was removed by an admin user.&lt;/p&gt;' WHERE username LIKE '$user'";
 	$result = mysqli_query($con,$query);
 	if(!$result){
-		echo '<script> parent.errorAlert("'.mysqli_error($con).'","https://140.209.47.120/settings/admin/UserRoster.php");</script>';
+		echo '<script> parent.errorAlert("'.mysqli_error($con).'","https://tdta.stthomas.edu/settings/admin/UserRoster.php");</script>';
 	}else{
-		echo '<script> parent.successAlert("Bio was replaced. A notification has been sent to <strong>'.$user.'</strong>.","https://140.209.47.120/settings/admin/UserRoster.php");</script>';
+		echo '<script> parent.successAlert("Bio was replaced. A notification has been sent to <strong>'.$user.'</strong>.","https://tdta.stthomas.edu/settings/admin/UserRoster.php");</script>';
 		$recipient = $user;
 		$title = 'Account Modified by Administator';
 		$message = 'Your account bio has been set to default by an Admin.';

@@ -24,6 +24,7 @@
   	$position_id = $_POST['position_id'];
   	$time_start = $_POST['time_start'];
   	$time_end = $_POST['time_end'];
+  	$semester = $_POST['semester_id'];
     $day0 = $_POST['day0'];
     $day1 = $_POST['day1'];
     $day2 = $_POST['day2'];
@@ -42,9 +43,9 @@
 			} else if (checkForTimeOverlap($assignment_id, $time_start, $time_end, $position_id, $day_string)) {
 				echo '<script>parent.parent.errorAlert("Error: Time overlaps preexisting shift(s)"); </script>';
 			} else if ($assignment_id == "") {
-				createAssignment($time_start, $time_end, $day_string, $position_id, $username);
+				createAssignment($time_start, $time_end, $day_string, $position_id, $username, $semester);
 			} else {
-				updateAssignment($assignment_id, $time_start, $time_end, $day_string, $position_id, $username);
+				updateAssignment($assignment_id, $time_start, $time_end, $day_string, $position_id, $username, $semester);
       }
     }
   ?>

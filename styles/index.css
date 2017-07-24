@@ -89,6 +89,12 @@ body img {
 #start-tour:focus {
 	outline: none;
 }
+#browser-notice {
+	font-size: 14px;
+	position: absolute;
+	bottom: 0;
+	left: 5px;
+}
 
 #main-header,
 #main-header-failed {

@@ -25,9 +25,9 @@
 	$result = mysqli_query($con,$query);
 
 	if(!$result) {
-	   echo '<script>parent.errorAlert("'.mysqli_error($con).'","https://140.209.47.120/settings/user/UserSettings.php");</script>';
+	   echo '<script>parent.errorAlert("'.mysqli_error($con).'","https://tdta.stthomas.edu/settings/user/UserSettings.php");</script>';
 	} else {
-    echo '<script>parent.successAlert("Color updated successfully!","https://140.209.47.120/UserSettings.php");</script>';
+    echo '<script>parent.successAlert("Color updated successfully!","https://tdta.stthomas.edu/UserSettings.php");</script>';
 	}
 ?>
 

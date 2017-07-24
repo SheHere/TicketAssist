@@ -34,9 +34,9 @@
 	if(!$result) {
 		//Insert something that would happen if the information was not placed in
 		//the database correctly.
-		echo '<script>parent.errorAlert("'.mysqli_error($con).'","https://140.209.47.120/settings/user/UserSettings.php");</script>';
+		echo '<script>parent.errorAlert("'.mysqli_error($con).'","https://tdta.stthomas.edu/settings/user/UserSettings.php");</script>';
 		echo mysqli_error($con);
-	} else {echo '<script>parent.successAlert("Personal Information successfully updated!","https://140.209.47.120/settings/user/UserSettings.php");</script>';}
+	} else {echo '<script>parent.successAlert("Personal Information successfully updated!","https://tdta.stthomas.edu/settings/user/UserSettings.php");</script>';}
 ?>
 
 </body>

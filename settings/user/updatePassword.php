@@ -49,11 +49,11 @@
 							if(!$result2) {
 								//Insert something that would happen if the information was not placed in
 								//the database correctly.
-								echo '<script>parent.errorAlert("'.mysqli_error($con).'","https://140.209.47.120/settings/user/PasswordUpdate.php");</script>';
-							} else {echo '<script>parent.successAlert("Password successfully updated!","https://140.209.47.120/assistant/assistant.php");</script>';}
-						}else { echo '<script>parent.errorAlert("Your two new passwords do not match.","https://140.209.47.120/settings/user/PasswordUpdate.php");</script>';}
-					}else { echo '<script>parent.errorAlert("Your current password was entered incorrectly.","https://140.209.47.120/settings/user/PasswordUpdate.php");</script>';}
-			} else {echo '<script>parent.errorAlert("You do not exist!","https://140.209.47.120/settings/user/PasswordUpdate.php");</script>';}
+								echo '<script>parent.errorAlert("'.mysqli_error($con).'","https://tdta.stthomas.edu/settings/user/PasswordUpdate.php");</script>';
+							} else {echo '<script>parent.successAlert("Password successfully updated!","https://tdta.stthomas.edu/assistant/assistant.php");</script>';}
+						}else { echo '<script>parent.errorAlert("Your two new passwords do not match.","https://tdta.stthomas.edu/settings/user/PasswordUpdate.php");</script>';}
+					}else { echo '<script>parent.errorAlert("Your current password was entered incorrectly.","https://tdta.stthomas.edu/settings/user/PasswordUpdate.php");</script>';}
+			} else {echo '<script>parent.errorAlert("You do not exist!","https://tdta.stthomas.edu/settings/user/PasswordUpdate.php");</script>';}
 	}
 ?>
 

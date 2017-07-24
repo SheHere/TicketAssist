@@ -1,9 +1,5 @@
 <?php
-/*
-Author: Javed Ur Rehman
-Website: http://www.allphptricks.com/
-*/
-
+//Ends current session and redirects to the login page
 session_start();
 if(session_destroy()) // Destroying All Sessions
 {

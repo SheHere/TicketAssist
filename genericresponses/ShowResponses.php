@@ -62,7 +62,7 @@ if (mysqli_num_rows($groupResult) > 0) {
 
 				//If user is Superuser or Admin, show edit button. Do not show otherwise.
 				if ($_SESSION['admin_status'] > 1) {
-					$title .= '<a style="float: right;" href="https://140.209.47.120/genericresponses/EditResponses.php?id=' . $id . '"><span class="glyphicon glyphicon-pencil"></span></a>';
+					$title .= '<a style="float: right;" href="https://tdta.stthomas.edu/genericresponses/EditResponses.php?id=' . $id . '"><span class="glyphicon glyphicon-pencil"></span></a>';
 				}
 				$to_print = $to_print . '
                 <!-- Begin panel for response: '.$row['title'].' -->
@@ -92,7 +92,7 @@ if (mysqli_num_rows($groupResult) > 0) {
 		<!-- End accordion panel for Group: ' . $group_name . ' -->
 				';
 		} else { //If no responses associated with group
-			$to_print .= '<br><div class="well" style="text-align: center;"> <p>Oops! There are no generic responses available. Superusers can create and delete generic responses <a href="https://140.209.47.120/genericresponses/EditResponses.php" target="_parent">here</a>.</p>
+			$to_print .= '<br><div class="well" style="text-align: center;"> <p>Oops! There are no generic responses available. Superusers can create and delete generic responses <a href="https://tdta.stthomas.edu/genericresponses/EditResponses.php" target="_parent">here</a>.</p>
 				</div>
 			</div>
 		</div>
@@ -129,19 +129,13 @@ if (mysqli_num_rows($groupResult) > 0) {
 		}
 	</style>
 	<!-- The following allows for the buttons that copy to clipboard -->
-	<script src="//140.209.47.120/third-party-packages/clipboard.js-master/dist/clipboard.min.js"></script>
+	<script src="//tdta.stthomas.edu/third-party-packages/clipboard.js-master/dist/clipboard.min.js"></script>
 	<script>
-        $( document ).ready(function(){
+        $(document).ready(function(){
             new Clipboard('.btn', {
                 text: function(trigger) {
                     return trigger.getAttribute('aria-label');
                 }
-            });
-            clipboard.on('success', function(e) {
-                console.log(e);
-            });
-            clipboard.on('error', function(e) {
-                console.log(e);
             });
         });
 	</script>
@@ -165,13 +159,13 @@ if (mysqli_num_rows($groupResult) > 0) {
 		echo '<div class="row" style="margin-bottom: 15px;">
 	<div class="btn-group btn-group-justified" role="group" aria-label="...">
 		<div class="btn-group" role="group">
-			<a href="https://140.209.47.120/genericresponses/EditResponses.php" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> - New Response</a> 
+			<a href="https://tdta.stthomas.edu/genericresponses/EditResponses.php" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> - New Response</a> 
 		</div>
 		<div class="btn-group" role="group">
-			<a href="https://140.209.47.120/genericresponses/EditResponses.php?tab=remove" class="btn btn-default"><i style="color:black;" class="fa fa-bomb fa-1x" aria-hidden="true"></i> - Delete Responses</a>
+			<a href="https://tdta.stthomas.edu/genericresponses/EditResponses.php?tab=remove" class="btn btn-default"><i style="color:black;" class="fa fa-bomb fa-1x" aria-hidden="true"></i> - Delete Responses</a>
 		</div>
 		<div class="btn-group" role="group">
-			<a target="_self" href="https://140.209.47.120/genericresponses/EditResponseGroups.php" class="btn btn-default"><i style="color:black;" class="fa fa-arrows-v fa-1x" aria-hidden="true"></i> - Edit Groups</a>
+			<a target="_self" href="https://tdta.stthomas.edu/genericresponses/EditResponseGroups.php" class="btn btn-default"><i style="color:black;" class="fa fa-arrows-v fa-1x" aria-hidden="true"></i> - Edit Groups</a>
 		</div>
 	</div>
 </div>';} ?>

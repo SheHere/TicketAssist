@@ -34,15 +34,15 @@
 			$query .= "DELETE FROM `users` WHERE username LIKE '$user_to_delete'; ";
 			$result = mysqli_multi_query($con,$query);
 			if(!$result){
-				echo '<script> parent.errorAlert("'.mysqli_error($con).'","https://140.209.47.120/settings/admin/AddOrRemoveUser.php?tab=remove");</script>';
+				echo '<script> parent.errorAlert("'.mysqli_error($con).'","https://tdta.stthomas.edu/settings/admin/AddOrRemoveUser.php?tab=remove");</script>';
 			}else{
-				echo '<script> parent.successAlert("User was deleted.","https://140.209.47.120/settings/admin/AddOrRemoveUser.php");</script>';
+				echo '<script> parent.successAlert("User was deleted.","https://tdta.stthomas.edu/settings/admin/AddOrRemoveUser.php");</script>';
 			}
 		}else{
-			echo '<script> parent.errorAlert("Username does not exist. Check your spelling and try again.","https://140.209.47.120/settings/admin/AddOrRemoveUser.php?tab=remove");</script>';
+			echo '<script> parent.errorAlert("Username does not exist. Check your spelling and try again.","https://tdta.stthomas.edu/settings/admin/AddOrRemoveUser.php?tab=remove");</script>';
 		}
 	}else{
-		echo '<script> parent.errorAlert("The two submitted usernames do not match. Check your spelling and try again.","https://140.209.47.120/settings/admin/AddOrRemoveUser.php?tab=remove");</script>';
+		echo '<script> parent.errorAlert("The two submitted usernames do not match. Check your spelling and try again.","https://tdta.stthomas.edu/settings/admin/AddOrRemoveUser.php?tab=remove");</script>';
 	}
 ?>
 

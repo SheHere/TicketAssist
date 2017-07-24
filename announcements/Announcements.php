@@ -21,15 +21,38 @@
 	<!-- TinyMCE is a 3rd party WYSIWYG. The following scripts initialize it for this page. -->
 	<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 	<script>
-		tinymce.init({
-			// Allows the browser to spellcheck within the text area
-			browser_spellcheck : true,
-			// Selects all textareas
-			selector:'textarea',
-			// Initilizes plugins to inlcude hyperlinks, online images, view the text area in HTML (code), and automatically turn URLs into hyperlinks
-			plugins: 'link image code autolink',
-		});
-	</script>	
+        //See http://archive.tinymce.com/wiki.php/Controls for toolbar options
+        //See https://www.tinymce.com/docs/demo/custom-toolbar-button/ for custom button options used to make inserttoggle
+        tinymce.init({
+            browser_spellcheck : true,
+            selector:'textarea',
+            content_css: 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css',
+            toolbar: 'undo redo | formatselect | forecolor backcolor | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | inserttoggle',
+            plugins: 'link image code autolink lists textcolor',
+            setup: function(editor){
+                editor.addButton('inserttoggle', {
+                    text: 'Insert Toggle',
+                    icon: false,
+                    onclick: function() {
+                        //To ensure that each toggle has a unique ID, it is given a random 4 character string
+                        var length = 5,
+                            charset = "abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ012345678901234567890123456789",
+                            retVal = '';
+                        for (var i = 0, n = charset.length; i < length; ++i) {
+                            retVal += charset.charAt(Math.floor(Math.random() * n));
+                        }
+                        var strBuilder1 = '<div class=\"panel-group\"> <div class=\"panel panel-default"> <div class="panel-heading"> <h4 class="panel-title"><a href="#collapse_';
+                        //Add retVal
+                        var strBuilder2 = '\" data-toggle="collapse">&nbsp;Click to Toggle Information&nbsp;</a></h4> </div> <div id="collapse_';
+                        //Add retVal
+                        var strBuilder3 = '\" class="panel-collapse collapse in"> <div class="panel-body"> [Replace this with your content] </div></div></div></div><p></p>';
+                        var toPrint = strBuilder1.concat(retVal, strBuilder2, retVal, strBuilder3);
+                        editor.insertContent(toPrint);
+                    }
+                });
+            }
+        });
+	</script>
 </head>
 <body>
 
@@ -67,7 +90,7 @@
 							</div>
 							<div class="form-group">
 								<label for="message">Message:</label>
-								<textarea class="form-control" name="message" rows="5" placeholder="Write your announcement here."></textarea>
+								<textarea class="form-control" name="message" rows="13" placeholder="Write your announcement here."></textarea>
 							</div>
 							<button type="submit" class="btn btn-custom">Submit</button>
 						</form>

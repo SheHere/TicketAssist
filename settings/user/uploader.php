@@ -78,10 +78,10 @@ if(isset($_FILES['uploadedfile'])) {
 		echo mysqli_error($con);
 		echo '</div>';
 	} else {
-		echo '<script>parent.successAlert("Bio Picture successfully updated!","https://140.209.47.120/StudentRoster/studentbios.php");</script>';
+		echo '<script>parent.successAlert("Bio Picture successfully updated!","https://tdta.stthomas.edu/StudentRoster/studentbios.php");</script>';
 	}
 } else {
-	echo '<script>parent.successAlert("No file found. '.$errormsg.'","https://140.209.47.120/settings/user/UserSettings.php");</script>';
+	echo '<script>parent.successAlert("No file found. '.$errormsg.'","https://tdta.stthomas.edu/settings/user/UserSettings.php");</script>';
 }
 
 ?>

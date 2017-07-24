@@ -33,14 +33,14 @@ h2 {
 		<label for ="user_to_add">Select Student:</label>
 		<select class="form-control" name="user_to_add">
 			<option value="">----</option>
-			<?php allStudents(); ?>
+			<?php printStudents(); ?>
 		</select>
 	</div>
 	<div class="form-group">
 		<label for ="position">Select Position:</label>
 		<select class="form-control" name="position">
 			<option value="">----</option>
-			<?php allPositions(); ?>
+			<?php printPositions(); ?>
 		</select>
 	</div>
 	<div class="form-group">

@@ -28,7 +28,6 @@
 </head>
 <body>
 <?php
-
 require($_SERVER['DOCUMENT_ROOT'] . '/loginutils/connectdb.php');
 
 	$sql = "SELECT * FROM announcements";
@@ -56,7 +55,24 @@ require($_SERVER['DOCUMENT_ROOT'] . '/loginutils/connectdb.php');
 	} else {
 		echo "0 results";
 	}
-	echo $printConcat;
 ?>
+<div class="container">
+	<?php if($_SESSION['admin_status'] > 2){
+		echo '<div class="row" style="margin-bottom: 15px;">
+	<div class="btn-group btn-group-justified" role="group" aria-label="...">
+		<div class="btn-group" role="group">
+			<a href="https://tdta.stthomas.edu/announcements/Announcements.php" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> - New Announcement</a> 
+		</div>
+		<div class="btn-group" role="group">
+			<a href="https://tdta.stthomas.edu/announcements/Announcements.php?tab=remove" class="btn btn-default"><i style="color:black;" class="fa fa-bomb fa-1x" aria-hidden="true"></i> - Delete Announcement</a>
+		</div>
+	</div>
+</div>';} ?>
+	<div class="row">
+		<!-- Begin to_print -->
+		<?php echo $printConcat; ?>
+		<!-- End to_print -->
+	</div>
+</div>
 </body>
 </html>

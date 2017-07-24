@@ -112,7 +112,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/includes/navbar.php');
                             <div class="form-group">
                                 <label for="message">Body:</label>
                                 <textarea class="form-control" name="message"
-                                          rows="5"><?php if (isset($toEditMsg_body)) {
+                                          rows="20"><?php if (isset($toEditMsg_body)) {
                                         echo $toEditMsg_body;
                                     } ?></textarea>
 								<p><b>NOTE: sign all responses with [YOUR NAME] to have the user's name show up when they view it!</b></p>
@@ -160,7 +160,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/includes/navbar.php');
                                         $creation_date = $row['creation_date'];
                                         $output =
                                             '<tr>
-											<th><a class="btn btn-danger" onclick="parent.confirmDelete(\'https://140.209.47.120/genericresponses/EditResponses.php?tab=remove\', \'https://140.209.47.120/genericresponses/deleteResponse.php\', ' . $id . ');"><span class="glyphicon glyphicon-remove"></span></a></th>
+											<th><a class="btn btn-danger" onclick="parent.confirmDelete(\'https://tdta.stthomas.edu/genericresponses/EditResponses.php?tab=remove\', \'https://tdta.stthomas.edu/genericresponses/deleteResponse.php\', ' . $id . ');"><span class="glyphicon glyphicon-remove"></span></a></th>
 											<th>' . $title . '</th>
 											<th>' . $creation_date . '</th>
 											<th>' . $creator . '</th>

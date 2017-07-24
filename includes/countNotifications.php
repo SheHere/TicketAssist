@@ -6,6 +6,6 @@
 	$num_notifications = mysqli_num_rows($result);
 	$num_show = '';	
 	if($num_notifications > 0){
-		$num_show = '<span class="badge">'.$num_notifications.'</span>';
+		$num_show = '<span class="badge" id="badge">'.$num_notifications.'</span>';
 	}
 ?>

@@ -24,6 +24,8 @@ require('loginutils/connectdb.php');
 if (isset($_POST['username'])) {
     // removes backslashes
     $username = stripslashes($_REQUEST['username']);
+    $fname = stripslashes($_REQUEST['fname']);
+	$lname = stripslashes($_REQUEST['lname']);
 
     //escapes special characters in a string
     $username = mysqli_real_escape_string($con, $username);
@@ -46,12 +48,12 @@ if (isset($_POST['username'])) {
 				</div>";
         } else {
             $multiquery = "
-					INSERT INTO `users` (`username`, `fname`, `lname`, `bio`, `img_path`, `notes`, `phone_number`) VALUES ('$username', '', '', '', 'StudentRosterImages/PlaceholderImg.png', '', '');
+					INSERT INTO `users` (`username`, `fname`, `lname`, `bio`, `img_path`, `notes`, `phone_number`, `ust_id`) VALUES ('$username', '$fname', '$lname', '', 'StudentRosterImages/PlaceholderImg.png', '', '', '$ust_id');
 
 					INSERT into `megalink` (username, link1, link2, link3, link4, link5)
 					VALUES ('$username', 'https://whd.stthomas.edu', 'http://www.stthomas.edu/its/', '', '', '');
 					";
-            $notification_message1 = 'User: <strong>' . $username . '</strong> has requested access. Please visit the <a target="_top" href="https://140.209.47.120/settings/admin/UserRoster.php">User Roster</a> to set them as active.';
+            $notification_message1 = 'User: <strong>' . $username . '</strong> has requested access. Please visit the <a target="_top" href="https://tdta.stthomas.edu/settings/admin/UserRoster.php?show=inactive">User Roster</a> to set them as active.';
             $notification_message2 = htmlentities($notification_message1, ENT_QUOTES, 'UTF-8');
             $multiquery .= '
 					INSERT INTO `notifications` (id, date_created, viewed, dismissed, username, title, message, all_admin) VALUES(NULL, NULL, 1, 1, "all admin", "Access Request", "' . $notification_message2 . '", 3)';
@@ -70,7 +72,7 @@ if (isset($_POST['username'])) {
 						<div class='form' name='login_failed'>
 							<ul>
 								<li>
-									<div class='well well-lg' role='alert'>User account creation successful. Please wait for administrative approval. <br> <a href='https://140.209.47.120/index.php'>Return to Log In</a></div>
+									<div class='well well-lg' role='alert'>User account creation successful. Please wait for administrative approval. <br> <a href='https://tdta.stthomas.edu/index.php'>Return to Log In</a></div>
 								</li>
 							 </ul>
 						</div>";
@@ -82,7 +84,16 @@ if (isset($_POST['username'])) {
 					<form name='login' action='' method='post'>
 					<ul class='login_failed'>
 						<li>
-							<input type='text' name='username' placeholder='Username' maxlength='20' autofocus required/>
+							<input type='text' name='fname' placeholder='First name' maxlength='20' autofocus required/>
+						</li>
+						<li>
+							<input type='text' name='lname' placeholder='Last name' maxlength='20' required/>
+						</li>
+						<li>
+							<input type='text' name='username' placeholder='Username' maxlength='20'  required/>
+						</li>
+						<li>
+							<input type='text' name='ust_id' placeholder='St. Thomas ID #' maxlength='9'  required/>
 						</li>
 						<li>
 							<input type='password' name='password1' id='password' placeholder='Password' required/>
@@ -92,6 +103,9 @@ if (isset($_POST['username'])) {
 						</li>
 						<li>
 							<input type='submit' name='submit' value='Request Access' />
+						</li>
+						<li id='request_access_container'>
+							<a id='request_access' class='request_access' href='index.php'>Return to Login</a>
 						</li>
 					 </ul>
 					</form>
@@ -103,9 +117,18 @@ if (isset($_POST['username'])) {
     <div class="form" name="login">
         <form name="login" action="" method="post">
             <ul class='login_failed'>
-                <li>
-                    <input type="text" name="username" placeholder="Username" maxlength="20" autofocus required/>
-                </li>
+				<li>
+					<input type='text' name='fname' placeholder='First name' maxlength='20' autofocus required/>
+				</li>
+				<li>
+					<input type='text' name='lname' placeholder='Last name' maxlength='20' required/>
+				</li>
+				<li>
+					<input type='text' name='username' placeholder='Username' maxlength='20'  required/>
+				</li>
+				<li>
+					<input type='text' name='ust_id' placeholder='St. Thomas ID #' maxlength='9'  required/>
+				</li>
                 <li>
                     <input type='password' name='password1' id='password' placeholder='Password' required/>
                 </li>
@@ -115,6 +138,9 @@ if (isset($_POST['username'])) {
                 <li>
                     <input type="submit" name="submit" value="Request Access"/>
                 </li>
+				<li id='request_access_container'>
+					<a id='request_access' class='request_access' href='index.php'>Return to Login</a>
+				</li>
             </ul>
         </form>
     </div>

@@ -25,9 +25,9 @@ function fullHeader(){
 	echo'
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script src="https://140.209.47.120/sweetalert-master/dist/sweetalert.min.js"></script>
-	<script src="https://140.209.47.120/js/PasswordGenerator.js"></script>
-	<script src="https://140.209.47.120/js/alerts.js"></script>
+	<script src="https://tdta.stthomas.edu/sweetalert-master/dist/sweetalert.min.js"></script>
+	<script src="https://tdta.stthomas.edu/js/PasswordGenerator.js"></script>
+	<script src="https://tdta.stthomas.edu/js/alerts.js"></script>
 	';
 	/*
 	 * Included Stylesheets:
@@ -38,9 +38,9 @@ function fullHeader(){
 	 */
 	echo'
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://140.209.47.120/styles/font-awesome-4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="https://140.209.47.120/sweetalert-master/dist/sweetalert.css">
-	<link rel="stylesheet" href="https://140.209.47.120/styles/assistant.css">
+	<link rel="stylesheet" href="https://tdta.stthomas.edu/styles/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="https://tdta.stthomas.edu/sweetalert-master/dist/sweetalert.css">
+	<link rel="stylesheet" href="https://tdta.stthomas.edu/styles/assistant.css">
 	';
 }
 
@@ -61,7 +61,7 @@ function reducedHeader(){
 	 */
 	echo'
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://140.209.47.120/styles/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://tdta.stthomas.edu/styles/font-awesome-4.7.0/css/font-awesome.min.css">
 	';
 	/*
 	 * Included scripts:
@@ -93,10 +93,10 @@ function datatablesHeader(){
 	 */
 	echo'
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://140.209.47.120/styles/font-awesome-4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="https://140.209.47.120/sweetalert-master/dist/sweetalert.css">
+	<link rel="stylesheet" href="https://tdta.stthomas.edu/styles/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="https://tdta.stthomas.edu/sweetalert-master/dist/sweetalert.css">
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs-3.3.6/jqc-1.12.3/dt-1.10.12/b-1.2.2/b-colvis-1.2.2/r-2.1.0/se-1.2.0/datatables.min.css"/>
-	<link rel="stylesheet" href="https://140.209.47.120/styles/assistant.css">
+	<link rel="stylesheet" href="https://tdta.stthomas.edu/styles/assistant.css">
 	';
 	/*
 	 * Included scripts:
@@ -109,9 +109,9 @@ function datatablesHeader(){
 	echo'
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script type="text/javascript" src="https://cdn.datatables.net/v/bs-3.3.6/jqc-1.12.3/dt-1.10.12/b-1.2.2/b-colvis-1.2.2/r-2.1.0/se-1.2.0/datatables.min.js"></script>
-	<script src="https://140.209.47.120/sweetalert-master/dist/sweetalert.min.js"></script>
-	<script src="https://140.209.47.120/js/PasswordGenerator.js"></script>
-	<script src="https://140.209.47.120/js/alerts.js"></script>
+	<script src="https://tdta.stthomas.edu/sweetalert-master/dist/sweetalert.min.js"></script>
+	<script src="https://tdta.stthomas.edu/js/PasswordGenerator.js"></script>
+	<script src="https://tdta.stthomas.edu/js/alerts.js"></script>
 
 	';
 }

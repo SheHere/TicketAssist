@@ -16,12 +16,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://140.209.47.120/styles/assistant.css">
+  <link rel="stylesheet" href="https://tdta.stthomas.edu/styles/assistant.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   
-    <link rel="stylesheet" type="text/css" href="https://140.209.47.120/sweetalert-master/dist/sweetalert.css">
-<script src="https://140.209.47.120/sweetalert-master/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://tdta.stthomas.edu/sweetalert-master/dist/sweetalert.css">
+<script src="https://tdta.stthomas.edu/sweetalert-master/dist/sweetalert.min.js"></script>
 <?php include ($_SERVER['DOCUMENT_ROOT'] . '/includes/alerts.php');?>
 
 </head>

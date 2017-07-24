@@ -126,7 +126,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/includes/navbar.php');
 												<th>' . $position . '</th>
 												<th>' . $desk_number . '</span></th>
 												<th>' . $cell_number . '</span></th>
-												<th><a href="https://140.209.47.120/settings/admin/EditContact.php?id=' . $id . '">Edit this entry</a></th>
+												<th><a href="https://tdta.stthomas.edu/settings/admin/EditContact.php?id=' . $id . '">Edit this entry</a></th>
 											</tr>';
 									}
 									echo $output;
