@@ -66,7 +66,7 @@ include $_SERVER["DOCUMENT_ROOT"] . '/includes/navbar.php';
 ?>
 
 <div class="container-fluid text-center"> <!-- Creates container that holds everything except the navbar-->
-    <div class="col-md-11 text-left">
+    <div class="col-xs-11 text-left">
         <h1 style="margin-bottom: 3px;">Ticket Assist</h1>
         <p id="ie_notice">Warning: Ticket Assist is not optimized for Internet Explorer. Please use Firefox or Chrome!</p>
     </div>
@@ -75,7 +75,7 @@ include $_SERVER["DOCUMENT_ROOT"] . '/includes/navbar.php';
     <--- Begin columns 2-3, containing Client Information and Further Details sections of the form.
     <--- The form is continued and submitted in the next set of columns.
     --->
-    <div class="col-md-2 col-xs-6 text-left">
+    <div class="col-xs-6 col-md-2 text-left">
         <form id="clientInfoForm" method="post" action="sendLog.php" target="infoiFrame">
             <!-- Begin client info section-->
             <fieldset id="clientinfo">
@@ -175,7 +175,7 @@ include $_SERVER["DOCUMENT_ROOT"] . '/includes/navbar.php';
     <--- Begin columns 4-5, containing Misc. Information and the final output of the form.
     <--- Also contains the Submit button and Reset button.
     --->
-    <div class="col-md-2 col-xs-6 text-left">
+    <div class="col-xs-6 col-md-2 text-left">
         <div class="col-md 12">
             <legend>&nbsp</legend>
             <div class="form-group" style="margin-bottom: 0px;">
@@ -184,7 +184,7 @@ include $_SERVER["DOCUMENT_ROOT"] . '/includes/navbar.php';
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12 col-sm-12">
+            <div class="col-xs-12">
                 <input type="hidden" name="createdBy" value="<?php echo $_SESSION['username']; ?>">
                 <input id="submitbutton" type="submit" class="btn btn-custom" value="Send Log" onclick="showLogs();">
             </div>
@@ -201,7 +201,7 @@ include $_SERVER["DOCUMENT_ROOT"] . '/includes/navbar.php';
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12 col-sm-12">
+            <div class="col-xs-12">
                 <input form="clientInfoForm" id="resetbutton" type="button" class="btn btn-danger" value="Reset Form"
                        onclick="form.reset(); hideAll();">
             </div>
@@ -212,7 +212,7 @@ include $_SERVER["DOCUMENT_ROOT"] . '/includes/navbar.php';
     <--- Begin columns 6-10, which holds tabs for Announcements, Active Logs, Notifications, and Troubleshooting
     --->
     <?php include $_SERVER["DOCUMENT_ROOT"] . '/includes/countNotifications.php'; ?>
-    <div class="col-md-5 col-xs-12 text-left">
+    <div class="col-xs-12 col-md-5 text-left">
         <div id="home_tabs">
             <ul class="nav nav-tabs">
                 <li class="active"><a data-toggle="tab" id="ann-tab" href="#home">Announcements</a></li>
@@ -241,7 +241,7 @@ include $_SERVER["DOCUMENT_ROOT"] . '/includes/navbar.php';
     <!--
     ---- Begin columns 11-12, which holds tabs for Service Status, Twitter Feed, and Contact Info
     --->
-    <div class="col-md-3 col-xs-12 text-left">
+    <div class="col-xs-12 col-md-3 text-left">
         <div id="right_tabs">
             <ul class="nav nav-tabs">
                 <li class="active"><a data-toggle="tab" id="service-status-tab" href="#srvstatus">Services Status</a></li>
