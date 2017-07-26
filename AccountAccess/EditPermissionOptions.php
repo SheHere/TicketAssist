@@ -1,6 +1,6 @@
 <?php
 
-require($_SERVER['DOCUMENT_ROOT'] . '/loginutils/SuperuserAuth.php');
+require($_SERVER['DOCUMENT_ROOT'] . '/loginutils/AdminAuth.php');
 require($_SERVER['DOCUMENT_ROOT'] . '/loginutils/connectdb.php');
 
 //to_print is a concatonation of forms that allow for the editing / deleting for each existing permission option.
@@ -34,7 +34,7 @@ if (mysqli_num_rows($perm_result) > 0) {
 											<span class="glyphicon glyphicon-remove"></span>
 										</a>
 									</div>
-                                <input class="form-control" type="text" name="perm' . $perm_id . '" value="' . $perm_name . '">
+                                <input class="form-control" name="perm' . $perm_id . '" value="' . $perm_name . '">
 								</div>
 							</div>
 							<div class="col-sm-3">
@@ -121,13 +121,12 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/navbar.php';
 				<div class="btn-group btn-group-justified" role="group" aria-label="...">
 					<div class="btn-group" role="group">
 						<a target="_self" href="https://tdta.stthomas.edu/AccountAccess/ViewPermissions.php"
-						   class="btn btn-default"><span style="color: black;"
-														 class="glyphicon glyphicon-arrow-left"></span> Return</a>
+						   class="btn btn-default"><span style="color: black;" class="glyphicon glyphicon-arrow-left"></span> Return
+                        </a>
 					</div>
 					<div class="btn-group" role="group">
-						<button class="btn btn-default" type="submit" form="allPermsForm"><span style="color: black;"
-																							 class="glyphicon glyphicon-ok"></span>
-							Submit Changes
+						<button class="btn btn-default" form="allPermsForm">
+                            <span style="color: black;" class="glyphicon glyphicon-ok"></span> Submit Changes
 						</button>
 					</div>
 				</div>
@@ -141,7 +140,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/navbar.php';
 					<div class="col-sm-3">
 						<h3 style="margin-bottom: 5px;">Process</h3>
 					</div>
-					</div>
+                </div>
 			</div>
 			<!-- Row containing all permission options and blank field for new option. -->
 			<div class="row">
@@ -152,11 +151,11 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/navbar.php';
 							<div class="col-sm-9">
 								<div class="input-group">
 									<div class="input-group-addon newBtn">
-										<button class="btn btn-link sidebtn" type="submit">
+										<button class="btn btn-link sidebtn">
 											<span class="glyphicon glyphicon-plus"></span>
 										</button>
 									</div>
-									<input type="text" class="form-control" name="newPerm" placeholder="New Permission Option" required>
+									<input class="form-control" name="newPerm" placeholder="New Permission Option" required>
 								</div>
 							</div>
 							<div class="col-sm-3">

@@ -1,11 +1,11 @@
 <?php
-//include($_SERVER["DOCUMENT_ROOT"] . "/loginutils/AdminAuth.php");
+include($_SERVER["DOCUMENT_ROOT"] . "/loginutils/AdminAuth.php");
 include($_SERVER['DOCUMENT_ROOT'] . '/AccountAccess/permission_backend.php');
 
 if(isset($_GET['user'])){
-	$user = $_GET['user'];
+    $user = $_GET['user'];
 }else{
-	$user = "";
+    $user = "";
 }
 ?>
 <!--
@@ -28,12 +28,6 @@ if(isset($_GET['user'])){
 		.btn-custom {
 			margin-top: 10px;
 			margin-bottom: 25px;
-		}
-
-		.footer_text {
-			position: relative;
-			bottom: 0;
-			z-index: 2;
 		}
 	</style>
 
@@ -67,7 +61,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/navbar.php';
 <div class="container-fluid text-center">
 	<div class="row content">
 		<div class="col-md-1 text-left">
-			<a href="EditPermissionOptions.php">Edit Permission Options</a>
+			<a class="btn btn-custom" href="EditPermissionOptions.php"><span class="glyphicon glyphicon-cog"></span> Options</a>
 		</div>
 
 		<div class="col-md-10 text-left">
@@ -94,8 +88,6 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/navbar.php';
 		<div class="col-md-1 text-left">
 			<!-- White space on right 1/12th of the page  -->
 		</div>
-		<br><br><br><br><br>
-
 	</div> <!-- End div for Row Content -->
 </div><!--End div for Bootstrap container rules-->
 

@@ -1,5 +1,5 @@
 <?php
-//include($_SERVER["DOCUMENT_ROOT"] . "/loginutils/AdminAuth.php");
+include($_SERVER["DOCUMENT_ROOT"] . "/loginutils/AdminAuth.php");
 include($_SERVER['DOCUMENT_ROOT'] . '/AccountAccess/permission_backend.php');
 
 if(isset($_GET['user'])){

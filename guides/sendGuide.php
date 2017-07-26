@@ -43,8 +43,8 @@ function alertSuperusersAndAdmins($req_title, $filepath){
 if(isset($_REQUEST['guide_id'])){
 	require($_SERVER['DOCUMENT_ROOT'] . '/loginutils/connectdb.php');
 // For both cases, guide name and topic will be needed
-	$guide_name = htmlentities($_REQUEST['title'], ENT_QUOTES, 'UTF-8');
-	$topic = htmlentities($_REQUEST['topicselect'], ENT_QUOTES, 'UTF-8');
+	$guide_name = htmlentities(addslashes($_REQUEST['title']), ENT_QUOTES, 'UTF-8');
+	$topic = htmlentities(addslashes($_REQUEST['topicselect']), ENT_QUOTES, 'UTF-8');
 	$filepath = preg_replace("/[^A-Za-z0-9]/", "", $guide_name);
 	$id = $_REQUEST['guide_id'];
 // Guide is new, and needs to be inserted into the DB
@@ -64,8 +64,8 @@ if(isset($_REQUEST['guide_id'])){
 	}	
 // Guide already exists, and needs to be updated
 	else {
-		$overview = htmlentities($_REQUEST['overview'], ENT_QUOTES, 'UTF-8');
-		$body_orig = htmlentities($_REQUEST['body_helper'], ENT_QUOTES, 'UTF-8');
+		$overview = htmlentities(addslashes($_REQUEST['overview']), ENT_QUOTES, 'UTF-8');
+		$body_orig = htmlentities(addslashes($_REQUEST['body_helper']), ENT_QUOTES, 'UTF-8');
 		$body_fixed = str_replace("panel-collapse collapse in", "panel-collapse collapse", $body_orig);
 		// Create update query
 		$query = "UPDATE `guides` SET `topic` = '$topic', `guide_name` = '$guide_name', `filename` = '$filepath', `overview` = '$overview',  `body` = '$body_fixed' WHERE `guides`.`id` = $id;";

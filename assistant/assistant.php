@@ -45,17 +45,9 @@
         th {
             font-weight: normal;
         }
-        #ie_notice {
-            color: red;
-        }
-        .hidden-iframe {
-            display: none;
-        }
-        .tab-iframe {
-            width: 100%;
-            height: 690px;
-            border: none;
-        }
+		#ie_notice {
+			color: red;
+		}
     </style>
 </head>
 <body>
@@ -68,7 +60,7 @@ include $_SERVER["DOCUMENT_ROOT"] . '/includes/navbar.php';
 <div class="container-fluid text-center"> <!-- Creates container that holds everything except the navbar-->
     <div class="col-md-11 text-left">
         <h1 style="margin-bottom: 3px;">Ticket Assist</h1>
-        <p id="ie_notice">Warning: Ticket Assist is not optimized for Internet Explorer. Please use Firefox or Chrome!</p>
+		<p id="ie_notice">Warning: Ticket Assist is not optimized for Internet Explorer. Please use Firefox or Chrome!</p>
     </div>
 
     <!--
@@ -81,16 +73,26 @@ include $_SERVER["DOCUMENT_ROOT"] . '/includes/navbar.php';
             <fieldset id="clientinfo">
                 <legend>Client Information:</legend>
                 <div class="form-group">
-                    <label for="clientusername">Username: (Check in FIM / WHD)</label>
-                    <input class="form-control" name="clientusername" autofocus>
+                    <label for="clientusername"><span style="color: red;">*</span>Username: (Check in FIM / WHD)</label>
+                    <input type="text" class="form-control" name="clientusername" required autofocus>
+                </div>
+                <!--
+                <div class="form-group">
+                    <label for ="fullname">Full Name:</label>
+                    <input type="text" class="form-control" name="fullname">
                 </div>
                 <div class="form-group">
+                    <label for ="ustID">St. Thomas ID:</label>
+                    <input type="text" class="form-control" name="ustID">
+                </div>
+                -->
+                <div class="form-group">
                     <label for="clientphone">Phone Number / Secondary email:</label>
-                    <input class="form-control" name="clientphone">
+                    <input type="text" class="form-control" name="clientphone">
                 </div>
                 <div class="form-group">
                     <label for="location">Location:</label>
-                    <input class="form-control" name="location">
+                    <input type="text" class="form-control" name="location">
                 </div>
 
                 <!--Role Selection-->
@@ -105,6 +107,7 @@ include $_SERVER["DOCUMENT_ROOT"] . '/includes/navbar.php';
                     </select>
                 </div>
             </fieldset>
+            <br>
 
             <!--Begin further details-->
             <fieldset id="details">
@@ -121,55 +124,50 @@ include $_SERVER["DOCUMENT_ROOT"] . '/includes/navbar.php';
                         <option id="showall" value="All Selected">Show All</option>
                     </select>
                 </div>
-
-                <!-- The following form entries are hidden by default, and are shown depending on the selection above -->
+                <!-- The following form entries are hidden by default, and are shown depending on the selction above -->
                 <div class="form-group" id="asset_input">
-                    <label for="assetnum">Asset Number:</label>
-                    <input class="form-control" name="assetnum" id="assetnum" placeholder="A00012345"/>
+                    <label for="assetnum">Asset Number:</label><br>
+                    <input class="form-control" name="assetnum" id="assetnum" type="text" placeholder="A00012345"/>
                 </div>
-
                 <div class="form-group" id="hardware_input">
                     <label for="assetdesc">Asset Description:</label>
-                    <input class="form-control" name="assetdec" id="assetdesc" placeholder="PC Desktop, iMac, etc."/>
+                    <input class="form-control" name="assetdec" id="assetdesc" type="text"
+                           placeholder="PC Desktop, iMac, etc."/>
                 </div>
-
                 <div class="form-group" id="software_input">
-                    <label for="softwaredesc">Software Description:</label>
-                    <input class="form-control" name="siftwaredesc" id="softwaredesc" placeholder="Word, Minitab, etc."/>
+                    <label for="softwaredesc">Software Description:</label><br>
+                    <input class="form-control" name="siftwaredesc" id="softwaredesc" type="text"
+                           placeholder="Word, Minitab, etc."/>
                 </div>
-
                 <div class="form-group" id="printer_input">
-                    <div class="form-group">
-                        <label for="queuename">Queue Name:</label>
-                        <input class="form-control" name="queuename" id="queuename" placeholder="OEC008-4048"/>
-                    </div>
-                    <div class="form-group">
-                        <label for="printerIP">Printer IP:</label>
-                        <input class="form-control" name="printerIP" id="printerIP" placeholder="140.209.47.122"/>
-                    </div>
+                    <label for="queuename">Queue Name:</label><br>
+                    <input class="form-control" name="queuename" id="queuename" type="text" placeholder="OEC008-4048"/>
+                    <br>
+                    <label for="printerIP">Printer IP:</label><br>
+                    <input class="form-control" name="printerIP" id="printerIP" type="text"
+                           placeholder="140.209.47.122"/>
                 </div>
-
                 <div class="form-group" id="web_input">
-                    <label for="sitename">Website:</label>
-                    <input class="form-control" name="sitename" id="sitename" placeholder="Blackboard, Murphy, etc."/>
+                    <label for="sitename">Website:</label><br>
+                    <input class="form-control" name="sitename" id="sitename" type="text"
+                           placeholder="Blackboard, Murphy, etc."/>
+                    <br>
                 </div>
-
                 <div class="form-group" id="network_input">
                     <p><strong>Be sure to ask for their location!</strong></p>
-                    <div class="form-group">
-                        <label for="devicedesc">Device:</label>
-                        <input class="form-control" name="devicedesc" id="devicedesc" placeholder="Computer, cell phone, etc."/>
+                    <label for="devicedesc">Device:</label><br>
+                    <input class="form-control" name="devicedesc" id="devicedesc" type="text"
+                           placeholder="Computer, cell phone, etc."/>
+                    <label for="connectionRadio">Connection Type:</label>
+                    <div class="radio" id="connectionRadio">
+                        <label><input type="radio" name="connectiontype" value="Wired"> Wired</label>
+                        <label><input type="radio" name="connectiontype" value="Wireless"> Wireless</label>
                     </div>
-                    <div class="form-group">
-                        <label for="connectionRadio">Connection Type:</label>
-                        <div class="radio" id="connectionRadio">
-                            <label><input type="radio" name="connectiontype" value="Wired">Wired</label>
-                            <label><input type="radio" name="connectiontype" value="Wireless">Wireless</label>
-                        </div>
-                    </div>
+                    <br>
                 </div>
             </fieldset>
-    </div>
+            <br><br>
+    </div> <!-- End div for columns 2-3 -->
 
     <!--
     <--- Begin columns 4-5, containing Misc. Information and the final output of the form.
@@ -180,7 +178,7 @@ include $_SERVER["DOCUMENT_ROOT"] . '/includes/navbar.php';
             <legend>&nbsp</legend>
             <div class="form-group" style="margin-bottom: 0px;">
                 <label for="message">Misc. Notes:</label>
-                <textarea class="form-control" name="miscnotes" rows="12"></textarea>
+                <textarea class="form-control" name="miscnotes" rows="12" selected></textarea>
             </div>
         </div>
         <div class="row">
@@ -189,15 +187,16 @@ include $_SERVER["DOCUMENT_ROOT"] . '/includes/navbar.php';
                 <input id="submitbutton" type="submit" class="btn btn-custom" value="Send Log" onclick="showLogs();">
             </div>
         </div>
-        </form>
+        </form> <!--end of form-->
 
         <!--
-        <--- The iFrame below calls testInfoOutput.php, which takes the above form and formats it.
-        <--- Also provides a button that copies the text within it's textarea
-        --->
+<--- The iFrame below calls testInfoOutput.php, which takes the above form and formats it.
+<--- Also provides a button that copies the text within it's textarea
+--->
         <div class="row">
             <div class="infoiFrame" id="infoiFrameDiv">
-                <iframe class="hidden-iframe" name="infoiFrame" width="100%" height="257px" frameBorder="0" marginwidth="0px" scrolling="no"></iframe>
+                <iframe name="infoiFrame" width="100%" height="257px" frameBorder="0" marginwidth="0px" scrolling="no"
+                        style="display:none;"></iframe>
             </div>
         </div>
         <div class="row">
@@ -206,7 +205,7 @@ include $_SERVER["DOCUMENT_ROOT"] . '/includes/navbar.php';
                        onclick="form.reset(); hideAll();">
             </div>
         </div>
-    </div>
+    </div>    <!-- End div for columns 3-4 -->
 
     <!--
     <--- Begin columns 6-10, which holds tabs for Announcements, Active Logs, Notifications, and Troubleshooting
@@ -217,26 +216,38 @@ include $_SERVER["DOCUMENT_ROOT"] . '/includes/navbar.php';
             <ul class="nav nav-tabs">
                 <li class="active"><a data-toggle="tab" id="ann-tab" href="#home">Announcements</a></li>
                 <li><a data-toggle="tab" id="log-tab" href="#logs">Active Logs</a></li>
-                <li><a data-toggle="tab" id="note-tab" href="#notifications">Notifications <?php echo $num_show; ?></a></li>
+                <li><a data-toggle="tab" id="note-tab" href="#notifications">Notifications <?php echo $num_show; ?></a>
+                </li>
+                <!--<li><a data-toggle="tab" id="trbshoot-tab" href="#trbshoot">Troubleshooting</a></li>-->
                 <li><a data-toggle="tab" id="genresp-tab" href="#genresp">Generic Responses</a></li>
+
             </ul>
 
             <div class="tab-content">
                 <div id="home" class="tab-pane fade in active">
-                    <iframe class="tab-iframe" style="padding-top: 10px;" name="announcements" src="../announcements/ShowAnnouncement.php"></iframe>
+                    <iframe style="padding-top: 19px;" name="announcements" width="100%" height="690px" frameBorder="0"
+                            src="../announcements/ShowAnnouncement.php"></iframe>
                 </div>
                 <div id="logs" class="tab-pane fade">
-                    <iframe id="logiFrame" class="tab-iframe" name="logiFrame" src="../logs/miniLogIndex.php"></iframe>
+                    <iframe id="logiFrame" name="logiFrame" width="100%" height="690px" frameBorder="0"
+                            src="../logs/miniLogIndex.php"></iframe>
                 </div>
                 <div id="notifications" class="tab-pane fade">
-                    <iframe id="noteiFrame" class="tab-iframe" name="noteiFrame" src="../notifications/Notifications.php"></iframe>
+                    <iframe id="noteiFrame" name="noteiFrame" width="100%" height="690px" frameBorder="0"
+                            src="../notifications/Notifications.php"></iframe>
                 </div>
+                <!--<div id="trbshoot" class="tab-pane fade">
+                  <iframe style="padding-top: 3px;" name="mindmapiFrame" width="100%" height="690px" frameBorder="0" src="Freemind/TroubleshootingAssist.php"></iframe>
+                </div>-->
                 <div id="genresp" class="tab-pane fade">
-                    <iframe class="tab-iframe" name="genrespiFrame" src="../genericresponses/ShowResponses.php"></iframe>
+                    <iframe style="padding-top: 3px;" name="genrespiFrame" width="100%" height="690px" frameBorder="0"
+                            src="../genericresponses/ShowResponses.php"></iframe>
                 </div>
+
+
             </div>
         </div>
-    </div>
+    </div>    <!-- End of div for columns 6-10 -->
 
     <!--
     ---- Begin columns 11-12, which holds tabs for Service Status, Twitter Feed, and Contact Info
@@ -244,7 +255,8 @@ include $_SERVER["DOCUMENT_ROOT"] . '/includes/navbar.php';
     <div class="col-md-3 col-xs-12 text-left">
         <div id="right_tabs">
             <ul class="nav nav-tabs">
-                <li class="active"><a data-toggle="tab" id="service-status-tab" href="#srvstatus">Services Status</a></li>
+                <li class="active"><a data-toggle="tab" id="service-status-tab" href="#srvstatus">Services Status</a>
+                </li>
                 <li><a data-toggle="tab" id="twitter-tab" href="#twitter">Twitter</a></li>
                 <li><a data-toggle="tab" id="contact-tab" href="#contact">Contact Info</a></li>
                 <li><a data-toggle="tab" id="note-tab" href="#notes">Notes</a></li>
@@ -252,29 +264,32 @@ include $_SERVER["DOCUMENT_ROOT"] . '/includes/navbar.php';
 
             <div class="tab-content">
                 <div id="srvstatus" class="tab-pane fade in active">
-                    <iframe class="tab-iframe" name="srvstatusiFrame" src="../hostedpages/Services.php"></iframe>
+                    <iframe style="padding-top: 3px;" name="srvstatusiFrame" width="100%" height="690px" frameBorder="0"
+                            src="../hostedpages/Services.php"></iframe>
                 </div>
                 <div id="twitter" class="tab-pane fade">
-                    <a class="twitter-timeline" data-height="600" href="https://twitter.com/itstechdesk">Tweets by ITSsrvcstatus</a>
+                    <a class="twitter-timeline" data-height="600" href="https://twitter.com/itstechdesk">Tweets by
+                        ITSsrvcstatus</a>
                     <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
                 </div>
                 <div id="contact" class="tab-pane fade">
-                    <iframe class="tab-iframe"  name="contactiFrame" src="../contacts/contactinfo.php"></iframe>
+                    <iframe style="padding-top: 3px;" name="contactiFrame" width="100%" height="690px" frameBorder="0"
+                            src="../contacts/contactinfo.php" marginwidth="0px"></iframe>
                 </div>
                 <div id="notes" class="tab-pane fade">
-                    <iframe class="tab-iframe" name="noteiFrame" src="../hostedpages/showNotes.php" scrolling="no"></iframe>
+                    <iframe style="padding-top: 3px;" name="noteiFrame" width="100%" height="690px" frameBorder="0"
+                            src="../hostedpages/showNotes.php" marginwidth="0px" scrolling="no"></iframe>
                 </div>
             </div>
         </div>
+
     </div>
-</div>
-
-<!-- Forces the page to ignore the auto timeout -->
-<iframe class="hidden-iframe" name="TimeoutCheat" src="../hostedpages/cheat.php"></iframe>
-
-<button id="start-tour" type="button" class="btn btn-link" onclick="startTour();"><i class="fa fa-question-circle fa-2x"></i></button>
-<a class="btn" id="changelog-link" href="https://tdta.stthomas.edu/changelog/showchangelog.php"><i class="fa fa-code-fork fa-2x"></i></span></a>
-
+</div><!--End div for Bootstrap container rules-->
+<iframe name="TimeoutCheat" src="../hostedpages/cheat.php" style="display:none;"></iframe>
+<button id="start-tour" type="button" class="btn btn-link" onclick="startTour();"><i class="fa fa-question-circle fa-2x"
+                                                                                     aria-hidden="true"></i></button>
+<a class="btn" id="changelog-link" href="https://tdta.stthomas.edu/changelog/showchangelog.php"><i
+            class="fa fa-code-fork fa-2x" aria-hidden="true"></i></span></a>
 <!-- Creates the footer, see file for details and modification -->
 <?php
 include $_SERVER["DOCUMENT_ROOT"] . '/includes/footer.php';

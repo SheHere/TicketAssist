@@ -57,7 +57,10 @@ ORDER BY ordering, group_name ASC";
 			
 			//Students have their contact information in a different table, so they cannot be treated like FTEs
 			if(strcmp('Students', $group_name) == 0){
-				$contactSQL = "SELECT fname, lname, phone_number FROM users WHERE phone_number != '' ORDER BY lname ASC;";
+				$contactSQL = "SELECT fname, lname, phone_number 
+                                FROM users JOIN login ON users.username = login.username
+                                WHERE phone_number != '' AND role != -1 AND role != 0 AND role != 2 AND role != 3
+                                ORDER BY lname ASC;";
 				$contact_result = mysqli_query($con, $contactSQL);
 				if (mysqli_num_rows($contact_result) > 0) {
 					$to_print .= '
