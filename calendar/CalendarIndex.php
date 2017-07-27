@@ -23,6 +23,7 @@ $semester = getActiveSemester();
     }
     ?>
     <script src="../third-party-packages/jscolor-2.0.4/jscolor.js"></script>
+    <script type="text/javascript" src="../third-party-packages/moment.js"></script>
     <script src="../js/CalendarScripts.js"></script>
 
     <style>
@@ -61,8 +62,23 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/navbar.php';
             <div class="col-md-3 col-xs-12">
                 <?php
                 $semesterInfo = getSemesterInfo($semester);
+                $dateStart = $semesterInfo['date_start'];
+                $dateEnd = $semesterInfo['date_end'];
+                $semesterName = $semesterInfo['semester_name'];
 
-                echo "<h4 id='semester-name-title'>".$semesterInfo['semester_name'].": ".$semesterInfo['date_start']." - ".$semesterInfo['date_end']."</h4>";
+                echo "
+                        <h4 id='semester-name-title'> 
+                            <script>
+                            var semesterName = '$semesterName';
+                            
+                            var formattedStartDate = moment('$dateStart', 'MM/DD/YYYY').format('MMM Do, YYYY');
+                            var formattedEndDate = moment('$dateEnd', 'MM/DD/YYYY').format('MMM Do, YYYY');
+                            
+                            var ret = semesterName + ': ' + formattedStartDate + ' - ' + formattedEndDate;
+                            
+                            document.write(ret);
+                            </script>
+                        </h4>";
                 ?>
             </div>
             <div class="col-md-3 col-xs-12 text-right">

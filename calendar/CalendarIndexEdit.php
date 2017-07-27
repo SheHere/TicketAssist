@@ -127,7 +127,11 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/navbar.php';
                                 $semesters_array = getSemesters();
 
                                 foreach ($semesters_array as $semesters_row) {
-                                    if ($semesters_row['active_status'] == 1) {
+                                    if (($semesters_row['active_status'] == 1) && ($semester == $semesters_row['semester_id'])) {
+                                        echo '<li class="active"><a href="https://tdta.stthomas.edu/calendar/CalendarIndexEdit.php?semester='.$semesters_row['semester_id'].'"><span class="glyphicon glyphicon-ok"></span> ' . $semesters_row['semester_name'] . '</a></li>';
+                                    } else if (($semesters_row['active_status'] == 1) && ($semester != $semesters_row['semester_id'])) {
+                                        echo '<li><a href="https://tdta.stthomas.edu/calendar/CalendarIndexEdit.php?semester='.$semesters_row['semester_id'].'"><span class="glyphicon glyphicon-ok"></span> ' . $semesters_row['semester_name'] . '</a></li>';
+                                    } else if (($semesters_row['active_status'] != 1) && ($semester == $semesters_row['semester_id'])) {
                                         echo '<li class="active"><a href="https://tdta.stthomas.edu/calendar/CalendarIndexEdit.php?semester='.$semesters_row['semester_id'].'">' . $semesters_row['semester_name'] . '</a></li>';
                                     } else {
                                         echo '<li><a href="https://tdta.stthomas.edu/calendar/CalendarIndexEdit.php?semester=' .$semesters_row['semester_id']. '">' . $semesters_row['semester_name'] . '</a></li>';
