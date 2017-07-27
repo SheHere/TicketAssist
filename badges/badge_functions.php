@@ -120,7 +120,10 @@ function populateUserTableCreator()
 
     $output = "";
 
-    $sql = "SELECT username, fname, lname FROM users";
+    $sql = "SELECT users.username, fname, lname 
+            FROM users JOIN login ON users.username=login.username
+            WHERE role != -1 AND role != 3
+            ";
     $result = mysqli_query($con, $sql);
 
     if (!$result) {
@@ -158,9 +161,15 @@ function populateUserTableEditor($id)
 
     $output = "";
 
-    $sql = "SELECT users.username, users.fname, users.lname, badges_held.id
-			FROM users LEFT JOIN badges_held
-			ON (users.username=badges_held.username);";
+    $sql = "SELECT u.username, fname, lname, id
+			FROM users AS u
+			  JOIN login AS l ON u.username = l.username
+			  LEFT JOIN badges_held AS bh ON l.username = bh.username
+			WHERE (role != -1 AND role != 3) OR (role != -1 AND (u.username IN (
+			  SELECT bh_sub.username
+			  FROM badges_held AS bh_sub
+			  WHERE bh_sub.id = $id
+			)));";
     $result = mysqli_query($con, $sql);
 
     if (!$result) {
