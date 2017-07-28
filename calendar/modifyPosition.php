@@ -22,12 +22,12 @@ include($_SERVER['DOCUMENT_ROOT'] . "/includes/createHeader.php");
 <?php
 $positionName = $_POST['input-name'];
 $semesterID = $_POST['select-semester'];
-$positionID = $_POST['delPosition'];
+$positionID = $_POST['position'];
 
 if (isset($_POST['create'])) {
     createPosition($positionName, $semesterID);
 } else if (isset($_POST['modify'])) {
-
+    updatePosition($positionName, $positionID);
 } else if (isset($_POST['delete'])) {
     deletePosition($positionID);
 }

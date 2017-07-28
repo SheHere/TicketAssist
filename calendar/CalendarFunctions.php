@@ -141,13 +141,13 @@ function deleteAssignment($assignment_id)
 function deletePosition($position_id)
 {
     require($_SERVER['DOCUMENT_ROOT'] . '/loginutils/connectdb.php');
-    //This query selects all positions that do not have users assigned to them.
-    $remove_pos_query = "
+    $query = "
   		DELETE FROM `calendar_positions`
-  		WHERE `calendar_positions`.`position_id` = $position_id
-  		";
-    $remove_pos_result = mysqli_query($con, $remove_pos_query);
-    if (!$remove_pos_result) {
+  		WHERE `position_id` = $position_id;
+  	";
+
+    $result = mysqli_query($con, $query);
+    if (!$result) {
         //If the query was not executed, give an error alert with the mysql error as the message
         echo '<script> parent.errorAlert("' . mysqli_error($con) . '", "https://tdta.stthomas.edu/calendar/ModifyPositions.php");</script>';
     } else {
@@ -668,6 +668,21 @@ function setActiveSemester($semester_id)
     } else {
         //If the position is created, give a success alert.
         echo '<script> parent.parent.successAlert("Semester set as active!", "https://tdta.stthomas.edu/calendar/CalendarIndexEdit.php");</script>';
+    }
+}
+
+function updatePosition($position_name, $position_id) {
+    require($_SERVER['DOCUMENT_ROOT'] . '/loginutils/connectdb.php');
+    $query = "UPDATE `calendar_positions`
+              SET `position_name`='$position_name'
+              WHERE `position_id`=$position_id;";
+    $result = mysqli_query($con, $query);
+    if (!$result) {
+        //If the query was not executed, give an error alert with the mysql error as the message
+        echo '<script> parent.parent.errorAlert("' . mysqli_error($con) . '", "https://tdta.stthomas.edu/calendar/ModifyPositions.php");</script>';
+    } else {
+        //If the position is created, give a success alert.
+        echo '<script> parent.parent.successAlert("Position successfully updated!", "https://tdta.stthomas.edu/calendar/ModifyPositions.php");</script>';
     }
 }
 

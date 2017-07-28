@@ -123,7 +123,7 @@ $activeTimeEnd = $semesters[$activeSemester]["time_end"];
 <body>
 
 <?php
-include ($_SERVER['DOCUMENT_ROOT'] . '/includes/navbar.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/includes/navbar.php');
 ?>
 
 <div class="container-fluid text-center">
