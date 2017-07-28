@@ -65,7 +65,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/navbar.php';
         <ul class="sidebar-nav">
             <!-- Holds the iframe that will display information on a clicked cell -->
             <li><a href="<?php echo $_SERVER["SERVER_ROOT"] . '/calendar/ModifyPositions.php'; ?>">Edit positions</a></li>
-            <li><a href="<?php echo $_SERVER["SERVER_ROOT"] . '/calendar/ModifySemesters.php'; ?>">Edit semesters</a></li>
+            <li><a href="<?php echo $_SERVER["SERVER_ROOT"] . '/calendar/ModifyPositions.php'; ?>">Edit semesters</a></li>
             <li>
                 <iframe name="sidebar-iframe" scrolling="no"></iframe>
             </li>
@@ -74,8 +74,9 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/navbar.php';
 
     <!-- Page content -->
     <div id="page-content-wrapper">
-        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><span id="menu-toggle-symbol"
-                                                                              class="glyphicon glyphicon-menu-right"></span></a>
+        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">
+            <span id="menu-toggle-symbol" class="glyphicon glyphicon-menu-right"></span>
+        </a>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6 col-xs-12">
@@ -143,7 +144,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/navbar.php';
                                 <li><a href="javascript:{}" onclick="document.getElementById('setActiveForm').submit();" id="setActiveButton">Set as active</a></li>
                             </ul>
                         </div>
-                        <a href="CalendarIndex.php" class="btn btn-custom" role="button">Done Editing</a>
+                        <a href="CalendarIndex.php" class="btn btn-custom">Done Editing</a>
                         <?php
                         $sql = "SELECT `color`
                                 FROM `users`
