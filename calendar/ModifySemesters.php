@@ -129,7 +129,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/includes/navbar.php');
 <div class="container-fluid text-center">
     <div class="row content">
         <div class="col-md-1 text-left">
-            <a role="button" class="btn btn-custom" id="return-button" href="https://tdta.stthomas.edu/calendar/CalendarIndexEdit.php"><span class="glyphicon glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Return</a>
+            <a class="btn btn-custom" id="return-button" href="https://tdta.stthomas.edu/calendar/CalendarIndexEdit.php"><span class="glyphicon glyphicon glyphicon-arrow-left"></span> Return</a>
         </div>
 
         <div class="col-md-10 text-left">
@@ -147,7 +147,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/includes/navbar.php');
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <label for="input-name">Enter name:</label>
-                                        <input type="text" class="form-control" name="semester-name" autofocus required>
+                                        <input class="form-control" name="semester-name" autofocus required>
                                     </div>
                                 </div>
                             </div>
@@ -174,7 +174,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/includes/navbar.php');
                                     <div class="col-sm-6">
                                         <label for="start-date">Start date:</label>
                                         <div class="input-group date" id="start-date">
-                                            <input name="start-date" type="text" class="form-control" />
+                                            <input name="start-date" class="form-control" />
                                             <span class="input-group-addon">
                                                 <span class="glyphicon glyphicon-calendar"></span>
                                             </span>
@@ -184,7 +184,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/includes/navbar.php');
                                     <div class="col-sm-6">
                                         <label for="end-date">End date:</label>
                                         <div class="input-group date" id="end-date">
-                                            <input name="end-date" type="text" class="form-control" />
+                                            <input name="end-date" class="form-control" />
                                             <span class="input-group-addon">
                                                 <span class="glyphicon glyphicon-calendar"></span>
                                             </span>
@@ -260,7 +260,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/includes/navbar.php');
                             <div class="form-group">
                                 <!-- Input name -->
                                 <label for="modify-name">Edit name:</label>
-                                <input id="modify-name" type="text" class="form-control" name="semester-name" required />
+                                <input id="modify-name" class="form-control" name="semester-name" required />
                             </div>
                             <div class="form-group">
                                 <!-- Input dates -->
@@ -269,7 +269,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/includes/navbar.php');
                                     <div class="col-sm-6">
                                         <label for="modify-start-date">Start date:</label>
                                         <div class="input-group date" id="modify-start-date" name="start-date">
-                                            <input name="start-date" type="text" class="form-control" />
+                                            <input name="start-date" class="form-control" />
                                             <span class="input-group-addon">
                                                 <span class="glyphicon glyphicon-calendar"></span>
                                             </span>
@@ -277,9 +277,9 @@ include($_SERVER['DOCUMENT_ROOT'] . '/includes/navbar.php');
                                     </div>
                                     <!-- End date -->
                                     <div class="col-sm-6">
-                                        <label for="modify-start-date">Start date:</label>
+                                        <label for="modify-start-date">End date:</label>
                                         <div class="input-group date" id="modify-end-date" name="end-date">
-                                            <input name="end-date" type="text" class="form-control" />
+                                            <input name="end-date" class="form-control" />
                                             <span class="input-group-addon">
                                                 <span class="glyphicon glyphicon-calendar"></span>
                                             </span>
@@ -310,7 +310,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/includes/navbar.php');
                                     </div>
                                     <!-- End time -->
                                     <div class="col-sm-6">
-                                        <label for="modify-end-time">Start time:</label>
+                                        <label for="modify-end-time">End time:</label>
                                         <select id="modify-end-time" name="end-time" class="form-control">
                                             <?php
                                             for ($i=$timeStart; $i <= $timeEnd ; $i++) {

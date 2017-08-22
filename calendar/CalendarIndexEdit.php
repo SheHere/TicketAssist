@@ -12,6 +12,8 @@ include($_SERVER["DOCUMENT_ROOT"] . "/includes/createHeader.php");
     } else {
         $semester = getActiveSemester();
     }
+
+    $dateNum = date("w");
 ?>
 
 <!DOCTYPE html>
@@ -65,7 +67,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/navbar.php';
         <ul class="sidebar-nav">
             <!-- Holds the iframe that will display information on a clicked cell -->
             <li><a href="<?php echo $_SERVER["SERVER_ROOT"] . '/calendar/ModifyPositions.php'; ?>">Edit positions</a></li>
-            <li><a href="<?php echo $_SERVER["SERVER_ROOT"] . '/calendar/ModifyPositions.php'; ?>">Edit semesters</a></li>
+            <li><a href="<?php echo $_SERVER["SERVER_ROOT"] . '/calendar/ModifySemesters.php'; ?>">Edit semesters</a></li>
             <li>
                 <iframe name="sidebar-iframe" scrolling="no"></iframe>
             </li>
@@ -82,13 +84,13 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/navbar.php';
                 <div class="col-md-6 col-xs-12">
                     <!-- The pills for selecting which day you want to be displayed -->
                     <ul class="nav nav-pills days">
-                        <li class="days"><a data-toggle="tab" href="#0">Sunday</a></li>
-                        <li class="days"><a data-toggle="tab" href="#1">Monday</a></li>
-                        <li class="days"><a data-toggle="tab" href="#2">Tuesday</a></li>
-                        <li class="days"><a data-toggle="tab" href="#3">Wednesday</a></li>
-                        <li class="days"><a data-toggle="tab" href="#4">Thursday</a></li>
-                        <li class="days"><a data-toggle="tab" href="#5">Friday</a></li>
-                        <li class="days"><a data-toggle="tab" href="#6">Saturday</a></li>
+                        <li class="days<?php if ($dateNum == 0) {echo " active";} ?>"><a data-toggle="tab" href="#0">Sunday</a></li>
+                        <li class="days<?php if ($dateNum == 1) {echo " active";} ?>"><a data-toggle="tab" href="#1">Monday</a></li>
+                        <li class="days<?php if ($dateNum == 2) {echo " active";} ?>"><a data-toggle="tab" href="#2">Tuesday</a></li>
+                        <li class="days<?php if ($dateNum == 3) {echo " active";} ?>"><a data-toggle="tab" href="#3">Wednesday</a></li>
+                        <li class="days<?php if ($dateNum == 4) {echo " active";} ?>"><a data-toggle="tab" href="#4">Thursday</a></li>
+                        <li class="days<?php if ($dateNum == 5) {echo " active";} ?>"><a data-toggle="tab" href="#5">Friday</a></li>
+                        <li class="days<?php if ($dateNum == 6) {echo " active";} ?>"><a data-toggle="tab" href="#6">Saturday</a></li>
                     </ul>
                 </div>
                 <div class="col-md-3 col-xs-12">

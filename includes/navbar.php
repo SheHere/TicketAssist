@@ -89,7 +89,7 @@ $ret .= '
 				<li><a href="' . ITS_HOME_LINK . '" target="_blank"><span class="glyphicon glyphicon-education"></span>&nbsp&nbspITS Homepage</a></li>
 				<li><a href="' . CALENDAR_LINK . '" target="_blank"><span class="glyphicon glyphicon-calendar"></span>&nbsp&nbspCalendar</a></li>
 				<li><a href="' . PAYROLL_LINK . '" target="_blank"><span class="glyphicon glyphicon-time"></span>&nbsp&nbspTime Keeping</a></li>
-				
+				<li><a href="' . CANVAS_TRAINING_LINK . '" target="_blank"><span class="glyphicon glyphicon-blackboard"></span>&nbsp&nbspCanvas Training (Requires Invitation)</a></li>
 			</ul>
 		</li>'
 		;
@@ -139,7 +139,7 @@ $ret .= '
 					<li><a href="' . $_SERVER["SERVER_ROOT"] . '/assistant/TestAssistant.php" ><span class="glyphicon glyphicon-warning-sign"></span>&nbsp&nbspTest Assistant</a></li>
 					<li><a href="' . $_SERVER["SERVER_ROOT"] . '/changelog/changelog.php" ><i class="fa fa-code-fork fa-1x" aria-hidden="true"></i>&nbsp&nbspEdit Changelog</a></li>
 					<hr>
-					<li><a href="' . $_SERVER["SERVER_ROOT"] . '/calendar/CalendarIndex.php"><span class="glyphicon glyphicon-calendar"></span>&nbsp&nbspCalendar BETA</a></li>
+					<li><a href="' . $_SERVER["SERVER_ROOT"] . '/calendar/CalendarIndexEdit.php"><span class="glyphicon glyphicon-calendar"></span>&nbsp&nbspCalendar BETA</a></li>
 					<li><a href="' . $_SERVER["SERVER_ROOT"] . '/guides/encyclopedia/Encyclopedia.php" ><span class="glyphicon glyphicon-book"></span>&nbsp&nbspEncyclopedia</a></li>
 					<li><a href="' . $_SERVER["SERVER_ROOT"] . '/guides/encyclopedia/EntryApproval.php" ><span class="glyphicon glyphicon-ok"></span>&nbsp&nbspApprove Encyclopedia Entry</a></li>
 				</ul>
@@ -176,7 +176,6 @@ $ret .= '
 	$("#megalink").click(function(e) {
 		e.preventDefault();
 		' . $link1 . $link2 . $link3 . $link4 . $link5 . '
-
 	});
 	</script>';
 
