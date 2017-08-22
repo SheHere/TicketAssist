@@ -134,6 +134,13 @@ iframe {
     border-style: none;
 }
 
+#stuInfo {
+    margin: 10px 0 auto auto;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 5px;
+}
+
 /* Adjustments for the sidebar */
 #sidebar-wrapper {
     background-color: #510c76;

@@ -124,12 +124,12 @@ function deleteAssignment($assignment_id)
 {
     require($_SERVER['DOCUMENT_ROOT'] . '/loginutils/connectdb.php');
     //This query selects all positions that do not have users assigned to them.
-    $remove_assign_query = "
+    $query = "
   		DELETE FROM `calendar_assignments`
   		WHERE `calendar_assignments`.`assignment_id` = $assignment_id;
   		";
-    $remove_assign_result = mysqli_query($con, $remove_assign_query);
-    if (!$remove_assign_result) {
+    $result = mysqli_query($con, $query);
+    if (!$result) {
         //If the query was not executed, give an error alert with the mysql error as the message
         echo '<script> parent.parent.errorAlert("' . mysqli_error($con) . '", "https://tdta.stthomas.edu/calendar/CalendarIndexEdit.php");</script>';
     } else {
@@ -144,9 +144,11 @@ function deletePosition($position_id)
     $query = "
   		DELETE FROM `calendar_positions`
   		WHERE `position_id` = $position_id;
+  		DELETE FROM `calendar_assignments`
+  		WHERE `position_id` = $position_id;
   	";
 
-    $result = mysqli_query($con, $query);
+    $result = mysqli_multi_query($con, $query);
     if (!$result) {
         //If the query was not executed, give an error alert with the mysql error as the message
         echo '<script> parent.errorAlert("' . mysqli_error($con) . '", "https://tdta.stthomas.edu/calendar/ModifyPositions.php");</script>';
@@ -166,7 +168,7 @@ function deleteSemester($semester_id)
     }
 
     //This query selects all positions that do not have users assigned to them.
-    $remove_semester_query = "
+    $query = "
   		DELETE FROM `calendar_semesters`
   		WHERE `calendar_semesters`.`semester_id` = $semester_id;
   		DELETE FROM `calendar_positions`
@@ -175,8 +177,8 @@ function deleteSemester($semester_id)
   		WHERE `calendar_assignments`.`semester_id` = $semester_id;
   	";
 
-    $remove_semester_result = mysqli_multi_query($con, $remove_semester_query);
-    if (!$remove_semester_result) {
+    $result = mysqli_multi_query($con, $query);
+    if (!$result) {
         //If the query was not executed, give an error alert with the mysql error as the message
         echo '<script> parent.parent.errorAlert("' . mysqli_error($con) . '", "https://tdta.stthomas.edu/calendar/ModifySemesters.php");</script>';
         return false;

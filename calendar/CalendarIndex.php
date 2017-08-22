@@ -8,6 +8,8 @@ include($_SERVER["DOCUMENT_ROOT"] . "/includes/createHeader.php");
 <?php
 $userStatus = $_SESSION['admin_status'];
 $semester = getActiveSemester();
+
+$dateNum = date("w");
 ?>
 
 <!DOCTYPE html>
@@ -50,13 +52,13 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/navbar.php';
             <div class="col-md-6 col-xs-12">
                 <!-- The pills for selecting which day you want to be displayed -->
                 <ul class="nav nav-pills days">
-                    <li class="days"><a data-toggle="tab" href="#0">Sunday</a></li>
-                    <li class="days"><a data-toggle="tab" href="#1">Monday</a></li>
-                    <li class="days"><a data-toggle="tab" href="#2">Tuesday</a></li>
-                    <li class="days"><a data-toggle="tab" href="#3">Wednesday</a></li>
-                    <li class="days"><a data-toggle="tab" href="#4">Thursday</a></li>
-                    <li class="days"><a data-toggle="tab" href="#5">Friday</a></li>
-                    <li class="days"><a data-toggle="tab" href="#6">Saturday</a></li>
+                    <li class="days<?php if ($dateNum == 0) {echo " active";} ?>"><a data-toggle="tab" href="#0">Sunday</a></li>
+                    <li class="days<?php if ($dateNum == 1) {echo " active";} ?>"><a data-toggle="tab" href="#1">Monday</a></li>
+                    <li class="days<?php if ($dateNum == 2) {echo " active";} ?>"><a data-toggle="tab" href="#2">Tuesday</a></li>
+                    <li class="days<?php if ($dateNum == 3) {echo " active";} ?>"><a data-toggle="tab" href="#3">Wednesday</a></li>
+                    <li class="days<?php if ($dateNum == 4) {echo " active";} ?>"><a data-toggle="tab" href="#4">Thursday</a></li>
+                    <li class="days<?php if ($dateNum == 5) {echo " active";} ?>"><a data-toggle="tab" href="#5">Friday</a></li>
+                    <li class="days<?php if ($dateNum == 6) {echo " active";} ?>"><a data-toggle="tab" href="#6">Saturday</a></li>
                 </ul>
             </div>
             <div class="col-md-3 col-xs-12">
@@ -85,7 +87,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/navbar.php';
                 <div class="btn-group">
                     <?php
                     if($userStatus >= 2) {
-                        echo '<a href="CalendarIndexEdit.php" class="btn btn-custom" role="button">Edit</a>';
+                        echo '<a href="CalendarIndexEdit.php" class="btn btn-custom">Edit</a>';
                     }
                     ?>
 
@@ -105,7 +107,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/navbar.php';
                     }
                     ?>
                     <div class="btn-group">
-                        <form id="colorForm" action="../settings/user/updateColor.php" method="post" target="formiFrame">
+                        <form id="colorForm" action="../settings/user/updateColor.php" method="post" target="form-iframe">
                             <input name="color" type="hidden" id="color_value" value="<?php echo $color; ?>"
                                    autocomplete="off" onchange="this.form.submit(); location.reload();">
                             <button id="color-selector-button" class="btn btn-custom jscolor {valueElement:'color_value'}">
@@ -134,26 +136,28 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/navbar.php';
             </div>
         </div>
         <div class="row">
-            <!-- Helper form for showStudentInfo.js -->
-            <form id="helperForm" action="getStudentInfo.php" method="POST">
-                <input id="helperInput" type="hidden" value="" name="student">
-            </form>
-            <div id="stuInfo">
-                <div class="col-sm-3">
+            <div id="stuInfo" class="col-xs-6">
+                <!-- Helper form for showStudentInfo.js -->
+                <form id="helperForm" action="getStudentInfo.php" method="POST">
+                    <input id="helperInput" type="hidden" value="" name="student">
+                </form>
+                <div class="col-xs-12 col-sm-7 col-md-6 col-lg-4">
                     <img id="stuImg" style="height:200px; width:200px;" src="https://tdta.stthomas.edu/StudentRoster/StudentRosterImages/PlaceholderImg.png" />
                 </div>
-                <div class="col-sm-2">
+                <div class="col-xs-12 col-sm-5 col-md-6 col-lg-8">
                     <strong>Name: </strong><p id="stuName">N/A</p>
                     <strong>Username: </strong><p id="stuUsername">N/A</p>
                     <strong>Phone Number: </strong><p id="stuNumber">N/A</p>
                 </div>
-                <div id="testing"></div>
+            </div>
+            <div class="col-xs-6">
+                <iframe name="personal-cal-iframe"></iframe>
             </div>
         </div>
     </div>
 </div>
 
-<iframe name="formiFrame" style="display: none;"></iframe>
+<iframe name="form-iframe" style="display: none;"></iframe>
 
 <?php
 include($_SERVER['DOCUMENT_ROOT'] . "/includes/footer.php");

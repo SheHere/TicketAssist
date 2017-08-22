@@ -13,6 +13,7 @@ define("JQUERY_LINK", "https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquer
 define("ANNOUNCEMENTS_LINK", "http://tdta.stthomas.edu/announcements/NewAnnouncement.php");
 define("CHAT_LINK", "https://techdesk.ladesk.com/agent/");
 define("CALENDAR_LINK", "http://personal.stthomas.edu/ebinfa/schedules/spring17.xlsx");
+define("CANVAS_TRAINING_LINK", "https://stthomas.instructure.com/courses/11257");
 
 
 ?>
